@@ -16,7 +16,7 @@ class SettingSeeder extends Seeder
     public function run()
     {
         DB::table('settings')->insert([
-            'logo1' => '/images/icon-dark.svg',
+            'logo1' => '/images/dite.png',
             'logo2' => '/images/icon-light.svg',
             'title' => ':: HexaBit :: ',
             'name' => 'Website',

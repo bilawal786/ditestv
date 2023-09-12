@@ -3,7 +3,7 @@
 @endphp
 <div id="left-sidebar" class="sidebar">
     <div class="navbar-brand">
-        <a href="{{route('dashboard.index')}}"><img src="{{asset($setting->logo1)}}" alt="{{$setting->name}} Logo" class="img-fluid logo"><span>{{$setting->name}}</span></a>
+        <a href="{{route('dashboard.index')}}"><img src="{{asset($setting->logo1)}}" alt="{{$setting->name}}  Logo" class="img-fluid logo " style="width: 160px;"></a>
         <button type="button" class="btn-toggle-offcanvas btn btn-sm btn-default float-right"><i class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
     </div>
     <div class="sidebar-scroll">
@@ -30,15 +30,19 @@
                 <li class="{{ request()->is('dashboard') || request()->is('/') ? 'active' : '' }}">
                     <a href="{{route('dashboard.index')}}"><i class="icon-home"></i><span>Dashboard</span></a>
                 </li>
-                <li class="{{ request()->is('profile*') || request()->is('users*') || request()->is('roles*') || request()->is('settings*') ? 'active' : '' }}">
-                    <a href="#forms" class="has-arrow"><i class="icon-settings"></i><span>Settings</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li class="{{ request()->is('profile*') ? 'active' : '' }}"><a href="{{route('profile.index')}}">Profile</a></li>
-                        <li class="{{ request()->is('users*') ? 'active' : '' }}"><a href="{{route('users.index')}}">Users</a></li>
-                        <li class="{{ request()->is('roles*') ? 'active' : '' }}"><a href="{{route('roles.index')}}">Roles</a></li>
-                        <li class="{{ request()->is('settings*') ? 'active' : '' }}"><a href="{{route('settings.index')}}">settings</a></li>
-                    </ul>
-                </li>
+
+                <li class="{{ request()->is('users*') ? 'active' : '' }}"><a href="{{route('users.index')}}"><i class="icon-users"></i><span>Users</span></a></li>
+
+
+{{--                <li class="{{ request()->is('profile*') || request()->is('users*') || request()->is('roles*') || request()->is('settings*') ? 'active' : '' }}">--}}
+{{--                    <a href="#forms" class="has-arrow"><i class="icon-settings"></i><span>Settings</span></a>--}}
+{{--                    <ul aria-expanded="false" class="collapse">--}}
+{{--                        <li class="{{ request()->is('profile*') ? 'active' : '' }}"><a href="{{route('profile.index')}}">Profile</a></li>--}}
+{{--                        <li class="{{ request()->is('users*') ? 'active' : '' }}"><a href="{{route('users.index')}}">Users</a></li>--}}
+{{--                        <li class="{{ request()->is('roles*') ? 'active' : '' }}"><a href="{{route('roles.index')}}">Roles</a></li>--}}
+{{--                        <li class="{{ request()->is('settings*') ? 'active' : '' }}"><a href="{{route('settings.index')}}">settings</a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
             </ul>
         </nav>
     </div>
