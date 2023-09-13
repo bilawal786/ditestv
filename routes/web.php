@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/', [DashboardController::class, 'index']);
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
+//    Route::post('users/{id}', [UserController::class, 'edit']);
     Route::resource('profile', ProfileController::class);
     Route::resource('settings', SettingController::class);
     Route::resource('dashboard', DashboardController::class);

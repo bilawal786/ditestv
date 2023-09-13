@@ -18,7 +18,7 @@ class SettingSeeder extends Seeder
         DB::table('settings')->insert([
             'logo1' => '/images/dite.png',
             'logo2' => '/images/icon-light.svg',
-            'title' => ':: HexaBit :: ',
+            'title' => ':: Ditesta :: ',
             'name' => 'Website',
             'email' => 'admin@gmail.com',
         ]);

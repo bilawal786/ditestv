@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('content')
+    <?php
+    $isChecked = 'yes';
+    $Checked = 'yes'
+    ?>
     <div id="main-content">
         @include('backend.users.includes.blockHeader')
         <div class="container-fluid">
@@ -7,10 +11,12 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card planned_task">
                         <div class="header">
-                            <h2>Create New User</h2>
+                            <h2>Crea nuovo utente</h2>
                             <ul class="header-dropdown dropdown dropdown-animated scale-left">
-                                <li> <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse"><i class="icon-refresh"></i></a></li>
-                                <li><a href="javascript:void(0);" class="full-screen"><i class="icon-size-fullscreen"></i></a></li>
+                                <li><a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse"><i
+                                            class="icon-refresh"></i></a></li>
+                                <li><a href="javascript:void(0);" class="full-screen"><i
+                                            class="icon-size-fullscreen"></i></a></li>
                             </ul>
                         </div>
                         <div class="body">
@@ -28,59 +34,214 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                     <div class="form-group">
-                                        <strong>First Name:</strong>
-                                        {!! Form::text('first_name', null, array('placeholder' => 'First Name','class' => 'form-control')) !!}
+                                        <strong>Nome :</strong>
+                                        {!! Form::text('first_name', old('first_name'), array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                     <div class="form-group">
-                                        <strong>Last Name:</strong>
-                                        {!! Form::text('last_name', null, array('placeholder' => 'Last Name','class' => 'form-control')) !!}
+                                        <strong>Cognome:</strong>
+                                        {!! Form::text('last_name',  old('last_name'), array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Email:</strong>
-                                        {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                                        {!! Form::text('email', old('email'), array('class' => 'form-control')) !!}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Numero Telefono:</strong>
+                                        {!! Form::number('phone_number', old('phone_number'), array('class' => 'form-control')) !!}
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Residente </strong>
+                                        <input type="text" name="resident" value="{{old('resident')}}" class="form-control" id=""
+                                               data-default-file="">
+                                        {{--                                        <strong>Address:</strong>--}}
+                                        {{--                                        {!! Form::textarea('address', null, array('placeholder' => 'Address', 'rows' => '4', 'class' => 'form-control')) !!}--}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{--                            <div class="row">--}}
+                            {{--                                <div class="col-xs-12 col-sm-12 col-md-6">--}}
+                            {{--                                    <div class="form-group">--}}
+                            {{--                                        <strong>Password:</strong>--}}
+                            {{--                                        {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                                <div class="col-xs-12 col-sm-12 col-md-6">--}}
+                            {{--                                    <div class="form-group">--}}
+                            {{--                                        <strong>Confirm Password:</strong>--}}
+                            {{--                                        {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+
+                            {{--                            </div>--}}
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="form-group">
+                                        <strong>Città:</strong>
+                                        <input type="text" name="city" class="form-control" id=""
+                                               value="{{old('city')}}" data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="form-group">
+                                        <strong>Provincia:</strong>
+                                        <input type="text" name="province" class="form-control" id=""
+                                               value="{{old('province')}}" data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="form-group">
+                                        <strong>CAP</strong>
+                                        <input type="number" name="postal_code" class="form-control" id=""
+                                               value="{{old('postal_code')}}" data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="form-group">
+                                        <strong>Numero di licenza</strong>
+                                        <input type="number" name="license_number" class="form-control" id=""
+                                               value="{{old('license_number')}}" data-default-file="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <strong>Data di Nascita</strong>
+                                        <input type="date" name="d_o_b" class="form-control" id=""
+                                               value="{{old('d_o_b')}}" data-default-file="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                     <div class="form-group">
-                                        <strong>Phone:</strong>
-                                        {!! Form::text('phone', null, array('placeholder' => 'Phone','class' => 'form-control')) !!}
+                                        <strong>Luogo di Nascita:</strong>
+                                        <input type="text" name="birth_place" class="form-control" id=""
+                                               value="{{old('birth_place')}}" data-default-file="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Rilasciata il:</strong>
+                                        <input type="text" name="released_on" class="form-control" id=""
+                                               value="{{old('released_on')}}" data-default-file="">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Scadenza prova di sgancio:</strong>
+                                        <input type="date" name="release_test_deadline" class="form-control" id=""
+                                               value="{{old('release_test_deadline')}}" data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Scadenza attività minima:</strong>
+                                        <input type="date" name="minimum_activity_deadline" class="form-control" id=""
+                                               value="{{old('minimum_activity_deadline')}}" data-default-file="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Compagnia assicuratva</strong>
+                                        <input type="text" name="insurance_company" class="form-control" id=""
+                                               value="{{old('insurance_company')}}"  data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Scadenza assicurazione:</strong>
+                                        <input type="date" name="insurance_expiration" class="form-control" id=""
+                                               value="{{old('insurance_expiration')}}"    data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Scadenza visita medica</strong>
+                                        <input type="date" name="medical_examination_deadline" class="form-control"
+                                               id="" value="{{old('medical_examination_deadline')}}"
+                                               data-default-file="">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-6">
+
+                                <div class="col-xs-12 col-sm-12 col-md-3">
                                     <div class="form-group">
-                                        <strong>Address:</strong>
-                                        {!! Form::textarea('address', null, array('placeholder' => 'Address', 'rows' => '4', 'class' => 'form-control')) !!}
+                                        <strong>Paese:</strong>
+                                        <input type="text" name="village" value="{{old('village')}}" class="form-control" id=""
+                                               data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="col-xs-12 col-sm-12 col-md-3">
                                     <div class="form-group">
-                                        <strong>Role:</strong>
-                                        {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+                                        <strong>Scadenza per il rimborso di emergenza</strong>
+                                        <input type="date" name="expiry_date" value="{{old('expiry_date')}}" class="form-control" id=""
+                                               data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="form-group">
+                                        <strong>Contatto emergenza:</strong>
+                                        <input type="text" name="emergency_contact" value="{{old('emergency_contact')}}" class="form-control" id=""
+                                               data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="form-group">
+                                        <strong>Grado del contatto:</strong>
+                                        <input type="text" name="degree_of_contact" value="{{old('degree_of_contact')}}" class="form-control" id=""
+                                               data-default-file="">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
+
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                     <div class="form-group">
-                                        <strong>Password:</strong>
-                                        {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+                                        {{--                                            <strong>Student:</strong>--}}
+                                        <label class="form-check-label mr-5" for="exampleCheck1">Allievo :</label>
+                                        <input type="checkbox" name="student" class="form-check-input" id="exampleCheck1" data-default-file="">
+                                        <?php if ($Checked == 'yes'): ?><?php endif; ?>
+                                        {{--                                            <input type="checkbox" name="student" class="form-control" id=""--}}
+                                        {{--                                                   data-default-file="">--}}
                                     </div>
                                 </div>
+
                                 <div class="col-xs-12 col-sm-12 col-md-6">
                                     <div class="form-group">
-                                        <strong>Confirm Password:</strong>
-                                        {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+                                        <label class="form-check-label mr-5" for="exampleCheck1">Possiede il materiale:</label>
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                                               name="own_material" data-default-file=""
+                                               <?php if ($isChecked == 'yes'): ?><?php endif; ?>>
                                     </div>
                                 </div>
                             </div>
+                            {{--                                <div class="row">--}}
+                            {{--                                    <div class="col-xs-12 col-sm-12 col-md-12">--}}
+                            {{--                                        <div class="form-group">--}}
+                            {{--                                            <strong>Role:</strong>--}}
+                            {{--                                            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <button type="submit" class="btn btn-primary btn-round">Submit</button>
