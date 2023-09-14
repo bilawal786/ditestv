@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Backend\Users;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
+use App\Jobs\SendEmailJob;
+use App\Mail\SendEmailTest;
+use Illuminate\Support\Facades\Mail;
 
 //use DataTables;
 use Yajra\DataTables\Facades\DataTables;
@@ -37,20 +41,20 @@ class UserController extends Controller
                         <form class="inlineblock" action="' . route('users.destroy', [$row->id]) . '" method="POST">
                             ' . csrf_field() . '
                             ' . method_field('DELETE') . '
-                           <button type="submit" class="btn btn-danger btn-sm js-sweetalert" onclick="return confirm()" title="Delete">
+                           <button type="submit" class="btn btn-danger btn-sm js-sweetalert" onclick="return confirm(\'Are You Sure You want To Delete? \')" title="Delete">
                             <i class="fa fa-trash-o"></i>
                             </button>
                         </form>';
                     return $btn;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('status', function ($row) {
+                    return $row->showExpiredDate() == 'expired' ? '<span class="badge badge-danger">Expired</span>': '';
+                })
+                ->rawColumns(['action', 'status'])
                 ->make(true);
         }
 
         return view('backend.users.index');
-//        $data = User::orderBy('id','DESC')->paginate(5);
-//        return view('backend.users.index',compact('data'))
-//            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -70,28 +74,6 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-//    public function store(Request $request)
-//    {
-////        $this->validate($request, [
-////            'first_name' => 'required',
-////            'last_name' => 'required',
-////            'email' => 'required|email|unique:users,email',
-////            'password' => 'required|same:confirm-password',
-////            'roles' => 'required'
-////        ]);
-//        $request->request->add(['user_image' => '/images/profile/user.png']);
-//        $input = $request->all();
-//        $input['password'] = Hash::make($input['password']);
-//        $user = User::create($input);
-//        $user->assignRole($request->input('roles'));
-//        $notification = array(
-//            'messege' => 'User successfully created',
-//            'alert-type' => 'success'
-//        );
-//
-//        return redirect()->route('users.index')
-//            ->with($notification);
-//    }
 
     public function store(Request $request)
     {
@@ -176,9 +158,6 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-//        $roles = Role::pluck('name','name')->all();
-//        $userRole = $user->roles->pluck('name','name')->all();
-
         return view('backend.users.edit', compact('user'));
     }
 
@@ -243,4 +222,76 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with($notification);
     }
+
+    public function release_test_deadline_send_email()
+    {
+        $users = User::Where('role', 1)->get();
+        $today = now();
+        foreach ($users as $user) {
+            $releaseTestDeadline = Carbon::parse($user->release_test_deadline);
+
+            if ($today->diffInMonths($releaseTestDeadline) == 1) {
+                dispatch(new SendEmailJob($user, 'release_test_deadline'));
+            }
+        }
+        return redirect()->back();
+    }
+
+
+    public function minimum_activity_deadline()
+    {
+        $users = User::Where('role', 1)->get();
+        $today = now();
+        foreach ($users as $user) {
+            $releaseTestDeadline = Carbon::parse($user->minimum_activity_deadline);
+
+            if ($today->diffInMonths($releaseTestDeadline) == 1) {
+                dispatch(new SendEmailJob($user, 'minimum_activity_deadline'));
+            }
+        }
+
+        return redirect()->back();
+    }
+
+    public function insurance_expiration()
+    {
+        $users = User::Where('role', 1)->get();
+        $today = now();
+        foreach ($users as $user) {
+            $releaseTestDeadline = Carbon::parse($user->insurance_expiration);
+
+            if ($today->diffInMonths($releaseTestDeadline) == 1) {
+                dispatch(new SendEmailJob($user, 'insurance_expiration'));
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function medical_examination_deadline()
+    {
+        $users = User::Where('role', 1)->get();
+        $today = now();
+        foreach ($users as $user) {
+            $releaseTestDeadline = Carbon::parse($user->medical_examination_deadline);
+            if ($today->diffInMonths($releaseTestDeadline) == 1) {
+                dispatch(new SendEmailJob($user, 'medical_examination_deadline'));
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function expiry_date()
+    {
+        $users = User::Where('role', 1)->get();
+        $today = now();
+        foreach ($users as $user) {
+            $releaseTestDeadline = Carbon::parse($user->expiry_date);
+
+            if ($today->diffInMonths($releaseTestDeadline) == 1) {
+                dispatch(new SendEmailJob($user, 'expiry_date'));
+            }
+        }
+        return redirect()->back();
+    }
+
 }

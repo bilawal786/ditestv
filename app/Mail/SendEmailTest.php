@@ -11,14 +11,19 @@ class SendEmailTest extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $user;
+    protected $matchedColumns;
+
     /**
      * Create a new message instance.
      *
+     * @param string $triggeringField The triggering date field name
      * @return void
      */
-    public function __construct()
+    public function __construct($user, $matchedColumns)
     {
-        //
+        $this->user = $user;
+        $this->matchedColumns = $matchedColumns;
     }
 
     /**
@@ -28,6 +33,9 @@ class SendEmailTest extends Mailable
      */
     public function build()
     {
-        return $this->view('backend.emails.test');
+        return $this->view('backend.emails.test')->with([
+            'user' => $this->user,
+            'matchedColumns' => $this->matchedColumns
+        ]);
     }
 }

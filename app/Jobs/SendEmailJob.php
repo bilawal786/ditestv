@@ -1,47 +1,48 @@
 <?php
-//
-//namespace App\Jobs;
-//
-//use App\Mail\SendEmailTest;
-//use App\Models\User;
-//use Illuminate\Bus\Queueable;
-//use Illuminate\Contracts\Queue\ShouldBeUnique;
-//use Illuminate\Contracts\Queue\ShouldQueue;
-//use Illuminate\Foundation\Bus\Dispatchable;
-//use Illuminate\Queue\InteractsWithQueue;
-//use Illuminate\Queue\SerializesModels;
-//
-//class SendEmailJob implements ShouldQueue
-//{
-//    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-//
-//    /**
-//     * Create a new job instance.
-//     *
-//     * @return void
-//     */
-//    public function __construct($details)
-//    {
-//        $this->details = $details;
-//    }
-//
-//    /**
-//     * Execute the job.
-//     *
-//     * @return void
-//     */
-//    public function handle()
-//    {
-//        // Query users whose expiry date is after one month
-//        $users = User::whereDate('expiry_date', '>', now()->addMonth())->get();
-//
-//        foreach ($users as $user) {
-//            $email = new SendEmailTest($user);
-//            Mail::to($user->email)->send($email);
-//        }
-//    }
-//
-////        $email = new SendEmailTest();
-////        Mail::to($this->details['email'])->send($email);
-//
-//}
+
+namespace App\Jobs;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmailTest;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+
+// Import the Mail facade
+use App\Models\User;
+
+// Import the User model
+use Carbon\Carbon;
+
+// Import Carbon for date handling
+
+class SendEmailJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $user;
+    protected $matchedColumns;
+
+    /**
+     * Create a new job instance.
+     *
+     * @return void
+     */
+    public function __construct($user, $matchedColumns)
+    {
+        $this->user = $user;
+        $this->matchedColumns = $matchedColumns;
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        Mail::to($this->user->email)->send(new SendEmailTest($this->user, $this->matchedColumns));
+    }
+}

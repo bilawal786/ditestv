@@ -11,7 +11,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card planned_task">
                         <div class="header">
-                            <h2>Edit New User</h2>
+                            <h4>Edit New User</h4>
                             <ul class="header-dropdown dropdown dropdown-animated scale-left">
                                 <li><a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse"><i
                                             class="icon-refresh"></i></a></li>
@@ -36,26 +36,28 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Nome:</strong>
                                             {!! Form::text('first_name',$user->first_name, array('placeholder' => 'First Name','class' => 'form-control')) !!}
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Cognome:</strong>
                                             {!! Form::text('last_name', $user->last_name, array('placeholder' => 'Last Name','class' => 'form-control')) !!}
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
+
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Email:</strong>
                                             {!! Form::text('email', $user->email, array('placeholder' => 'Email','class' => 'form-control')) !!}
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Numero Telefono:</strong>
@@ -70,30 +72,32 @@
                                                    value="{{$user->resident}}" data-default-file="">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-3">
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Città:</strong>
                                             <input type="text" name="city" class="form-control" id=""
                                                    value="{{$user->city}}" data-default-file="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Provincia:</strong>
                                             <input type="text" name="province" class="form-control" id=""
                                                    value="{{$user->province}}" data-default-file="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>CAP</strong>
                                             <input type="number" name="postal_code" class="form-control" id=""
                                                    value="{{$user->postal_code}}" data-default-file="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Numero di licenza</strong>
                                             <input type="number" name="license_number" class="form-control" id=""
@@ -102,22 +106,21 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Data di Nascita</strong>
                                             <input type="date" name="d_o_b" class="form-control" id=""
                                                    value="{{$user->d_o_b}}" data-default-file="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Luogo di Nascita:</strong>
                                             <input type="text" name="birth_place" class="form-control" id=""
                                                    value="{{$user->birth_place}}" data-default-file="">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
+
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Rilasciata il:</strong>
@@ -125,6 +128,9 @@
                                                    value="{{$user->released_on}}" data-default-file="">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+
 
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
@@ -141,8 +147,7 @@
                                                    value="{{$user->minimum_activity_deadline}}" data-default-file="">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
+
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Compagnia assicuratva</strong>
@@ -150,6 +155,9 @@
                                                    value="{{$user->insurance_company}}" data-default-file="">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Scadenza assicurazione:</strong>
@@ -165,30 +173,32 @@
                                                    data-default-file="">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-3">
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Paese:</strong>
                                             <input type="text" name="village" class="form-control" id=""
                                                    value="{{$user->village}}" data-default-file="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Scadenza per il rimborso di emergenza</strong>
                                             <input type="date" name="expiry_date" class="form-control" id=""
                                                    value="{{$user->expiry_date}}" data-default-file="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Contatto emergenza:</strong>
                                             <input type="text" name="emergency_contact" class="form-control" id=""
                                                    value="{{$user->emergency_contact}}" data-default-file="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Grado del contatto:</strong>
                                             <input type="text" name="degree_of_contact" class="form-control" id=""
@@ -198,7 +208,7 @@
                                 </div>
                                 <div class="row">
 
-                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <label class="form-check-label mr-5" for="exampleCheck1">Allievo:</label>
                                             <input type="checkbox" name="student" class="form-check-input"
@@ -207,7 +217,7 @@
                                             >
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <label class="form-check-label mr-5" for="exampleCheck1">Possiede il
                                                 materiale:</label>

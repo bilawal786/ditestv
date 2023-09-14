@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\Users\UserController;
 use App\Http\Controllers\Backend\Roles\RoleController;
 use App\Http\Controllers\Backend\Setting\SettingController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
+use App\Jobs\SendEmailJob;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +27,17 @@ use App\Http\Controllers\Backend\Dashboard\DashboardController;
 
 Auth::routes();
 
-//Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', [DashboardController::class, 'index']);
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
-//    Route::post('users/{id}', [UserController::class, 'edit']);
+
+    Route::get('/email/send', [UserController::class, 'release_test_deadline_send_email'])->name('sendEmail');
+    Route::get('/minimum/send', [UserController::class, 'minimum_activity_deadline'])->name('minimum_activity');
+    Route::get('/insurance/send', [UserController::class, 'insurance_expiration'])->name('insurance_expire');
+    Route::get('/medical/send', [UserController::class, 'medical_examination_deadline'])->name('medical_dealine');
+    Route::get('/expiry/send', [UserController::class, 'expiry_date'])->name('expiry_date');
+
     Route::resource('profile', ProfileController::class);
     Route::resource('settings', SettingController::class);
     Route::resource('dashboard', DashboardController::class);

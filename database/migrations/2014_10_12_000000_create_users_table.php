@@ -41,12 +41,8 @@ class CreateUsersTable extends Migration
             $table->string('user_image')->nullable();
 //            0 admin 1 users
             $table->integer('role')->default(1);
-//            $table->text('address')->nullable();
 //            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-//            $table->integer('status')->default(1);
-//            $table->string('activation_key')->nullable();
-//            $table->string('company_phone')->nullable();
 
 
             $table->rememberToken();

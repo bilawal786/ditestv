@@ -4,6 +4,14 @@
     $isChecked = 'yes';
     $Checked = 'yes'
     ?>
+    <style>
+        /* Customize the checkbox size */
+        .form-check-input[type="checkbox"] {
+            width: 18px; /* Adjust the width */
+            height: 18px; /* Adjust the height */
+        }
+    </style>
+
     <div id="main-content">
         @include('backend.users.includes.blockHeader')
         <div class="container-fluid">
@@ -11,7 +19,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card planned_task">
                         <div class="header">
-                            <h2>Crea nuovo utente</h2>
+                            <h4>Crea Nuovo Utente</h4>
                             <ul class="header-dropdown dropdown dropdown-animated scale-left">
                                 <li><a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse"><i
                                             class="icon-refresh"></i></a></li>
@@ -32,26 +40,28 @@
                             @endif
                             {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
                             <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Nome :</strong>
                                         {!! Form::text('first_name', old('first_name'), array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Cognome:</strong>
                                         {!! Form::text('last_name',  old('last_name'), array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Email:</strong>
                                         {!! Form::text('email', old('email'), array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Numero Telefono:</strong>
@@ -64,49 +74,35 @@
                                         <strong>Residente </strong>
                                         <input type="text" name="resident" value="{{old('resident')}}" class="form-control" id=""
                                                data-default-file="">
-                                        {{--                                        <strong>Address:</strong>--}}
-                                        {{--                                        {!! Form::textarea('address', null, array('placeholder' => 'Address', 'rows' => '4', 'class' => 'form-control')) !!}--}}
                                     </div>
                                 </div>
-                            </div>
-                            {{--                            <div class="row">--}}
-                            {{--                                <div class="col-xs-12 col-sm-12 col-md-6">--}}
-                            {{--                                    <div class="form-group">--}}
-                            {{--                                        <strong>Password:</strong>--}}
-                            {{--                                        {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                                <div class="col-xs-12 col-sm-12 col-md-6">--}}
-                            {{--                                    <div class="form-group">--}}
-                            {{--                                        <strong>Confirm Password:</strong>--}}
-                            {{--                                        {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
 
-                            {{--                            </div>--}}
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Città:</strong>
                                         <input type="text" name="city" class="form-control" id=""
                                                value="{{old('city')}}" data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Provincia:</strong>
                                         <input type="text" name="province" class="form-control" id=""
                                                value="{{old('province')}}" data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>CAP</strong>
                                         <input type="number" name="postal_code" class="form-control" id=""
                                                value="{{old('postal_code')}}" data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Numero di licenza</strong>
                                         <input type="number" name="license_number" class="form-control" id=""
@@ -116,23 +112,21 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Data di Nascita</strong>
                                         <input type="date" name="d_o_b" class="form-control" id=""
                                                value="{{old('d_o_b')}}" data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Luogo di Nascita:</strong>
                                         <input type="text" name="birth_place" class="form-control" id=""
                                                value="{{old('birth_place')}}" data-default-file="">
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Rilasciata il:</strong>
@@ -140,6 +134,10 @@
                                                value="{{old('released_on')}}" data-default-file="">
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="row">
+
 
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
@@ -155,9 +153,7 @@
                                                value="{{old('minimum_activity_deadline')}}" data-default-file="">
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Compagnia assicuratva</strong>
@@ -165,6 +161,11 @@
                                                value="{{old('insurance_company')}}"  data-default-file="">
                                     </div>
                                 </div>
+
+                            </div>
+
+                            <div class="row">
+
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Scadenza assicurazione:</strong>
@@ -180,31 +181,30 @@
                                                data-default-file="">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Paese:</strong>
                                         <input type="text" name="village" value="{{old('village')}}" class="form-control" id=""
                                                data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Scadenza per il rimborso di emergenza</strong>
                                         <input type="date" name="expiry_date" value="{{old('expiry_date')}}" class="form-control" id=""
                                                data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Contatto emergenza:</strong>
                                         <input type="text" name="emergency_contact" value="{{old('emergency_contact')}}" class="form-control" id=""
                                                data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Grado del contatto:</strong>
                                         <input type="text" name="degree_of_contact" value="{{old('degree_of_contact')}}" class="form-control" id=""
@@ -214,10 +214,10 @@
                             </div>
                             <div class="row">
 
-                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         {{--                                            <strong>Student:</strong>--}}
-                                        <label class="form-check-label mr-5" for="exampleCheck1">Allievo :</label>
+                                        <label class="form-check-label mr-5 font-5" style="margin-top: 3px;" for="exampleCheck1">Allievo :</label>
                                         <input type="checkbox" name="student" class="form-check-input" id="exampleCheck1" data-default-file="">
                                         <?php if ($Checked == 'yes'): ?><?php endif; ?>
                                         {{--                                            <input type="checkbox" name="student" class="form-control" id=""--}}
@@ -225,23 +225,15 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
-                                        <label class="form-check-label mr-5" for="exampleCheck1">Possiede il materiale:</label>
+                                        <label class="form-check-label mr-5 font-5 " style="margin-top: 3px;"  for="exampleCheck1">Possiede il materiale:</label>
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1"
                                                name="own_material" data-default-file=""
                                                <?php if ($isChecked == 'yes'): ?><?php endif; ?>>
                                     </div>
                                 </div>
                             </div>
-                            {{--                                <div class="row">--}}
-                            {{--                                    <div class="col-xs-12 col-sm-12 col-md-12">--}}
-                            {{--                                        <div class="form-group">--}}
-                            {{--                                            <strong>Role:</strong>--}}
-                            {{--                                            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <button type="submit" class="btn btn-primary btn-round">Submit</button>

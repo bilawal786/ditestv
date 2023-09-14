@@ -21,10 +21,10 @@
                                 <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
+                                    <th>Name</th>
                                     <th>Email</th>
                                     <th>Numero Telefono</th>
+                                    <th>Status</th>
                                     <th width="100px">Azione</th>
                                 </tr>
                                 </thead>
@@ -63,10 +63,15 @@
                     ajax: "{{ route('users.index') }}",
                     columns: [
                         {data: 'id', name: 'id'},
-                        {data: 'first_name', name: 'first_name'},
-                        {data: 'last_name', name: 'last_name'},
+                        {
+                            data: function (row) {
+                                return row.first_name + ' ' + row.last_name;
+                            },
+                            name: 'full_name'
+                        },
                         {data: 'email', name: 'email'},
                         {data: 'phone_number', name: 'phone_number'},
+                        {data: 'status', name: 'status'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},
                     ]
                 });
