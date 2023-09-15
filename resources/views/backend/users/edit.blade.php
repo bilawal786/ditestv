@@ -104,20 +104,19 @@
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Nome :</strong>
-                                            {!! Form::text('first_name',$user->first_name, array('placeholder' => 'First Name','class' => 'form-control')) !!}
+                                            {!! Form::text('first_name',$user->first_name, array('class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Cognome :</strong>
-                                            {!! Form::text('last_name', $user->last_name, array('placeholder' => 'Last Name','class' => 'form-control')) !!}
+                                            {!! Form::text('last_name', $user->last_name, array('class' => 'form-control')) !!}
                                         </div>
                                     </div>
-
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Email :</strong>
-                                            {!! Form::text('email', $user->email, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                                            {!! Form::text('email', $user->email, array('class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +125,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Numero Telefono :</strong>
-                                            {!! Form::number('phone_number',$user->phone_number, array('placeholder' => 'Phone','class' => 'form-control')) !!}
+                                            {!! Form::number('phone_number',$user->phone_number, array('class' => 'form-control')) !!}
                                         </div>
                                     </div>
 
@@ -147,7 +146,6 @@
                                     </div>
                                 </div>
                                 <div class="row">
-
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Provincia :</strong>
@@ -185,7 +183,6 @@
                                                    value="{{$user->birth_place}}" data-default-file="">
                                         </div>
                                     </div>
-
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Rilasciata il :</strong>
@@ -195,8 +192,6 @@
                                     </div>
                                 </div>
                                 <div class="row">
-
-
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Scadenza prova di sgancio :</strong>
@@ -212,7 +207,6 @@
                                                    value="{{$user->minimum_activity_deadline}}" data-default-file="">
                                         </div>
                                     </div>
-
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Compagnia assicuratva :</strong>
@@ -222,7 +216,6 @@
                                     </div>
                                 </div>
                                 <div class="row">
-
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Scadenza assicurazione :</strong>
