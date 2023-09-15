@@ -17,7 +17,7 @@ $ct-series-colors: (
 .theme-purple{
 
     ::selection {
-        color: $white; 
+        color: $white;
         background: $purple-primary;
     }
     .page-loader-wrapper{
@@ -33,7 +33,7 @@ $ct-series-colors: (
         .icon-menu i{
             color: $white;
         }
-    }    
+    }
     .sidebar-nav .metismenu{
         >li{
             &.active>a{
@@ -45,7 +45,7 @@ $ct-series-colors: (
         a{
             color: $purple-dark;
         }
-        
+
         a:hover,
         a:focus{
             background: $purple-dark;
@@ -61,9 +61,9 @@ $ct-series-colors: (
             }
         }
         .user-account{
-            color: $purple-dark;            
+            color: $purple-dark;
             .user_div{
-                border-color: $purple-light; 
+                border-color: $purple-light;
                 .user-photo{
                     border-color: $purple-primary;
                 }
@@ -77,21 +77,21 @@ $ct-series-colors: (
         }
     }
     .fancy-checkbox {
-        input[type="checkbox"] {    
+        input[type="checkbox"] {
             &:checked + span:before {
                 background: $purple-primary;
                 border-color: $purple-primary;
             }
         }
-    }    
+    }
     .chat-widget {
         li {
             &.right {
-                
+
                 .chat-info {
                     background: $purple-primary;
                     color: $white;
-    
+
                     &:before{
                         border-left: 10px solid $purple-primary;
                     }
@@ -102,7 +102,7 @@ $ct-series-colors: (
     .right_chat li a:hover{
         .media-object {
             border-color: $purple-primary;
-        }        
+        }
     }
     .auth-main{
         &:after{
@@ -122,7 +122,7 @@ $ct-series-colors: (
             }
         }
         .actions a{
-            background:#feb800;
+            background:#e67238;
         }
     }
     .fc .fc-view-container .fc-view.fc-basic-view>table>thead tr th.fc-widget-header{
@@ -142,7 +142,7 @@ $ct-series-colors: (
 
     .blog-page .single_post .footer .stats li a:hover{
         color: $purple-primary;
-    }    
+    }
 
     @each $series-name, $series-color in $ct-series-colors {
         .ct-series-#{$series-name} {
@@ -152,8 +152,8 @@ $ct-series-colors: (
                 stroke: $series-color;
             }
 
-            .ct-area, 
-            .ct-slice-donut-solid, 
+            .ct-area,
+            .ct-slice-donut-solid,
             .ct-slice-pie,
             .ct-bar {
                 fill: $series-color;
