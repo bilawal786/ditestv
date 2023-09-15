@@ -14,11 +14,11 @@
                     <div class="card">
                         <div class="header pb-0 text-center">
                             <div class="logo-login">
-                                    <img src="{{asset($setting->logo1)}}" alt="{{$setting->name}} Logo" class="img-fluid logo">
+                                    <img src="{{asset($setting->logo1)}}" alt="{{$setting->name}}  Logo" class="img-fluid logo">
                             </div>
                         </div>
                         <div class="header pb-0">
-                            <p class="lead">Login to your account</p>
+                            <p class="lead">Accedi Al Tuo Account</p>
                         </div>
                         <div class="body">
                             <form class="form-auth-small" method="post" action="{{ route('login') }}">
@@ -33,8 +33,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="signin-password" class="control-label sr-only">Password</label>
-                                    <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password"  required autocomplete="current-password">
+                                    <label for="signin-password" class="control-label sr-only">Parola d'ordine</label>
+                                    <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Parola d'ordine"  required autocomplete="current-password">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -44,7 +44,7 @@
                                 <div class="form-group clearfix">
                                     <label class="fancy-checkbox element-left">
                                         <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        <span>Remember me</span>
+                                        <span>Ricordati Di Me</span>
                                     </label>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>

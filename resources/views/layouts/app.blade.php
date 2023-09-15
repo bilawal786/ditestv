@@ -3,7 +3,6 @@
 @endphp
     <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <title>{{$setting->title}}</title>
     <!-- CSRF Token -->
@@ -16,7 +15,7 @@
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- VENDOR CSS -->
-{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
 
@@ -34,19 +33,21 @@
         }
 
         .logo-login {
-            width: 60px;
-            height: 60px;
+            width: 150px;
+            height: 80px;
             margin: 0 auto;
         }
+        .navbar-fixed-top .navbar-btn .logo {
+             width: 62px;
+         }
     </style>
 </head>
-
 <body class="theme-orange">
 <div id="app">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30"><img src="{{asset('images/icon-light.svg')}}" width="48" height="48" alt="HexaBit">
+            <div class="m-t-30"><img src="{{asset('images/loding.png')}}" width="80" height="30" alt="Ditesta">
             </div>
             <p>Please wait...</p>
         </div>

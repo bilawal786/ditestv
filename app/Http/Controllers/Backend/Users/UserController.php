@@ -29,7 +29,12 @@ class UserController extends Controller
     {
         if ($request->ajax()) {
             $data = User::Where('role', 1);
+//            return DataTables::of($data)
             return DataTables::of($data)
+                ->addColumn('id', function ($row) {
+                    static $i = 1;
+                    return $i++;
+                })
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $btn = '<a href="' . route('users.edit', [$row->id]) . '">
@@ -48,7 +53,8 @@ class UserController extends Controller
                     return $btn;
                 })
                 ->addColumn('status', function ($row) {
-                    return $row->showExpiredDate() == 'expired' ? '<span class="badge badge-danger">Expired</span>': '';
+//                    return $row->showExpiredDate() == 'expired' ? '<span class="badge badge-danger">Expired</span>': '';
+                    return $row->showExpiredDate();
                 })
                 ->rawColumns(['action', 'status'])
                 ->make(true);
@@ -225,7 +231,7 @@ class UserController extends Controller
 
     public function release_test_deadline_send_email()
     {
-        $users = User::Where('role', 1)->get();
+        $users = User::where('role', 1)->get();
         $today = now();
         foreach ($users as $user) {
             $releaseTestDeadline = Carbon::parse($user->release_test_deadline);
@@ -237,10 +243,9 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-
     public function minimum_activity_deadline()
     {
-        $users = User::Where('role', 1)->get();
+        $users = User::where('role', 1)->get();
         $today = now();
         foreach ($users as $user) {
             $releaseTestDeadline = Carbon::parse($user->minimum_activity_deadline);
@@ -255,7 +260,7 @@ class UserController extends Controller
 
     public function insurance_expiration()
     {
-        $users = User::Where('role', 1)->get();
+        $users = User::where('role', 1)->get();
         $today = now();
         foreach ($users as $user) {
             $releaseTestDeadline = Carbon::parse($user->insurance_expiration);
@@ -269,7 +274,7 @@ class UserController extends Controller
 
     public function medical_examination_deadline()
     {
-        $users = User::Where('role', 1)->get();
+        $users = User::where('role', 1)->get();
         $today = now();
         foreach ($users as $user) {
             $releaseTestDeadline = Carbon::parse($user->medical_examination_deadline);
@@ -282,11 +287,10 @@ class UserController extends Controller
 
     public function expiry_date()
     {
-        $users = User::Where('role', 1)->get();
+        $users = User::all();
         $today = now();
         foreach ($users as $user) {
             $releaseTestDeadline = Carbon::parse($user->expiry_date);
-
             if ($today->diffInMonths($releaseTestDeadline) == 1) {
                 dispatch(new SendEmailJob($user, 'expiry_date'));
             }

@@ -16,8 +16,8 @@ class SettingSeeder extends Seeder
     public function run()
     {
         DB::table('settings')->insert([
-            'logo1' => '/images/dite.png',
-            'logo2' => '/images/icon-light.svg',
+            'logo1' => 'images/1694666369-ditesta.png',
+            'logo2' => 'images/1694760318-loading.png',
             'title' => ':: Ditesta :: ',
             'name' => 'Website',
             'email' => 'admin@gmail.com',

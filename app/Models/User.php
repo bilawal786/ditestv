@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use App\Jobs\SendEmailJob;
@@ -70,14 +69,19 @@ class User extends Authenticatable
 
     public function showExpiredDate()
     {
-        if (Carbon::parse($this->minimum_activity_deadline)->isPast() ||
-            Carbon::parse($this->release_test_deadline)->isPast() ||
-            Carbon::parse($this->insurance_expiration)->isPast() ||
-            Carbon::parse($this->medical_examination_deadline)->isPast() ||
-            Carbon::parse($this->expiry_date)->isPast()) {
-            return "expired";
-        }else{
-            return "not expired";
+        if (Carbon::parse($this->minimum_activity_deadline)->isPast()) {
+            return '<span class="badge badge-danger">Scadenza minima attività</span>';
+        } elseif (Carbon::parse($this->release_test_deadline)->isPast()) {
+            return '<span class="badge badge-danger">Scadenza del test di rilascio</span>';
+        } elseif (Carbon::parse($this->insurance_expiration)->isPast()) {
+            return '<span class="badge badge-danger">Scadenza dell assicurazione</span>';
+        } elseif (Carbon::parse($this->medical_examination_deadline)->isPast()) {
+            return '<span class="badge badge-danger">Scadenza visita medica</span>';
+        } elseif (Carbon::parse($this->expiry_date)->isPast()) {
+            return '<span class="badge badge-danger">Data di scadenza del rimborso</span>';
+        } else {
+//            return 'Not Expired';
+            return '<span class="badge badge-success">Not Expired</span>';
         }
     }
 

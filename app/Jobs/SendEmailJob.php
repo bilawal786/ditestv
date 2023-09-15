@@ -45,4 +45,10 @@ class SendEmailJob implements ShouldQueue
     {
         Mail::to($this->user->email)->send(new SendEmailTest($this->user, $this->matchedColumns));
     }
+//    public function handle()
+//    {
+//        if ($this->user && $this->user->email) {
+//            Mail::to($this->user->email)->send(new SendEmailTest($this->user, $this->matchedColumns));
+//        }
+//    }
 }
