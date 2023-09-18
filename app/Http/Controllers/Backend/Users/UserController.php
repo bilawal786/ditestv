@@ -139,7 +139,7 @@ class UserController extends Controller
             'messege' => 'Utente Creato Con Successo',
             'alert-type' => 'success'
         );
-        return Redirect()->route('users.index')->with($notification);
+        return redirect()->route('users.index')->with($notification);
     }
 
     /**
@@ -300,8 +300,8 @@ class UserController extends Controller
         $this->insurance_expiration();
         $this->medical_examination_deadline();
         $this->expiry_date();
-
         return redirect()->back();
+
     }
 
 }
