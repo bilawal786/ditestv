@@ -300,7 +300,11 @@ class UserController extends Controller
         $this->insurance_expiration();
         $this->medical_examination_deadline();
         $this->expiry_date();
-        return redirect()->back();
+
+        dd($this->release_test_deadline_send_email(), $this->minimum_activity_deadline(), $this->insurance_expiration(), $this->medical_examination_deadline(), $this->expiry_date());
+
+
+//        return redirect()->back();
 
     }
 
