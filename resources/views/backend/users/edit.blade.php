@@ -295,7 +295,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                                        <button type="submit" class="btn btn-primary btn-round">Invia</button>
                                     </div>
                                 </div>
                             </form>

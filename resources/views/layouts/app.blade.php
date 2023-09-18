@@ -49,7 +49,7 @@
         <div class="loader">
             <div class="m-t-30"><img src="{{asset('images/loding.png')}}" width="80" height="30" alt="Ditesta">
             </div>
-            <p>Please wait...</p>
+            <p>Attendere Prego...</p>
         </div>
     </div>
     <!-- Overlay For Sidebars -->

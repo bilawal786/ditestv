@@ -136,7 +136,7 @@ class UserController extends Controller
         $user->own_material = $request->own_material ? 'yes' : 'no';
         $user->save();
         $notification = array(
-            'messege' => 'User successfully Created',
+            'messege' => 'Utente Creato Con Successo',
             'alert-type' => 'success'
         );
         return Redirect()->route('users.index')->with($notification);
@@ -206,7 +206,7 @@ class UserController extends Controller
         $user->own_material = $request->own_material ? 'yes' : 'no';
         $user->update();
         $notification = array(
-            'messege' => 'User successfully updated',
+            'messege' => 'Utente Aggiornato Con Successo',
             'alert-type' => 'success'
         );
         return redirect()->route('users.index')
@@ -223,7 +223,7 @@ class UserController extends Controller
     {
         User::find($id)->delete();
         $notification = array(
-            'messege' => 'User successfully delete',
+            'messege' => 'Utente Eliminato Con Successo',
             'alert-type' => 'success'
         );
         return redirect()->route('users.index')

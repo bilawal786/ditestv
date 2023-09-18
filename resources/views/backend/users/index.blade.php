@@ -60,45 +60,16 @@
         <script src="{{asset('vendor/jquery-datatable/buttons/buttons.colVis.min.js')}}"></script>
         <script src="{{asset('vendor/jquery-datatable/buttons/buttons.html5.min.js')}}"></script>
         <script src="{{asset('vendor/jquery-datatable/buttons/buttons.print.min.js')}}"></script>
-{{--        <script type="text/javascript">--}}
-{{--            $(function () {--}}
 
-{{--                var table = $('.data-table').DataTable({--}}
-{{--                    processing: true,--}}
-{{--                    serverSide: true,--}}
-{{--                    ajax: "{{ route('users.index') }}",--}}
-{{--                    columns: [--}}
-{{--                        {data: 'id', name: 'id'},--}}
-{{--                        {--}}
-{{--                            data: function (row) {--}}
-{{--                                return row.first_name + ' ' + row.last_name;--}}
-{{--                            },--}}
-{{--                            name: 'full_name'--}}
-{{--                        },--}}
-{{--                        {data: 'email', name: 'email'},--}}
-{{--                        {data: 'phone_number', name: 'phone_number'},--}}
-{{--                        {data: 'resident', name: 'resident'},--}}
-{{--                        {data: 'status', name: 'status'},--}}
-{{--                        {data: 'action', name: 'action', orderable: false, searchable: false},--}}
-{{--                    ]--}}
-{{--                });--}}
-{{--            });--}}
-{{--        </script>--}}
+
+
         <script type="text/javascript">
-            $(function () {
-                var i =1;
+            $(document).ready(function () {
                 var table = $('.data-table').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: "{{ route('users.index') }}",
                     columns: [
-                        // {
-                        //     data: function () {
-                        //         incrementValue++; // Increment the custom increment value
-                        //         return incrementValue; // Use the incremented value as data
-                        //     },
-                        //     name: 'id'
-                        // },
                         {data: 'id', name: 'id'},
                         {
                             data: function (row) {
@@ -114,13 +85,35 @@
                     ],
                     createdRow: function (row, data, dataIndex) {
                         if (data.status !== '<span class="badge badge-success">Not Expired</span>') {
-                            $(row).addClass('black-bg-row'); // Add a class to change the background color
+                            $(row).addClass('black-bg-row');
+                        }
+                    },
+                    language: {
+                        processing: "In lavorazione...",
+                        lengthMenu: "Mostra le voci del _MENU_",
+                        emptyTable: "Nessun dato disponibile",
+                        info: "Mostrando _START_ a _END_ di _TOTAL_ inserimenti",
+                        infoEmpty: "Nessuna riga visualizzata",
+                        infoFiltered: "(Filtra un massimo di _MAX_)",
+                        infoPostFix: "",
+                        search: "Ricercare:",
+                        url: "",
+                        infoThousands: ",",
+                        loadingRecords: "Caricamento...",
+                        paginate: {
+                            first: "Prima",
+                            last: "Scorsa",
+                            next: "Prossima",
+                            previous: "Precedente"
+                        },
+                        aria: {
+                            sortAscending: ": Ordina in ordine crescente",
+                            sortDescending: ": Ordina in ordine decrescente"
                         }
                     }
                 });
             });
         </script>
-
 
     @endpush
 @endsection

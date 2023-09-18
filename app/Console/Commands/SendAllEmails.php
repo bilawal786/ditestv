@@ -40,6 +40,6 @@ class SendAllEmails extends Command
     {
         $emailService = new EmailService(); // Replace with the actual service class
         $emailService->sendAllEmails();
-        $this->info('All emails sent successfully.');
+        $this->info('Tutte Le Email Inviate Con Successo.');
     }
 }

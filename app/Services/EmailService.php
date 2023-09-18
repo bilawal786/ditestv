@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Jobs\SendEmailJob;
 use App\Models\User;
 use Carbon\Carbon;
+
 class EmailService
 {
 

@@ -16,7 +16,7 @@
         <div class="block-header">
             <div class="row clearfix">
                 <div class="col-md-6 col-sm-12">
-                    <h2>Dashboard</h2>
+                    <h2>Pannello Di Controllo</h2>
                 </div>
                 <div class="col-md-6 col-sm-12 text-right">
                     <ul class="breadcrumb">
@@ -84,7 +84,7 @@
                                     <div class=" small-box bg-info">
                                         <div class="inner text-center">
                                             <h1 class="font-weight-bold">{{$countusers}}</h1>
-                                            <p>Total Customers</p>
+                                            <p>Clienti Totali</p>
                                         </div>
                                         <div class="icon">
                                             <i class="fa fa-folder-plus"></i>
@@ -97,7 +97,7 @@
                                 <div class=" small-box bg-secondary">
                                     <div class="inner text-center">
                                         <h1 class="font-weight-bold">{{$count}}</h1>
-                                        <p>Expired</p>
+                                        <p>Scaduta</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-folder-plus"></i>
