@@ -108,32 +108,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="mt-2 mb-2 col-md-2 col-sm-6">
-                    <!-- small box -->
-                    <a href="{{route('sendEmail')}}" class="bg-primary text-white p-3">Release Test Deadline</a>
-                </div>
-
-                <div class="mt-2 mb-2 col-md-2 col-sm-6">
-                    <!-- small box -->
-                    <a href="{{route('minimum_activity')}}" class="bg-primary text-white p-3">Minimum Activity</a>
-                </div>
-
-                <div class="mt-2 mb-2 col-md-2 col-sm-6">
-                    <!-- small box -->
-                    <a href="{{route('insurance_expire')}}" class="bg-primary text-white p-3">Insurance Expire</a>
-                </div>
-
-                <div class="mt-2 mb-2 col-md-2 col-sm-6">
-                    <a href="{{route('medical_dealine')}}" class="bg-primary text-white p-3">Medical Dealine</a>
-                </div>
-
-                <div class="mt-2 mb-2 col-md-2 col-sm-6">
-                    <!-- small box -->
-                    <a href="{{route('expiry_date')}}" class="bg-primary text-white p-3">Expiry Date</a>
-
-                </div>
-            </div>
         </div>
     </div>
 

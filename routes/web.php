@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/insurance/send', [UserController::class, 'insurance_expiration'])->name('insurance_expire');
     Route::get('/medical/send', [UserController::class, 'medical_examination_deadline'])->name('medical_dealine');
     Route::get('/expiry/send', [UserController::class, 'expiry_date'])->name('expiry_date');
+    Route::get('/all/emails', [UserController::class, 'sendAllEmails'])->name('sendAllEmails');
 
     Route::resource('profile', ProfileController::class);
     Route::resource('settings', SettingController::class);

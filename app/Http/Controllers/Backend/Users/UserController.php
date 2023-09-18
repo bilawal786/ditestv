@@ -178,8 +178,6 @@ class UserController extends Controller
         $request->validate([
             'email' => 'unique:users,email,' . $id . ',id|required',
         ]);
-
-
         $user = User::find($id);
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -243,7 +241,6 @@ class UserController extends Controller
                 dispatch(new SendEmailJob($user, 'release_test_deadline'))->delay(10);
             }
         }
-        return redirect()->back();
     }
 
     public function minimum_activity_deadline()
@@ -257,8 +254,6 @@ class UserController extends Controller
                 dispatch(new SendEmailJob($user, 'minimum_activity_deadline'))->delay(10);
             }
         }
-
-        return redirect()->back();
     }
 
     public function insurance_expiration()
@@ -272,7 +267,6 @@ class UserController extends Controller
                 dispatch(new SendEmailJob($user, 'insurance_expiration'))->delay(10);
             }
         }
-        return redirect()->back();
     }
 
     public function medical_examination_deadline()
@@ -285,7 +279,6 @@ class UserController extends Controller
                 dispatch(new SendEmailJob($user, 'medical_examination_deadline'))->delay(10);
             }
         }
-        return redirect()->back();
     }
 
     public function expiry_date()
@@ -298,6 +291,16 @@ class UserController extends Controller
                 dispatch(new SendEmailJob($user, 'expiry_date'))->delay(10);
             }
         }
+    }
+
+    public function sendAllEmails()
+    {
+        $this->release_test_deadline_send_email();
+        $this->minimum_activity_deadline();
+        $this->insurance_expiration();
+        $this->medical_examination_deadline();
+        $this->expiry_date();
+
         return redirect()->back();
     }
 
