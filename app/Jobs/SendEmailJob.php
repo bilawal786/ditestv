@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Cache;
 
 // Import the Mail facade
 use App\Models\User;
@@ -41,9 +42,35 @@ class SendEmailJob implements ShouldQueue
      *
      * @return void
      */
+//    public function handle()
+//    {
+//        Mail::to($this->user->email)->send(new SendEmailTest($this->user, $this->matchedColumns));
+//    }
+
+
     public function handle()
     {
-        Mail::to($this->user->email)->send(new SendEmailTest($this->user, $this->matchedColumns));
+        // Check if an email has already been sent for this date expiration
+        if (!$this->isEmailSent()) {
+            Mail::to($this->user->email)->send(new SendEmailTest($this->user, $this->matchedColumns));
+            $this->markEmailAsSent();
+        }
+    }
+
+    private function isEmailSent()
+    {
+        // Use the user's ID and the date event as the cache key
+        $cacheKey = 'email_sent_' . $this->user->id . '_' . $this->matchedColumns;
+
+        // Check if the cache key exists
+        return Cache::has($cacheKey);
+    }
+
+    private function markEmailAsSent()
+    {
+        $cacheKey = 'email_sent_' . $this->user->id . '_' . $this->matchedColumns;
+
+        Cache::put($cacheKey, true, now()->addMonths(1)); // Adjust the duration as needed
     }
 
 }

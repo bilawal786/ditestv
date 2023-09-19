@@ -25,6 +25,24 @@ use App\Jobs\SendEmailJob;
 //    return view('welcome');
 //});
 
+
+//Route::get('mail', function () {
+//
+//    $matchedColumns = [
+//        'title' => 'hello',
+//        'body' => 'This is for testing email using SMTP'
+//    ];
+//
+//    $user = [
+//        'name' => 'John Doe',
+//        'email' => 'haseebrajput503@gmail.com'
+//    ];
+//
+//    \Mail::to('haseebrajput503@gmail.com')->send(new \App\Mail\SendEmailTest($user, $matchedColumns));
+//
+//    dd("Email is Sent.");
+//});
+
 Auth::routes();
 
 

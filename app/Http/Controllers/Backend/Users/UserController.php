@@ -52,7 +52,6 @@ class UserController extends Controller
                     return $btn;
                 })
                 ->addColumn('status', function ($row) {
-//                    return $row->showExpiredDate() == 'expired' ? '<span class="badge badge-danger">Expired</span>': '';
                     return $row->showExpiredDate();
                 })
                 ->rawColumns(['action', 'status'])
@@ -95,15 +94,13 @@ class UserController extends Controller
                 'village' => 'required',
                 'd_o_b' => 'required',
                 'birth_place' => 'required',
-                'license_number' => 'required',
-                'released_on' => 'required',
+//                'license_number' => 'required',
+//                'released_on' => 'required',
                 'release_test_deadline' => 'required',
                 'minimum_activity_deadline' => 'required',
                 'insurance_company' => 'required',
                 'insurance_expiration' => 'required',
                 'medical_examination_deadline' => 'required',
-                'expiry_date' => 'required',
-                'emergency_contact' => 'required',
                 'degree_of_contact' => 'required',
             ]
         );
@@ -120,20 +117,30 @@ class UserController extends Controller
         $user->village = $request->village;
         $user->d_o_b = $request->d_o_b;
         $user->birth_place = $request->birth_place;
-        $user->license_number = $request->license_number;
-        $user->released_on = $request->released_on;
         $user->release_test_deadline = $request->release_test_deadline;
         $user->minimum_activity_deadline = $request->minimum_activity_deadline;
         $user->insurance_company = $request->insurance_company;
         $user->insurance_expiration = $request->insurance_expiration;
         $user->medical_examination_deadline = $request->medical_examination_deadline;
-        $user->expiry_date = $request->expiry_date;
-        $user->emergency_contact = $request->emergency_contact;
+        $user->student = $request->student ? 'yes' : 'no';
+        $user->own_material = $request->own_material ? 'yes' : 'no';
+        if ($user->own_material == 'yes') {
+            $user->expiry_date = $request->expiry_date;
+            $user->emergency_contact = '';
+        } else {
+            $user->emergency_contact = $request->emergency_contact;
+            $user->expiry_date = '';
+        }
+        if ($user->student == 'yes') {
+            $user->released_on = $request->released_on;
+            $user->license_number = $request->license_number;
+        } else {
+            $user->released_on = '';
+            $user->license_number = '';
+        }
         $user->degree_of_contact = $request->degree_of_contact;
         $user->password = $request->password ?? '123456700';
         $user->role = $request->role ?? '1';
-        $user->student = $request->student ? 'yes' : 'no';
-        $user->own_material = $request->own_material ? 'yes' : 'no';
         $user->save();
         $notification = array(
             'messege' => 'Utente Creato Con Successo',
@@ -190,20 +197,34 @@ class UserController extends Controller
         $user->village = $request->village;
         $user->d_o_b = $request->d_o_b;
         $user->birth_place = $request->birth_place;
-        $user->license_number = $request->license_number;
-        $user->released_on = $request->released_on;
+//        $user->license_number = $request->license_number;
+//        $user->released_on = $request->released_on;
         $user->release_test_deadline = $request->release_test_deadline;
         $user->minimum_activity_deadline = $request->minimum_activity_deadline;
         $user->insurance_company = $request->insurance_company;
         $user->insurance_expiration = $request->insurance_expiration;
         $user->medical_examination_deadline = $request->medical_examination_deadline;
-        $user->expiry_date = $request->expiry_date;
-        $user->emergency_contact = $request->emergency_contact;
+//        $user->expiry_date = $request->expiry_date;
+//        $user->emergency_contact = $request->emergency_contact;
+        $user->own_material = $request->own_material ? 'yes' : 'no';
+        if ($user->own_material == 'yes') {
+            $user->expiry_date = $request->expiry_date;
+            $user->emergency_contact = '';
+        } else {
+            $user->emergency_contact = $request->emergency_contact;
+            $user->expiry_date = '';
+        }
         $user->degree_of_contact = $request->degree_of_contact;
         $user->password = $request->password ?? '123456700';
         $user->role = $request->role ?? '1';
         $user->student = $request->student ? 'yes' : 'no';
-        $user->own_material = $request->own_material ? 'yes' : 'no';
+        if ($user->student == 'yes') {
+            $user->released_on = $request->released_on;
+            $user->license_number = $request->license_number;
+        } else {
+            $user->released_on = '';
+            $user->license_number = '';
+        }
         $user->update();
         $notification = array(
             'messege' => 'Utente Aggiornato Con Successo',

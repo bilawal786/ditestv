@@ -41,8 +41,8 @@ class User extends Authenticatable
         'insurance_expiration',
         'medical_examination_deadline',
         'own_material',//checkbox
-        'expiry_date',
-        'emergency_contact',
+        'expiry_date',  //repayment expiry date    /on
+        'emergency_contact',  //
         'degree_of_contact',
         'role',
         'password',
@@ -67,22 +67,53 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+//    public function showExpiredDate()
+//    {
+//        if (Carbon::parse($this->minimum_activity_deadline)->isPast()) {
+//            return '<span class="badge badge-danger">Scadenza minima attività</span>';
+//        } elseif (Carbon::parse($this->release_test_deadline)->isPast()) {
+//            return '<span class="badge badge-danger">Scadenza del test di rilascio</span>';
+//        } elseif (Carbon::parse($this->insurance_expiration)->isPast()) {
+//            return '<span class="badge badge-danger">Scadenza dell assicurazione</span>';
+//        } elseif (Carbon::parse($this->medical_examination_deadline)->isPast()) {
+//            return '<span class="badge badge-danger">Scadenza visita medica</span>';
+//        } elseif (Carbon::parse($this->expiry_date)->isPast()) {
+//            return '<span class="badge badge-danger">Data di scadenza del rimborso</span>';
+//        } else {
+//            return '<span class="badge badge-success">Not Expired</span>';
+//        }
+//    }
+
     public function showExpiredDate()
     {
+        $expiredDates = [];
+
         if (Carbon::parse($this->minimum_activity_deadline)->isPast()) {
-            return '<span class="badge badge-danger">Scadenza minima attività</span>';
-        } elseif (Carbon::parse($this->release_test_deadline)->isPast()) {
-            return '<span class="badge badge-danger">Scadenza del test di rilascio</span>';
-        } elseif (Carbon::parse($this->insurance_expiration)->isPast()) {
-            return '<span class="badge badge-danger">Scadenza dell assicurazione</span>';
-        } elseif (Carbon::parse($this->medical_examination_deadline)->isPast()) {
-            return '<span class="badge badge-danger">Scadenza visita medica</span>';
-        } elseif (Carbon::parse($this->expiry_date)->isPast()) {
-            return '<span class="badge badge-danger">Data di scadenza del rimborso</span>';
-        } else {
-//            return 'Not Expired';
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza minima attività</span><br> <br>';
+        }
+
+        if (Carbon::parse($this->release_test_deadline)->isPast()) {
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza del test di rilascio</span><br> <br>';
+        }
+
+        if (Carbon::parse($this->insurance_expiration)->isPast()) {
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza dell assicurazione</span><br> <br>';
+        }
+
+        if (Carbon::parse($this->medical_examination_deadline)->isPast()) {
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza visita medica</span><br> <br>';
+        }
+
+        if (Carbon::parse($this->expiry_date)->isPast()) {
+            $expiredDates[] = '<span class="badge badge-danger">Data di scadenza del rimborso</span><br> <br>';
+        }
+
+        if (empty($expiredDates)) {
             return '<span class="badge badge-success">Not Expired</span>';
+        } else {
+            return implode(' ', $expiredDates);
         }
     }
+
 
 }

@@ -4,7 +4,7 @@
     <style>
         .black-bg-row {
             background-color: #1c1c1c !important; /* Use !important to override other styles */
-            color: white; /* Change text color to white for better visibility */
+            color: white;
         }
     </style>
     <div id="main-content">
@@ -27,7 +27,12 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nome</th>
+                                    <th>Cogonome</th>
+                                    <th>Data di nascita</th>
                                     <th>Email</th>
+                                    <th>Città </th>
+                                    <th>Provincia</th>
+                                    <th>Allievo</th>
                                     <th>Numero Telefono</th>
                                     <th>Residente</th>
                                     <th>Stato</th>
@@ -71,13 +76,13 @@
                     ajax: "{{ route('users.index') }}",
                     columns: [
                         {data: 'id', name: 'id'},
-                        {
-                            data: function (row) {
-                                return row.first_name + ' ' + row.last_name;
-                            },
-                            name: 'full_name'
-                        },
+                        {data: 'first_name', name: 'first_name'},
+                        {data: 'last_name', name: 'last_name'},
+                        {data: 'd_o_b', name: 'd_o_b'},
                         {data: 'email', name: 'email'},
+                        {data: 'city', name: 'city'},
+                        {data: 'province', name: 'province'},
+                        {data: 'student', name: 'student'},
                         {data: 'phone_number', name: 'phone_number'},
                         {data: 'resident', name: 'resident'},
                         {data: 'status', name: 'status'},
@@ -88,6 +93,7 @@
                             $(row).addClass('black-bg-row');
                         }
                     },
+
                     language: {
                         processing: "In lavorazione...",
                         lengthMenu: "Mostra le voci del _MENU_",
@@ -114,6 +120,5 @@
                 });
             });
         </script>
-
     @endpush
 @endsection

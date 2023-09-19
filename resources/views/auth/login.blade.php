@@ -7,7 +7,7 @@
     <!-- WRAPPER -->
     <div id="wrapper" class="auth-main">
         <div class="container">
-            <div class="row clearfix">
+            <div class="row clearfix" style="margin-top: 150px;">
                 <div class="col-lg-4">
                 </div>
                 <div class="col-lg-4">
