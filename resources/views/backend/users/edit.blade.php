@@ -147,14 +147,14 @@
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Provincia :</strong>
-                                            <input type="text" required name="province" class="form-control" id=""
+                                            <input type="text" required name="province" class="form-control"
                                                    value="{{$user->province}}" data-default-file="">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>CAP :</strong>
-                                            <input type="number" required name="postal_code" class="form-control" id=""
+                                            <input type="number" required name="postal_code" class="form-control"
                                                    value="{{$user->postal_code}}" data-default-file="">
                                         </div>
                                     </div>
@@ -247,7 +247,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group" id="expiry_date">
                                             <strong>Scadenza Del Rimborso Di Emergenza :</strong>
-                                            <input type="text" name="expiry_date" class="form-control" id=""
+                                            <input type="date" name="expiry_date" class="form-control" id=""
                                                    value="{{$user->expiry_date}}" data-default-file="">
                                         </div>
                                     </div>
@@ -294,6 +294,20 @@
                                                        name="own_material"
                                                        data-default-file=""
                                                        @if($user->own_material === 'yes')checked @endif>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <div class="form-group d-flex">
+                                            <label class="form-check-label mr-5" for="">E-mail automatica :</label>
+                                            <label class="switch">
+                                                <input type="checkbox" class="form-check-input"
+                                                       value="{{$user->send_auto_email}}"
+                                                       name="send_auto_email"
+                                                       data-default-file=""
+                                                       @if($user->send_auto_email === 'yes')checked @endif>
                                                 <span class="slider round"></span>
                                             </label>
                                         </div>

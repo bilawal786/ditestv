@@ -30,11 +30,9 @@
                                     <th>Cogonome</th>
                                     <th>Data di nascita</th>
                                     <th>Email</th>
-                                    <th>Città </th>
+                                    <th>Città</th>
                                     <th>Provincia</th>
                                     <th>Allievo</th>
-                                    <th>Numero Telefono</th>
-                                    <th>Residente</th>
                                     <th>Stato</th>
                                     <th width="100px">Azione</th>
                                 </tr>
@@ -83,8 +81,6 @@
                         {data: 'city', name: 'city'},
                         {data: 'province', name: 'province'},
                         {data: 'student', name: 'student'},
-                        {data: 'phone_number', name: 'phone_number'},
-                        {data: 'resident', name: 'resident'},
                         {data: 'status', name: 'status'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},
                     ],

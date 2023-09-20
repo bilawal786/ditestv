@@ -2,6 +2,7 @@
 @section('content')
     <?php
     $isChecked = 'yes';
+    $ischecked = 'yes';
     $Checked = 'yes'
     ?>
     <style>
@@ -247,7 +248,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group" id="emergency_contact">
+                                    <div class="form-group" id="expiry_date">
                                         <strong>Scadenza Del Rimborso Di Emergenza :</strong>
                                         <input type="date" id="expiry_date" name="expiry_date"
                                                value="{{old('expiry_date')}}"
@@ -255,7 +256,7 @@
                                                data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4" id="expiry_date">
+                                <div class="col-xs-12 col-sm-12 col-md-4" id="emergency_contact">
                                     <div class="form-group">
                                         <strong>Rimborso Di Emergenza :</strong>
                                         <input type="date" id="emergency_contact" name="emergency_contact"
@@ -299,6 +300,21 @@
                                                 <input type="checkbox" class="form-check-input"
                                                        name="own_material" id="own_material" data-default-file=""
                                                     <?php if ($isChecked == 'yes'): ?><?php endif; ?>>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group d-flex">
+                                        <label class="form-check-label mr-3 font-5 "
+                                               for="exampleCheck1">E-mail automatica :</label>
+                                        <div class="">
+                                            <label class="switch">
+                                                <input type="checkbox" class="form-check-input"
+                                                       name="send_auto_email" id="" data-default-file=""
+                                                    <?php if ($ischecked == 'yes'): ?><?php endif; ?>>
                                                 <span class="slider round"></span>
                                             </label>
                                         </div>

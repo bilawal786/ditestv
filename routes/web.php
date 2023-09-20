@@ -26,23 +26,6 @@ use App\Jobs\SendEmailJob;
 //});
 
 
-//Route::get('mail', function () {
-//
-//    $matchedColumns = [
-//        'title' => 'hello',
-//        'body' => 'This is for testing email using SMTP'
-//    ];
-//
-//    $user = [
-//        'name' => 'John Doe',
-//        'email' => 'haseebrajput503@gmail.com'
-//    ];
-//
-//    \Mail::to('haseebrajput503@gmail.com')->send(new \App\Mail\SendEmailTest($user, $matchedColumns));
-//
-//    dd("Email is Sent.");
-//});
-
 Auth::routes();
 
 
@@ -57,6 +40,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/medical/send', [UserController::class, 'medical_examination_deadline'])->name('medical_dealine');
     Route::get('/expiry/send', [UserController::class, 'expiry_date'])->name('expiry_date');
     Route::get('/all/emails', [UserController::class, 'sendAllEmails'])->name('sendAllEmails');
+
+    Route::get('/export-data', [UserController::class, 'export'])->name('export.data');
+    Route::get('/expired-data', [UserController::class, 'expiredUser'])->name('expired.data');
+
 
     Route::resource('profile', ProfileController::class);
     Route::resource('settings', SettingController::class);

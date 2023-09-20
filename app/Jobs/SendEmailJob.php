@@ -42,35 +42,10 @@ class SendEmailJob implements ShouldQueue
      *
      * @return void
      */
-//    public function handle()
-//    {
-//        Mail::to($this->user->email)->send(new SendEmailTest($this->user, $this->matchedColumns));
-//    }
-
-
     public function handle()
     {
-        // Check if an email has already been sent for this date expiration
-        if (!$this->isEmailSent()) {
-            Mail::to($this->user->email)->send(new SendEmailTest($this->user, $this->matchedColumns));
-            $this->markEmailAsSent();
-        }
+        Mail::to($this->user->email)->send(new SendEmailTest($this->user, $this->matchedColumns));
     }
 
-    private function isEmailSent()
-    {
-        // Use the user's ID and the date event as the cache key
-        $cacheKey = 'email_sent_' . $this->user->id . '_' . $this->matchedColumns;
-
-        // Check if the cache key exists
-        return Cache::has($cacheKey);
-    }
-
-    private function markEmailAsSent()
-    {
-        $cacheKey = 'email_sent_' . $this->user->id . '_' . $this->matchedColumns;
-
-        Cache::put($cacheKey, true, now()->addMonths(1)); // Adjust the duration as needed
-    }
 
 }

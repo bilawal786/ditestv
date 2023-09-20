@@ -39,6 +39,13 @@ class CreateUsersTable extends Migration
             $table->string('emergency_contact')->nullable();
             $table->string('degree_of_contact')->nullable();
             $table->string('user_image')->nullable();
+            $table->string('send_auto_email')->nullable();
+            $table->string('release_test_deadline_status')->nullable();
+            $table->string('minimum_activity_deadline_status')->nullable();
+            $table->string('insurance_company_status')->nullable();
+            $table->string('insurance_expiration_status')->nullable();
+            $table->string('medical_examination_deadline_status')->nullable();
+
 //            0 admin 1 users
             $table->integer('role')->default(1);
 //            $table->timestamp('email_verified_at')->nullable();

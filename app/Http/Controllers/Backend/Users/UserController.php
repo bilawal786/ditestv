@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Backend\Users;
 
+use App\Exports\UserExport;
 use Carbon\Carbon;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -10,12 +12,11 @@ use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
 use App\Jobs\SendEmailJob;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DataExport;
 use App\Mail\SendEmailTest;
 use Illuminate\Support\Facades\Mail;
-
-//use DataTables;
 use Yajra\DataTables\Facades\DataTables;
-
 use Illuminate\Support\Arr;
 
 class UserController extends Controller
@@ -45,7 +46,7 @@ class UserController extends Controller
                         <form class="inlineblock" action="' . route('users.destroy', [$row->id]) . '" method="POST">
                             ' . csrf_field() . '
                             ' . method_field('DELETE') . '
-                           <button type="submit" class="btn btn-danger btn-sm js-sweetalert" onclick="return confirm(\'Are You Sure You want To Delete? \')" title="Delete">
+                           <button type="submit" class="btn btn-danger btn-sm js-sweetalert" onclick="return confirm(\'Sei Sicuro Di Voler Eliminare? \')" title="Delete">
                             <i class="fa fa-trash-o"></i>
                             </button>
                         </form>';
@@ -138,6 +139,8 @@ class UserController extends Controller
             $user->released_on = '';
             $user->license_number = '';
         }
+
+        $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';
         $user->degree_of_contact = $request->degree_of_contact;
         $user->password = $request->password ?? '123456700';
         $user->role = $request->role ?? '1';
@@ -225,6 +228,7 @@ class UserController extends Controller
             $user->released_on = '';
             $user->license_number = '';
         }
+        $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';
         $user->update();
         $notification = array(
             'messege' => 'Utente Aggiornato Con Successo',
@@ -251,15 +255,21 @@ class UserController extends Controller
             ->with($notification);
     }
 
+
     public function release_test_deadline_send_email()
     {
         $users = User::where('role', 1)->get();
         $today = now();
         foreach ($users as $user) {
-            $releaseTestDeadline = Carbon::parse($user->release_test_deadline);
-
-            if ($today->diffInMonths($releaseTestDeadline) == 1) {
-                dispatch(new SendEmailJob($user, 'release_test_deadline'))->delay(10);
+            if ($user->send_auto_email == 'yes') {
+                $releaseTestDeadline = Carbon::parse($user->release_test_deadline);
+                if ($releaseTestDeadline != $user->release_test_deadline_status) {
+                    if ($today->diffInMonths($releaseTestDeadline) == 1) {
+                        dispatch(new SendEmailJob($user, 'release_test_deadline'))->delay(10);
+                        $user->release_test_deadline_status = $user->release_test_deadline;
+                        $user->update();
+                    }
+                }
             }
         }
     }
@@ -269,10 +279,15 @@ class UserController extends Controller
         $users = User::where('role', 1)->get();
         $today = now();
         foreach ($users as $user) {
-            $releaseTestDeadline = Carbon::parse($user->minimum_activity_deadline);
-
-            if ($today->diffInMonths($releaseTestDeadline) == 1) {
-                dispatch(new SendEmailJob($user, 'minimum_activity_deadline'))->delay(10);
+            if ($user->send_auto_email == 'yes') {
+                $releaseTestDeadline = Carbon::parse($user->minimum_activity_deadline);
+                if ($releaseTestDeadline != $user->minimum_activity_deadline_status) {
+                    if ($today->diffInMonths($releaseTestDeadline) == 1) {
+                        dispatch(new SendEmailJob($user, 'minimum_activity_deadline'))->delay(10);
+                        $user->minimum_activity_deadline_status = $user->minimum_activity_deadline;
+                        $user->update();
+                    }
+                }
             }
         }
     }
@@ -282,10 +297,15 @@ class UserController extends Controller
         $users = User::where('role', 1)->get();
         $today = now();
         foreach ($users as $user) {
-            $releaseTestDeadline = Carbon::parse($user->insurance_expiration);
-
-            if ($today->diffInMonths($releaseTestDeadline) == 1) {
-                dispatch(new SendEmailJob($user, 'insurance_expiration'))->delay(10);
+            if ($user->send_auto_email == 'yes') {
+                $releaseTestDeadline = Carbon::parse($user->insurance_expiration);
+                if ($releaseTestDeadline != $user->insurance_expiration_status) {
+                    if ($today->diffInMonths($releaseTestDeadline) == 1) {
+                        dispatch(new SendEmailJob($user, 'insurance_expiration'))->delay(10);
+                        $user->insurance_expiration_status = $user->insurance_expiration;
+                        $user->update();
+                    }
+                }
             }
         }
     }
@@ -295,9 +315,15 @@ class UserController extends Controller
         $users = User::where('role', 1)->get();
         $today = now();
         foreach ($users as $user) {
-            $releaseTestDeadline = Carbon::parse($user->medical_examination_deadline);
-            if ($today->diffInMonths($releaseTestDeadline) == 1) {
-                dispatch(new SendEmailJob($user, 'medical_examination_deadline'))->delay(10);
+            if ($user->send_auto_email == 'yes') {
+                $releaseTestDeadline = Carbon::parse($user->medical_examination_deadline);
+                if ($releaseTestDeadline != $user->medical_examination_deadline_status) {
+                    if ($today->diffInMonths($releaseTestDeadline) == 1) {
+                        dispatch(new SendEmailJob($user, 'medical_examination_deadline'))->delay(10);
+                        $user->medical_examination_deadline_status = $user->medical_examination_deadline;
+                        $user->update();
+                    }
+                }
             }
         }
     }
@@ -307,9 +333,15 @@ class UserController extends Controller
         $users = User::where('role', 1)->get();
         $today = now();
         foreach ($users as $user) {
-            $releaseTestDeadline = Carbon::parse($user->expiry_date);
-            if ($today->diffInMonths($releaseTestDeadline) == 1) {
-                dispatch(new SendEmailJob($user, 'expiry_date'))->delay(10);
+            if ($user->send_auto_email == 'yes') {
+                $releaseTestDeadline = Carbon::parse($user->expiry_date);
+                if ($releaseTestDeadline != $user->expiry_date_status) {
+                    if ($today->diffInMonths($releaseTestDeadline) == 1) {
+                        dispatch(new SendEmailJob($user, 'expiry_date'))->delay(10);
+                        $user->expiry_date_status = $user->expiry_date;
+                        $user->update();
+                    }
+                }
             }
         }
     }
@@ -322,6 +354,16 @@ class UserController extends Controller
         $this->medical_examination_deadline();
         $this->expiry_date();
         return redirect()->back();
+    }
+
+    public function export()
+    {
+        return Excel::download(new UserExport, 'users.xlsx');
+    }
+
+    public function expiredUser()
+    {
+        return Excel::download(new DataExport, 'expiredusers.xlsx');
     }
 
 }
