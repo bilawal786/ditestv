@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/export-data', [UserController::class, 'export'])->name('export.data');
     Route::get('/expired-data', [UserController::class, 'expiredUser'])->name('expired.data');
+    Route::get('download/pdf', [UserController::class, 'userPDF'])->name('userPdf');
+
 
 
     Route::resource('profile', ProfileController::class);

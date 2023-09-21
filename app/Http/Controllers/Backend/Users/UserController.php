@@ -11,6 +11,7 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
+use PDF;
 use App\Jobs\SendEmailJob;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DataExport;
@@ -111,6 +112,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $request->request->add(['user_image' => '/images/profile/user.png']);
         $user->phone_number = $request->phone_number;
+        $user->emergency_phone_number = $request->emergency_phone_number;
         $user->resident = $request->resident;
         $user->city = $request->city;
         $user->province = $request->province;
@@ -127,17 +129,17 @@ class UserController extends Controller
         $user->own_material = $request->own_material ? 'yes' : 'no';
         if ($user->own_material == 'yes') {
             $user->expiry_date = $request->expiry_date;
-            $user->emergency_contact = '';
         } else {
             $user->emergency_contact = $request->emergency_contact;
             $user->expiry_date = '';
         }
         if ($user->student == 'yes') {
-            $user->released_on = $request->released_on;
-            $user->license_number = $request->license_number;
-        } else {
             $user->released_on = '';
             $user->license_number = '';
+        } else {
+            $user->released_on = $request->released_on;
+            $user->license_number = $request->license_number;
+
         }
 
         $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';
@@ -193,6 +195,7 @@ class UserController extends Controller
         $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
+        $user->emergency_phone_number = $request->emergency_phone_number;
         $user->resident = $request->resident;
         $user->city = $request->city;
         $user->province = $request->province;
@@ -200,19 +203,14 @@ class UserController extends Controller
         $user->village = $request->village;
         $user->d_o_b = $request->d_o_b;
         $user->birth_place = $request->birth_place;
-//        $user->license_number = $request->license_number;
-//        $user->released_on = $request->released_on;
         $user->release_test_deadline = $request->release_test_deadline;
         $user->minimum_activity_deadline = $request->minimum_activity_deadline;
         $user->insurance_company = $request->insurance_company;
         $user->insurance_expiration = $request->insurance_expiration;
         $user->medical_examination_deadline = $request->medical_examination_deadline;
-//        $user->expiry_date = $request->expiry_date;
-//        $user->emergency_contact = $request->emergency_contact;
         $user->own_material = $request->own_material ? 'yes' : 'no';
         if ($user->own_material == 'yes') {
             $user->expiry_date = $request->expiry_date;
-            $user->emergency_contact = '';
         } else {
             $user->emergency_contact = $request->emergency_contact;
             $user->expiry_date = '';
@@ -222,11 +220,12 @@ class UserController extends Controller
         $user->role = $request->role ?? '1';
         $user->student = $request->student ? 'yes' : 'no';
         if ($user->student == 'yes') {
-            $user->released_on = $request->released_on;
-            $user->license_number = $request->license_number;
-        } else {
             $user->released_on = '';
             $user->license_number = '';
+        } else {
+            $user->released_on = $request->released_on;
+            $user->license_number = $request->license_number;
+
         }
         $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';
         $user->update();
@@ -364,6 +363,19 @@ class UserController extends Controller
     public function expiredUser()
     {
         return Excel::download(new DataExport, 'expiredusers.xlsx');
+    }
+
+    public function userPdf()
+    {
+        $data = [
+            'title' => 'Welcome to ItSolutionStuff.com',
+            'date' => date('m/d/Y'),
+        ];
+
+        $pdf = PDF::loadView('backend.users.usersPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
+
+        return view('backend.users.usersPdf');
+//        return $pdf->download('users.pdf');
     }
 
 }

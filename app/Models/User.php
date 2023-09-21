@@ -26,6 +26,7 @@ class User extends Authenticatable
         'last_name',
         'email',
         'phone_number',
+        'emergency_phone_number',
         'resident',
         'city',
         'province',

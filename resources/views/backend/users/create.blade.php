@@ -132,8 +132,9 @@
 
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
-                                        <strong>Residente : </strong>
-                                        <input type="text" required name="resident" value="{{old('resident')}}"
+                                        <strong>Contatto Di Emergenza : </strong>
+                                        <input type="number" required name="emergency_phone_number"
+                                               value="{{old('emergency_phone_number')}}"
                                                class="form-control" id=""
                                                data-default-file="">
                                     </div>
@@ -149,6 +150,14 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
+                                        <strong>Residente : </strong>
+                                        <input type="text" required name="resident" value="{{old('resident')}}"
+                                               class="form-control" id=""
+                                               data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
                                         <strong>Provincia :</strong>
                                         <input type="text" required name="province" class="form-control" id=""
                                                value="{{old('province')}}" data-default-file="">
@@ -159,13 +168,6 @@
                                         <strong>CAP :</strong>
                                         <input type="number" required name="postal_code" class="form-control" id=""
                                                value="{{old('postal_code')}}" data-default-file="">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group" id="license_number">
-                                        <strong>Numero di licenza :</strong>
-                                        <input type="number" name="license_number" class="form-control" id=""
-                                               value="{{old('license_number')}}" data-default-file="">
                                     </div>
                                 </div>
                             </div>
@@ -184,22 +186,22 @@
                                                value="{{old('birth_place')}}" data-default-file="">
                                     </div>
                                 </div>
-
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group" id="released_on">
-                                        <strong>Rilasciata il :</strong>
-                                        <input type="text" name="released_on" class="form-control" id=""
-                                               value="{{old('released_on')}}" data-default-file="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Scadenza prova di sgancio :</strong>
                                         <input type="date" required name="release_test_deadline" class="form-control"
                                                id=""
                                                value="{{old('release_test_deadline')}}" data-default-file="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Scadenza assicurazione :</strong>
+                                        <input type="date" required name="insurance_expiration" class="form-control"
+                                               id=""
+                                               value="{{old('insurance_expiration')}}" data-default-file="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
@@ -222,14 +224,6 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
-                                        <strong>Scadenza assicurazione :</strong>
-                                        <input type="date" required name="insurance_expiration" class="form-control"
-                                               id=""
-                                               value="{{old('insurance_expiration')}}" data-default-file="">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group">
                                         <strong>Scadenza visita medica :</strong>
                                         <input type="date" required name="medical_examination_deadline"
                                                class="form-control"
@@ -245,6 +239,40 @@
                                                data-default-file="">
                                     </div>
                                 </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Rimborso Di Emergenza :</strong>
+                                        <input type="date" name="emergency_contact"
+                                               value="{{old('emergency_contact')}}"
+                                               class="form-control"
+                                               data-default-file="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Grado del contatto :</strong>
+                                        <input type="text" required name="degree_of_contact"
+                                               value="{{old('degree_of_contact')}}"
+                                               class="form-control" id=""
+                                               data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group" id="license_number">
+                                        <strong>Numero di licenza :</strong>
+                                        <input type="text" name="license_number" class="form-control" id=""
+                                               value="{{old('license_number')}}" data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group" id="released_on">
+                                        <strong>Rilasciata il :</strong>
+                                        <input type="text" name="released_on" class="form-control" id=""
+                                               value="{{old('released_on')}}" data-default-file="">
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
@@ -253,24 +281,6 @@
                                         <input type="date" id="expiry_date" name="expiry_date"
                                                value="{{old('expiry_date')}}"
                                                class="form-control"
-                                               data-default-file="">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4" id="emergency_contact">
-                                    <div class="form-group">
-                                        <strong>Rimborso Di Emergenza :</strong>
-                                        <input type="date" id="emergency_contact" name="emergency_contact"
-                                               value="{{old('emergency_contact')}}"
-                                               class="form-control"
-                                               data-default-file="">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group">
-                                        <strong>Grado del contatto :</strong>
-                                        <input type="text" required name="degree_of_contact"
-                                               value="{{old('degree_of_contact')}}"
-                                               class="form-control" id=""
                                                data-default-file="">
                                     </div>
                                 </div>
@@ -339,20 +349,15 @@
             $(document).ready(function () {
                 var ownMaterialCheckbox = $('#own_material');
                 var expiryDateInput = $('#expiry_date input');
-                var emergencyContactInput = $('#emergency_contact input');
 
                 function showExpiryDateAndHideEmergencyContact() {
                     expiryDateInput.closest('.form-group').show();
-                    emergencyContactInput.closest('.form-group').hide();
                     expiryDateInput.prop('required', true);
-                    emergencyContactInput.prop('required', false);
                 }
 
                 function hideExpiryDateAndShowEmergencyContact() {
                     expiryDateInput.closest('.form-group').hide();
-                    emergencyContactInput.closest('.form-group').show();
                     expiryDateInput.prop('required', false);
-                    emergencyContactInput.prop('required', true);
                 }
 
                 // Initial check
@@ -362,7 +367,6 @@
                     hideExpiryDateAndShowEmergencyContact();
                 }
 
-                // Checkbox change event
                 ownMaterialCheckbox.change(function () {
                     if (ownMaterialCheckbox.prop('checked')) {
                         showExpiryDateAndHideEmergencyContact();
@@ -385,33 +389,30 @@
                     licenseNumber.prop('required', true);
                 }
 
-                // Function to remove required validation
                 function removeRequiredValidation() {
                     releasedOn.prop('required', false);
                     licenseNumber.prop('required', false);
                 }
 
-                // Initial check
                 if (studentCheckbox.prop('checked')) {
-                    releasedOn.closest('.form-group').show();
-                    licenseNumber.closest('.form-group').show();
-                    addRequiredValidation();
-                } else {
                     releasedOn.closest('.form-group').hide();
                     licenseNumber.closest('.form-group').hide();
                     removeRequiredValidation();
+                } else {
+                    releasedOn.closest('.form-group').show();
+                    licenseNumber.closest('.form-group').show();
+                    addRequiredValidation();
                 }
 
-                // Checkbox change event
                 studentCheckbox.change(function () {
                     if (studentCheckbox.prop('checked')) {
-                        releasedOn.closest('.form-group').show();
-                        licenseNumber.closest('.form-group').show();
-                        addRequiredValidation();
-                    } else {
                         releasedOn.closest('.form-group').hide();
                         licenseNumber.closest('.form-group').hide();
                         removeRequiredValidation();
+                    } else {
+                        releasedOn.closest('.form-group').show();
+                        licenseNumber.closest('.form-group').show();
+                        addRequiredValidation();
                     }
                 });
             });

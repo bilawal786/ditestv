@@ -23,6 +23,7 @@ class CreateAdminUserSeeder extends Seeder
             'role' => 0,
             'email' => 'admin@gmail.com',
             'phone_number' => '00000000',
+            'emergency_phone_number' => '00000000',
             'resident' => 'Back Office',
             'city' => 'Back Office',
             'province' => 'Back Office',
