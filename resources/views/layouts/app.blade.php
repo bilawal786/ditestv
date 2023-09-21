@@ -13,7 +13,7 @@
     <meta name="description" content="{{$setting->name}}">
     <meta name="author" content="{{$setting->name}}">
 
-    <link rel="icon" href="{{asset('images/loding.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('images/logo60.png')}}" type="image/x-icon">
     <!-- VENDOR CSS -->
     {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">

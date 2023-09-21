@@ -6,93 +6,57 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CodingCrust | Invoice Print</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Ditestv | PDF</title>
 </head>
 <body>
-<div class="container" style="width: 1300px;border: 1px solid black;margin: 0 40px;" >
-    <div style="display: flex; background-color: #e67238">
-    <div style="padding-right: 40px;width: 400px">
-        <img src="{{asset('images/loding.png')}}" width="180" height="80">
-    </div>
-    <div style="width: 400px;text-align: center">
-        <h1 style="color: white">All Customers</h1>
-    </div>
-    </div>
 
+<div class="container" style="">
+    <div class="container" style=" background-color: #e67238;">
+        <div style=" background-color: #e67238; padding-right: 40px; display: inline-block;">
 
-    <div class="row">
-        <div class="col-12 table-responsive">
-{{--            <table class="table table-striped " style="border: 1px solid black;">--}}
-{{--                <thead>--}}
-{{--                <tr>--}}
-{{--                    <th style="padding-right: 100px;">First Name</th>--}}
-{{--                    <th style="padding-right: 100px;">Last Name</th>--}}
-{{--                    <th style="padding-right: 100px;text-align: start;">email</th>--}}
-{{--                    <th style="padding-left: 30px;padding-right: 100px;">Phone</th>--}}
-{{--                    <th style="padding-right: 100px;">resident</th>--}}
-{{--                    <th style="padding-right: 100px;padding-left: 30px;">City</th>--}}
-{{--                    <th style="padding-right: 100px;padding-left: 30px;">Province</th>--}}
-{{--                </tr>--}}
-{{--                </thead>--}}
-{{--                <tbody>--}}
-{{--                @foreach ($users as $user)--}}
-{{--                    <tr>--}}
-{{--                        <td class="m-5">{{$user->first_name}}</td>--}}
-{{--                        <td class="">{{$user->last_name}}</td>--}}
-{{--                        <td class="m-5" style="padding-left: 5px; ">{{$user->email}}</td>--}}
-{{--                        <td class="m-5" style="padding-left: 30px;">{{$user->phone_number}}</td>--}}
-{{--                        <td class="m-5" style="padding-left: 5px;">{{$user->resident}}</td>--}}
-{{--                        <td class="m-5" style="padding-left: 30px;">{{$user->city}}</td>--}}
-{{--                        <td class="m-5" style="padding-left: 30px;">{{$user->province}}</td>--}}
-{{--                    </tr>--}}
-{{--                @endforeach--}}
-{{--                </tbody>--}}
-{{--            </table>--}}
+            <img width="150px" style="padding-left: 10px;" height="50px"
+                 src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('images/loding.png')))}}">
         </div>
-        <table border="1">
-            <tr>
-                <th style="padding-right: 100px;">First Name</th>
-                <th style="padding-right: 100px;">Last Name</th>
-                <th style="padding-right: 100px;text-align: start;">email</th>
-                <th style="padding-left: 30px;padding-right: 100px;">Phone</th>
-                <th style="padding-right: 100px;">resident</th>
-                <th style="padding-right: 100px;padding-left: 30px;">City</th>
-                <th style="padding-right: 100px;padding-left: 30px;">Province</th>
-            </tr>
-            @foreach ($users as $user)
-            <tr>
 
-                <td class="m-5">{{$user->first_name}}</td>
-                <td class="">{{$user->last_name}}</td>
-                <td class="m-5" style="padding-left: 5px; ">{{$user->email}}</td>
-                <td class="m-5" style="padding-left: 30px;">{{$user->phone_number}}</td>
-                <td class="m-5" style="padding-left: 5px;">{{$user->resident}}</td>
-                <td class="m-5" style="padding-left: 30px;">{{$user->city}}</td>
-                <td class="m-5" style="padding-left: 30px;">{{$user->province}}</td>
+        <div style="display: inline-block;  text-align: center;padding-left: 50px; margin-top: 16px;">
+            <h1 style="color: white; margin-top: 10px;font-family: Sans-Serif;">All Customers</h1>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <table>
+            <tr>
+                <th style="padding-right: 10px;font-family: Sans-Serif;">#</th>
+                <th style="padding-right: 10px;font-family: Sans-Serif;">Nome</th>
+                <th style="padding-right: 20px;font-family: Sans-Serif;">Cognome</th>
+                <th style="padding-right: 10px;font-family: Sans-Serif;text-align: start;">Scadenza assicurazione</th>
+                <th style="padding-right: 30px;font-family: Sans-Serif;">Scadenza attività minima</th>
+                <th style="padding-right: 20px;font-family: Sans-Serif;">Scadenza visita medica</th>
+                <th style="padding-right: 10px;font-family: Sans-Serif;padding-left: 10px;">Scadenza Del Rimborso Di
+                    Emergenza
+                </th>
+                <th style="padding-right: 10px;padding-left: 10px;font-family: Sans-Serif;">Scadenza prova di sgancio
+                </th>
             </tr>
+            @php
+                $i =1;
+            @endphp
+            @foreach ($users as $user)
+                <tr>
+                    <td>{{$i++}}</td>
+                    <td class="m-5">{{$user->first_name}}</td>
+                    <td class="">{{$user->last_name}}</td>
+                    <td class="m-5" style="padding-left: 5px; ">{{$user->insurance_expiration}}</td>
+                    <td class="m-5" style="padding-left: 5px;">{{$user->minimum_activity_deadline}}</td>
+                    <td class="m-5" style="padding-left: 5px;">{{$user->medical_examination_deadline}}</td>
+                    <td class="m-5" style="padding-left: 15px;">{{$user->expiry_date}}</td>
+                    <td class="m-5" style="padding-left: 15px;">{{$user->release_test_deadline}}</td>
+                </tr>
             @endforeach
-{{--            <tr>--}}
-{{--                <td>Row 2, Cell 1</td>--}}
-{{--                <td>Row 2, Cell 2</td>--}}
-{{--                <td>Row 2, Cell 3</td>--}}
-{{--            </tr>--}}
-{{--            <tr>--}}
-{{--                <td>Row 3, Cell 1</td>--}}
-{{--                <td>Row 3, Cell 2</td>--}}
-{{--                <td>Row 3, Cell 3</td>--}}
-{{--            </tr>--}}
         </table>
     </div>
-
 </div>
-
 </body>
 
-<body>
-<div class="container">
-
-    <br>
-</div>
-
-</body>
 </html>

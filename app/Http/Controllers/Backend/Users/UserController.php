@@ -148,7 +148,7 @@ class UserController extends Controller
         $user->role = $request->role ?? '1';
         $user->save();
         $notification = array(
-            'messege' => 'Utente Creato Con Successo',
+            'messege' => 'Cliente Creato Con Successo',
             'alert-type' => 'success'
         );
         return redirect()->route('users.index')->with($notification);
@@ -230,7 +230,7 @@ class UserController extends Controller
         $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';
         $user->update();
         $notification = array(
-            'messege' => 'Utente Aggiornato Con Successo',
+            'messege' => 'Cliente Aggiornato Con Successo',
             'alert-type' => 'success'
         );
         return redirect()->route('users.index')
@@ -247,7 +247,7 @@ class UserController extends Controller
     {
         User::find($id)->delete();
         $notification = array(
-            'messege' => 'Utente Eliminato Con Successo',
+            'messege' => 'Cliente Eliminato Con Successo',
             'alert-type' => 'success'
         );
         return redirect()->route('users.index')
@@ -271,9 +271,17 @@ class UserController extends Controller
         ];
 
         $pdf = PDF::loadView('backend.users.usersPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('customers.pdf');
+    }
 
-//        return view('backend.users.usersPdf');
-        return $pdf->download('users.pdf');
+    public function expireduserPDF()
+    {
+        $data = [
+            'title' => 'Welcome to ItSolutionStuff.com',
+            'date' => date('m/d/Y'),
+        ];
+        $pdf = PDF::loadView('backend.users.expireduserPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('expiredCustomers.pdf');
     }
 
 }

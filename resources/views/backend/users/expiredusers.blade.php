@@ -7,19 +7,11 @@
         <div>
             <div>
                 <div>
-                    {{--                        <div class="header">--}}
-                    {{--                            <ul class="header-dropdown dropdown dropdown-animated scale-left">--}}
-                    {{--                                <li><a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse"><i--}}
-                    {{--                                            class="icon-refresh"></i></a></li>--}}
-                    {{--                                <li><a href="javascript:void(0);" class="full-screen"><i--}}
-                    {{--                                            class="icon-size-fullscreen"></i></a></li>--}}
-                    {{--                            </ul>--}}
-                    {{--                        </div>--}}
                     <div>
                         <table>
                             <thead>
                             <tr>
-{{--                                <th>No</th>--}}
+                                {{--                                <th>No</th>--}}
                                 <th>Nome</th>
                                 <th>Cogonome</th>
                                 <th>Email</th>
@@ -92,7 +84,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

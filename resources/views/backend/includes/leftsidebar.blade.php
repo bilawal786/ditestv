@@ -38,7 +38,7 @@
                             class="icon-home"></i><span>Pannello Di Controllo</span></a>
                 </li>
                 <li class="{{ request()->is('users*') ? 'active' : '' }}"><a href="{{route('users.index')}}"><i
-                            class="icon-users"></i><span>Utenti</span></a></li>
+                            class="icon-users"></i><span>Clienti</span></a></li>
                 {{--                <li class="{{ request()->is('profile*') || request()->is('users*') || request()->is('roles*') || request()->is('settings*') ? 'active' : '' }}">--}}
                 {{--                    <a href="#forms" class="has-arrow"><i class="icon-settings"></i><span>Settings</span></a>--}}
                 {{--                    <ul aria-expanded="false" class="collapse">--}}
