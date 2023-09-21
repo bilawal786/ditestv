@@ -273,6 +273,7 @@ class UserController extends Controller
         }
     }
 
+
     public function minimum_activity_deadline()
     {
         $users = User::where('role', 1)->get();
@@ -337,7 +338,7 @@ class UserController extends Controller
                 if ($releaseTestDeadline != $user->expiry_date_status) {
                     if ($today->diffInMonths($releaseTestDeadline) == 1) {
                         dispatch(new SendEmailJob($user, 'expiry_date'))->delay(10);
-                        $user->expiry_date_status = $user->expiry_date;
+                        $user->insurance_company_status = $user->expiry_date;
                         $user->update();
                     }
                 }
@@ -374,8 +375,8 @@ class UserController extends Controller
 
         $pdf = PDF::loadView('backend.users.usersPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
 
-        return view('backend.users.usersPdf');
-//        return $pdf->download('users.pdf');
+//        return view('backend.users.usersPdf');
+        return $pdf->download('users.pdf');
     }
 
 }

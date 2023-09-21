@@ -45,7 +45,7 @@
                 {{--                        <li class="{{ request()->is('profile*') ? 'active' : '' }}"><a href="{{route('profile.index')}}">Profile</a></li>--}}
                 {{--                        <li class="{{ request()->is('users*') ? 'active' : '' }}"><a href="{{route('users.index')}}">Users</a></li>--}}
                 {{--                        <li class="{{ request()->is('roles*') ? 'active' : '' }}"><a href="{{route('roles.index')}}">Roles</a></li>--}}
-                {{--                                        <li class="{{ request()->is('settings*') ? 'active' : '' }}"><a href="{{route('settings.index')}}">settings</a></li>--}}
+{{--                                                        <li class="{{ request()->is('settings*') ? 'active' : '' }}"><a href="{{route('settings.index')}}">settings</a></li>--}}
                 {{--                    </ul>--}}
                 {{--                </li>--}}
             </ul>

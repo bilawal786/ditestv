@@ -26,6 +26,9 @@ class EmailService
             }
         }
     }
+
+
+
     public function minimum_activity_deadline()
     {
         $users = User::where('role', 1)->get();
@@ -89,7 +92,7 @@ class EmailService
                 if ($releaseTestDeadline != $user->expiry_date_status) {
                     if ($today->diffInMonths($releaseTestDeadline) == 1) {
                         dispatch(new SendEmailJob($user, 'expiry_date'))->delay(10);
-                        $user->expiry_date_status = $user->expiry_date;
+                        $user->insurance_company_status = $user->expiry_date;
                         $user->update();
                     }
                 }

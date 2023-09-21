@@ -80,21 +80,21 @@ class User extends Authenticatable
         $expiredDates = [];
 
         if (Carbon::parse($this->minimum_activity_deadline)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza minima attività</span><br> <br>';
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza minima attività</span>';
         }
 
         if (Carbon::parse($this->release_test_deadline)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza del test di rilascio</span><br> <br>';
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza del test di rilascio</span>';
         }
 
         if (Carbon::parse($this->insurance_expiration)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza dell assicurazione</span><br> <br>';
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza dell assicurazione</span>';
         }
         if (Carbon::parse($this->medical_examination_deadline)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza visita medica</span><br> <br>';
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza visita medica</span>';
         }
         if (!empty($this->expiry_date) && Carbon::parse($this->expiry_date)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza Del Rimborso Di Emergenza</span><br> <br>';
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza Del Rimborso Di Emergenza</span>';
         }
 //        if (!empty($this->emergency_contact) && Carbon::parse($this->emergency_contact)->isPast()) {
 //            $expiredDates[] = '<span class="badge badge-danger">RIMBORSO DI EMERGENZA</span><br> <br>';

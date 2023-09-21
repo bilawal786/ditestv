@@ -33,7 +33,9 @@ class SendEmailTest extends Mailable
      */
     public function build()
     {
-        return $this->view('backend.emails.test')->with([
+        return $this->subject('ALLERTA SKYDIVE VERONA')
+            ->view('backend.emails.test')
+            ->with([
             'user' => $this->user,
             'matchedColumns' => $this->matchedColumns
         ]);
