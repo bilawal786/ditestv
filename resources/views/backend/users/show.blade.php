@@ -306,6 +306,19 @@
                                         </label>
                                     </div>
                                 </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group d-flex">
+                                        <label class="form-check-label mr-5" for="exampleCheck1">E-mail automatica :</label>
+                                        <label class="switch">
+                                            <input type="checkbox" name="send_auto_email" class="form-check-input"
+                                                   id="exampleCheck1" value="{{$user->send_auto_email}}"
+                                                   data-default-file=""
+                                                   @if($user->send_auto_email === 'yes')checked @endif>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
