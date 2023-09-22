@@ -138,9 +138,7 @@ class UserController extends Controller
         } else {
             $user->released_on = $request->released_on;
             $user->license_number = $request->license_number;
-
         }
-
         $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';
         $user->degree_of_contact = $request->degree_of_contact;
         $user->password = $request->password ?? '123456700';
