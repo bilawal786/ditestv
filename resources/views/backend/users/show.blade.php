@@ -155,12 +155,11 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Numero di licenza :</strong>
-                                        <input type="number" name="license_number" readonly class="form-control" id=""
+                                        <input type="text" name="license_number" readonly class="form-control" id=""
                                                value="{{$user->license_number}}" data-default-file="">
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
@@ -176,7 +175,6 @@
                                                value="{{$user->birth_place}}" data-default-file="">
                                     </div>
                                 </div>
-
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Rilasciata il :</strong>
@@ -244,7 +242,7 @@
                                         <strong>Scadenza per il rimborso di emergenza :</strong>
                                         <input type="date" name="repayment_expiry_date" readonly
                                                value="{{$user->repayment_expiry_date}}"
-                                               class="form-control" id=""
+                                               class="form-control"
                                                data-default-file="">
                                     </div>
                                 </div>
@@ -309,7 +307,8 @@
 
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group d-flex">
-                                        <label class="form-check-label mr-5" for="exampleCheck1">E-mail automatica :</label>
+                                        <label class="form-check-label mr-5" for="exampleCheck1">E-mail automatica
+                                            :</label>
                                         <label class="switch">
                                             <input type="checkbox" name="send_auto_email" class="form-check-input"
                                                    id="exampleCheck1" value="{{$user->send_auto_email}}"
@@ -325,4 +324,5 @@
                 </div>
             </div>
         </div>
+
 @endsection
