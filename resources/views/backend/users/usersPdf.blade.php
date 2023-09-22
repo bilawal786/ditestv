@@ -20,7 +20,7 @@
         </div>
 
         <div style="display: inline-block;  text-align: center;padding-left: 50px; margin-top: 16px;">
-            <h1 style="color: white; margin-top: 10px;font-family: Sans-Serif;">All Customers</h1>
+            <h1 style="color: white; margin-top: 10px;font-family: Sans-Serif;">Tutti i Clienti</h1>
         </div>
     </div>
     <br>
@@ -50,7 +50,7 @@
                     <td class="m-5" style="padding-left: 5px; ">{{$user->insurance_expiration}}</td>
                     <td class="m-5" style="padding-left: 5px;">{{$user->minimum_activity_deadline}}</td>
                     <td class="m-5" style="padding-left: 5px;">{{$user->medical_examination_deadline}}</td>
-                    <td class="m-5" style="padding-left: 15px;">{{$user->expiry_date}}</td>
+                    <td class="m-5" style="padding-left: 15px;">{{$user->repayment_expiry_date}}</td>
                     <td class="m-5" style="padding-left: 15px;">{{$user->release_test_deadline}}</td>
                 </tr>
             @endforeach

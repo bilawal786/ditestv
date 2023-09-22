@@ -8,7 +8,6 @@ use Carbon\Carbon;
 
 class EmailService
 {
-
     public function release_test_deadline_send_email()
     {
         $users = User::where('role', 1)->get();
@@ -26,8 +25,6 @@ class EmailService
             }
         }
     }
-
-
 
     public function minimum_activity_deadline()
     {
@@ -64,6 +61,7 @@ class EmailService
             }
         }
     }
+
     public function medical_examination_deadline()
     {
         $users = User::where('role', 1)->get();
@@ -88,17 +86,18 @@ class EmailService
         $today = Carbon::now()->addDays(30)->format('Y-m-d');
         foreach ($users as $user) {
             if ($user->send_auto_email == 'yes') {
-                $releaseTestDeadline = Carbon::parse($user->expiry_date)->format('Y-m-d');
-                if ($user->expiry_date !== $user->expiry_date_status) {
+                $releaseTestDeadline = Carbon::parse($user->repayment_expiry_date)->format('Y-m-d');
+                if ($user->repayment_expiry_date !== $user->expiry_date_status) {
                     if ($today == $releaseTestDeadline) {
                         dispatch(new SendEmailJob($user, 'expiry_date'))->delay(10);
-                        $user->insurance_company_status = $user->expiry_date;
+                        $user->expiry_date_status = $user->repayment_expiry_date;
                         $user->update();
                     }
                 }
             }
         }
     }
+
     public function sendAllEmails()
     {
         $this->release_test_deadline_send_email();

@@ -96,8 +96,6 @@ class UserController extends Controller
                 'village' => 'required',
                 'd_o_b' => 'required',
                 'birth_place' => 'required',
-//                'license_number' => 'required',
-//                'released_on' => 'required',
                 'release_test_deadline' => 'required',
                 'minimum_activity_deadline' => 'required',
                 'insurance_company' => 'required',
@@ -128,10 +126,11 @@ class UserController extends Controller
         $user->student = $request->student ? 'yes' : 'no';
         $user->own_material = $request->own_material ? 'yes' : 'no';
         if ($user->own_material == 'yes') {
-            $user->expiry_date = $request->expiry_date;
+            $user->repayment_expiry_date = $request->repayment_expiry_date;
+            $user->emergency_repayment_date = $request->emergency_repayment_date;
         } else {
-            $user->emergency_contact = $request->emergency_contact;
-            $user->expiry_date = '';
+            $user->emergency_repayment_date = $request->emergency_repayment_date;
+            $user->repayment_expiry_date = '';
         }
         if ($user->student == 'yes') {
             $user->released_on = '';
@@ -210,10 +209,11 @@ class UserController extends Controller
         $user->medical_examination_deadline = $request->medical_examination_deadline;
         $user->own_material = $request->own_material ? 'yes' : 'no';
         if ($user->own_material == 'yes') {
-            $user->expiry_date = $request->expiry_date;
+            $user->repayment_expiry_date = $request->repayment_expiry_date;
+            $user->emergency_repayment_date = $request->emergency_repayment_date;
         } else {
-            $user->emergency_contact = $request->emergency_contact;
-            $user->expiry_date = '';
+            $user->emergency_repayment_date = $request->emergency_repayment_date;
+            $user->repayment_expiry_date = '';
         }
         $user->degree_of_contact = $request->degree_of_contact;
         $user->password = $request->password ?? '123456700';
@@ -253,14 +253,15 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with($notification);
     }
+
     public function export()
     {
-        return Excel::download(new UserExport, 'users.xlsx');
+        return Excel::download(new UserExport, 'customers.xlsx');
     }
 
     public function expiredUser()
     {
-        return Excel::download(new DataExport, 'expiredusers.xlsx');
+        return Excel::download(new DataExport, 'expiredCustomers.xlsx');
     }
 
     public function userPdf()
@@ -280,7 +281,7 @@ class UserController extends Controller
             'title' => 'Welcome to ItSolutionStuff.com',
             'date' => date('m/d/Y'),
         ];
-        $pdf = PDF::loadView('backend.users.usersPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
+        $pdf = PDF::loadView('backend.users.expireduserPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->download('expiredCustomers.pdf');
     }
 

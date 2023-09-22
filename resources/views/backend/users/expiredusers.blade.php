@@ -11,37 +11,37 @@
                         <table>
                             <thead>
                             <tr>
-                                {{--                                <th>No</th>--}}
                                 <th>Nome</th>
                                 <th>Cogonome</th>
                                 <th>Email</th>
-                                <th>Phone</th>
+                                <th>Numero Di Telefono</th>
+                                <th>contatto di emergenza</th>
                                 <th>Città</th>
                                 <th>Provincia</th>
-                                <th>resident</th>
-                                <th>Postal code</th>
-                                <th>village</th>
-                                <th>Date of Birth</th>
-                                <th>Birth place</th>
-                                <th>Student</th>
-                                <th>License Number</th>
-                                <th>Released On</th>
-                                <th>Released Test Deadline</th>
-                                <th>minimum_activity_deadline</th>
-                                <th>insurance_company</th>
-                                <th>insurance_expiration</th>
-                                <th>medical_examination_deadline</th>
+                                <th>residente</th>
+                                <th>Codice Postale</th>
+                                <th>villaggio</th>
+                                <th>Data di nascita</th>
+                                <th>Luogo di nascita</th>
+                                <th>Alunna</th>
+                                <th>Numero di licenza</th>
+                                <th>Rilasciato il</th>
+                                <th>Scadenza del test rilasciato</th>
+                                <th>scadenza minima dell'attività</th>
+                                <th>compagnia assicurativa</th>
+                                <th>scadenza assicurativa</th>
+                                <th>scadenza visita medica</th>
                                 <th>own_material</th>
-                                <th>expiry_date</th>
-                                <th>emergency_contact</th>
-                                <th>degree_of_contact</th>
-                                <th>role</th>
-                                <th>send_auto_email</th>
-                                <th>release_test_deadline_status</th>
-                                <th>minimum_activity_deadline_status</th>
-                                <th>insurance_company_status</th>
-                                <th>insurance_expiration_status</th>
-                                <th>medical_examination_deadline_status</th>
+                                proprio materiale
+                                <th>data di scadenza del rimborso</th>
+                                <th>data del rimborso di emergenza</th>
+                                <th>grado di contatto</th>
+                                <th>invia e-mail automatica</th>
+                                <th>stato della scadenza del test di rilascio</th>
+                                <th>stato di scadenza attività minima</th>
+                                <th>>stato della data di scadenza</th>
+                                <th>stato di scadenza dell'assicurazione</th>
+                                <th>stato della scadenza della visita medica</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -51,6 +51,7 @@
                                     <td>{{$user->last_name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->phone_number}}</td>
+                                    <td>{{$user->emergency_phone_number}}</td>
                                     <td>{{$user->city}}</td>
                                     <td>{{$user->province}}</td>
                                     <td>{{$user->resident}}</td>
@@ -67,14 +68,13 @@
                                     <td>{{$user->insurance_expiration}}</td>
                                     <td>{{$user->medical_examination_deadline}}</td>
                                     <td>{{$user->own_material}}</td>
-                                    <td>{{$user->expiry_date}}</td>
-                                    <td>{{$user->emergency_contact}}</td>
+                                    <td>{{$user->repayment_expiry_date}}</td>
+                                    <td>{{$user->emergency_repayment_date}}</td>
                                     <td>{{$user->degree_of_contact}}</td>
-                                    <td>{{$user->role}}</td>
                                     <td>{{$user->send_auto_email}}</td>
                                     <td>{{$user->release_test_deadline_status}}</td>
                                     <td>{{$user->minimum_activity_deadline_status}}</td>
-                                    <td>{{$user->insurance_company_status}}</td>
+                                    <td>{{$user->expiry_date_status}}</td>
                                     <td>{{$user->insurance_expiration_status}}</td>
                                     <td>{{$user->medical_examination_deadline_status}}</td>
                                 </tr>

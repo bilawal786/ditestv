@@ -244,8 +244,8 @@
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group" id="emergency_contact">
                                             <strong>Rimborso Di Emergenza :</strong>
-                                            <input type="date" name="emergency_contact" class="form-control" id=""
-                                                   value="{{$user->emergency_contact}}" data-default-file="">
+                                            <input type="date" name="emergency_repayment_date" class="form-control" id=""
+                                                   value="{{$user->emergency_repayment_date}}" data-default-file="">
                                         </div>
                                     </div>
                                 </div>
@@ -280,8 +280,8 @@
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group" id="expiry_date">
                                             <strong>Scadenza Del Rimborso Di Emergenza :</strong>
-                                            <input type="date" name="expiry_date" class="form-control" id=""
-                                                   value="{{$user->expiry_date}}" data-default-file="">
+                                            <input type="date" name="repayment_expiry_date" class="form-control" id=""
+                                                   value="{{$user->repayment_expiry_date}}" data-default-file="">
                                         </div>
                                     </div>
                                 </div>

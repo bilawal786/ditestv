@@ -11,7 +11,7 @@ Ciao {{ $user->first_name . ' ' . $user->last_name }}, dall'analisi dei dati nei
     @elseif ($matchedColumns == 'medical_examination_deadline')
         Scadenza Visita Medica : {{$user->medical_examination_deadline}}
     @elseif ($matchedColumns == 'expiry_date')
-        Data Di Scadenza Del Rimborso : {{$user->expiry_date}}
+        Data Di Scadenza Del Rimborso : {{$user->repayment_expiry_date}}
     @endif
 </b>
 <br>

@@ -242,16 +242,17 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Scadenza per il rimborso di emergenza :</strong>
-                                        <input type="date" name="expiry_date" readonly value="{{$user->expiry_date}}"
+                                        <input type="date" name="repayment_expiry_date" readonly
+                                               value="{{$user->repayment_expiry_date}}"
                                                class="form-control" id=""
                                                data-default-file="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
-                                        <strong>Contatto emergenza :</strong>
-                                        <input type="text" name="emergency_contact" readonly
-                                               value="{{$user->emergency_contact}}"
+                                        <strong>Rimborso d'emergenza :</strong>
+                                        <input type="text" name="emergency_repayment_date" readonly
+                                               value="{{$user->emergency_repayment_date}}"
                                                class="form-control" id=""
                                                data-default-file="">
                                     </div>
@@ -266,26 +267,17 @@
                                     </div>
                                 </div>
                             </div>
-{{--                            <div class="row">--}}
-{{--                                <div class="col-xs-12 col-sm-12 col-md-4">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label class="form-check-label mr-4 font-5"--}}
-{{--                                               for="exampleCheck1">Allievo :</label>--}}
-{{--                                        <input type="text" readonly name="student" value="{{$user->student}}"--}}
-{{--                                               class="form-control" id=""--}}
-{{--                                               data-default-file="">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-xs-12 col-sm-12 col-md-4">--}}
-{{--                                    <div class="form-group ">--}}
-{{--                                        <label class="form-check-label mr-3 font-5 "--}}
-{{--                                               for="exampleCheck1">Possiede il materiale :</label>--}}
-{{--                                        <input type="text" name="own_material" readonly value="{{$user->own_material}}"--}}
-{{--                                               class="form-control" id=""--}}
-{{--                                               data-default-file="">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="form-group">
+                                        <strong>Contatto Di Emergenza :</strong>
+                                        <input type="text" name="emergency_phone_number" readonly
+                                               value="{{$user->emergency_phone_number}}"
+                                               class="form-control" id=""
+                                               data-default-file="">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group d-flex">

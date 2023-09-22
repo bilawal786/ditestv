@@ -43,8 +43,8 @@ class User extends Authenticatable
         'insurance_expiration',
         'medical_examination_deadline',
         'own_material',//checkbox
-        'expiry_date',  //repayment expiry date    /on
-        'emergency_contact',  //
+        'repayment_expiry_date',  //repayment expiry date    /on
+        'emergency_repayment_date',  //
         'degree_of_contact',
         'role',
         'password',
@@ -52,7 +52,7 @@ class User extends Authenticatable
         'send_auto_email',
         'release_test_deadline_status',
         'minimum_activity_deadline_status',
-        'insurance_company_status',
+        'expiry_date_status',
         'insurance_expiration_status',
         'medical_examination_deadline_status',
     ];
@@ -93,7 +93,7 @@ class User extends Authenticatable
         if (Carbon::parse($this->medical_examination_deadline)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger">Scadenza visita medica</span>';
         }
-        if (!empty($this->expiry_date) && Carbon::parse($this->expiry_date)->isPast()) {
+        if (!empty($this->repayment_expiry_date) && Carbon::parse($this->repayment_expiry_date)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger">Scadenza Del Rimborso Di Emergenza</span>';
         }
 //        if (!empty($this->emergency_contact) && Carbon::parse($this->emergency_contact)->isPast()) {

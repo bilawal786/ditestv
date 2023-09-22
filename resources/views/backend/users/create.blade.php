@@ -242,8 +242,8 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Rimborso Di Emergenza :</strong>
-                                        <input type="date" name="emergency_contact"
-                                               value="{{old('emergency_contact')}}"
+                                        <input type="date" required name="emergency_repayment_date"
+                                               value="{{old('emergency_repayment_date')}}"
                                                class="form-control"
                                                data-default-file="">
                                     </div>
@@ -276,10 +276,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group" id="expiry_date">
+                                    <div class="form-group" id="repayment_expiry_date">
                                         <strong>Scadenza Del Rimborso Di Emergenza :</strong>
-                                        <input type="date" id="expiry_date" name="expiry_date"
-                                               value="{{old('expiry_date')}}"
+                                        <input type="date" id="repayment_expiry_date" name="repayment_expiry_date"
+                                               value="{{old('repayment_expiry_date')}}"
                                                class="form-control"
                                                data-default-file="">
                                     </div>
@@ -348,7 +348,7 @@
         <script>
             $(document).ready(function () {
                 var ownMaterialCheckbox = $('#own_material');
-                var expiryDateInput = $('#expiry_date input');
+                var expiryDateInput = $('#repayment_expiry_date input');
 
                 function showExpiryDateAndHideEmergencyContact() {
                     expiryDateInput.closest('.form-group').show();
