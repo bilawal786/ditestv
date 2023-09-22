@@ -22,23 +22,23 @@ use App\Jobs\SendEmailJob;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/test', function () {
-    $users = User::where('role', 1)->get();
-    $today = Carbon::now()->addDays(30)->format('Y-m-d');
-    foreach ($users as $user) {
-        if ($user->send_auto_email == 'yes') {
-            $releaseTestDeadline = Carbon::parse($user->release_test_deadline)->format('Y-m-d');
-            if ($user->release_test_deadline !== $user->release_test_deadline_status) {
-                if ($today == $releaseTestDeadline) {
-                    dispatch(new SendEmailJob($user, 'release_test_deadline'))->delay(10);
-                    $user->release_test_deadline_status = $user->release_test_deadline;
-                    $user->update();
-                }
-            }
-        }
-    }
-});
+//
+//Route::get('/test', function () {
+//    $users = User::where('role', 1)->get();
+//    $today = Carbon::now()->addDays(30)->format('Y-m-d');
+//    foreach ($users as $user) {
+//        if ($user->send_auto_email == 'yes') {
+//            $releaseTestDeadline = Carbon::parse($user->release_test_deadline)->format('Y-m-d');
+//            if ($user->release_test_deadline !== $user->release_test_deadline_status) {
+//                if ($today == $releaseTestDeadline) {
+//                    dispatch(new SendEmailJob($user, 'release_test_deadline'))->delay(10);
+//                    $user->release_test_deadline_status = $user->release_test_deadline;
+//                    $user->update();
+//                }
+//            }
+//        }
+//    }
+//});
 
 
 Auth::routes();
