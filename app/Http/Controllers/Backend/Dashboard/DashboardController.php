@@ -30,10 +30,7 @@ class DashboardController extends Controller
                 $count++;
             }
         }
-
-
         return view('backend.dashboard.index', compact('count'));
-
     }
 
     /**

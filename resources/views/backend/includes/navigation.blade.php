@@ -13,28 +13,6 @@
             <div id="navbar-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown dropdown-animated scale-left">
-{{--                        <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown"><i--}}
-{{--                                class="icon-settings"></i></a>--}}
-                        {{--                        <ul class="dropdown-menu menu-icon app_menu">--}}
-                        {{--                            <li>--}}
-                        {{--                                <a class="#" href="{{ route('profile.index') }}">--}}
-                        {{--                                    <i class="icon-user"></i>--}}
-                        {{--                                    <span>Profile</span>--}}
-                        {{--                                </a>--}}
-                        {{--                            </li>--}}
-                        {{--                            <li>--}}
-                        {{--                                <a class="#" href="{{ route('users.index') }}">--}}
-                        {{--                                    <i class="icon-users"></i>--}}
-                        {{--                                    <span>Users</span>--}}
-                        {{--                                </a>--}}
-                        {{--                            </li>--}}
-                        {{--                            <li>--}}
-                        {{--                                <a class="#" href="{{ route('roles.index') }}">--}}
-                        {{--                                    <i class="fa fa-tasks"></i>--}}
-                        {{--                                    <span>Roles</span>--}}
-                        {{--                                </a>--}}
-                        {{--                            </li>--}}
-                        {{--                        </ul>--}}
                     </li>
                     <li><a href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

@@ -82,11 +82,9 @@ class User extends Authenticatable
         if (Carbon::parse($this->minimum_activity_deadline)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger">Scadenza minima attività</span>';
         }
-
         if (Carbon::parse($this->release_test_deadline)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger">Scadenza del test di rilascio</span>';
         }
-
         if (Carbon::parse($this->insurance_expiration)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger">Scadenza dell assicurazione</span>';
         }
@@ -96,9 +94,6 @@ class User extends Authenticatable
         if (!empty($this->repayment_expiry_date) && Carbon::parse($this->repayment_expiry_date)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger">Scadenza Del Rimborso Di Emergenza</span>';
         }
-//        if (!empty($this->emergency_contact) && Carbon::parse($this->emergency_contact)->isPast()) {
-//            $expiredDates[] = '<span class="badge badge-danger">RIMBORSO DI EMERGENZA</span><br> <br>';
-//        }
         if (empty($expiredDates)) {
             return '<span class="badge badge-success">Not Expired</span>';
         } else {

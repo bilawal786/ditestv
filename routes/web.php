@@ -61,8 +61,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('download/pdf', [UserController::class, 'userPDF'])->name('userPdf');
     Route::get('expired/user/pdf', [UserController::class, 'expireduserPDF'])->name('expireduser');
 
-
-
     Route::resource('profile', ProfileController::class);
     Route::resource('settings', SettingController::class);
     Route::resource('dashboard', DashboardController::class);

@@ -31,54 +31,6 @@
                 <div class="col-12">
                     <div class="top_report">
                         <div class="row">
-                            {{--                            <div class="mt-2 mb-2 col-md-3 col-sm-6">--}}
-                            {{--                                <!-- small box -->--}}
-                            {{--                                <div class=" small-box bg-primary">--}}
-                            {{--                                    <div class="inner text-center">--}}
-                            {{--                                        <h1 class="font-weight-bold">0</h1>--}}
-                            {{--                                        <p>Add Text Here</p>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="icon">--}}
-                            {{--                                        <i class="fa fa-folder-plus"></i>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-                            {{--                            <div class="mt-2 mb-2 col-md-3 col-sm-6">--}}
-                            {{--                                <!-- small box -->--}}
-                            {{--                                <div class=" small-box bg-danger">--}}
-                            {{--                                    <div class="inner text-center">--}}
-                            {{--                                        <h1 class="font-weight-bold">0</h1>--}}
-                            {{--                                        <p>Add Text Here</p>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="icon">--}}
-                            {{--                                        <i class="fa fa-folder-plus"></i>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-                            {{--                            <div class="mt-2 mb-2 col-md-3 col-sm-6">--}}
-                            {{--                                <!-- small box -->--}}
-                            {{--                                <div class=" small-box bg-success">--}}
-                            {{--                                    <div class="inner text-center">--}}
-                            {{--                                        <h1 class="font-weight-bold">0</h1>--}}
-                            {{--                                        <p>Add Text Here</p>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="icon">--}}
-                            {{--                                        <i class="fa fa-folder-plus"></i>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-                            {{--                            <div class="mt-2 mb-2 col-md-3 col-sm-6">--}}
-                            {{--                                <!-- small box -->--}}
-                            {{--                                <div class=" small-box bg-warning">--}}
-                            {{--                                    <div class="inner text-center">--}}
-                            {{--                                        <h1 class="font-weight-bold">0</h1>--}}
-                            {{--                                        <p>Add Text Here</p>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="icon">--}}
-                            {{--                                        <i class="fa fa-folder-plus"></i>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
                             @if (auth()->user()->role == 0)
                                 <div class="mt-2 mb-2 col-md-3 col-sm-6">
                                     <div class=" small-box bg-info">

@@ -59,7 +59,6 @@ class UserController extends Controller
                 ->rawColumns(['action', 'status'])
                 ->make(true);
         }
-
         return view('backend.users.index');
     }
 
@@ -256,12 +255,10 @@ class UserController extends Controller
     {
         return Excel::download(new UserExport, 'customers.xlsx');
     }
-
     public function expiredUser()
     {
         return Excel::download(new DataExport, 'expiredCustomers.xlsx');
     }
-
     public function userPdf()
     {
         $data = [

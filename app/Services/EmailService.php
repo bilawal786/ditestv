@@ -25,7 +25,6 @@ class EmailService
             }
         }
     }
-
     public function minimum_activity_deadline()
     {
         $users = User::where('role', 1)->get();
@@ -43,7 +42,6 @@ class EmailService
             }
         }
     }
-
     public function insurance_expiration()
     {
         $users = User::where('role', 1)->get();
@@ -61,7 +59,6 @@ class EmailService
             }
         }
     }
-
     public function medical_examination_deadline()
     {
         $users = User::where('role', 1)->get();
@@ -79,7 +76,6 @@ class EmailService
             }
         }
     }
-
     public function expiry_date()
     {
         $users = User::where('role', 1)->get();
@@ -97,7 +93,6 @@ class EmailService
             }
         }
     }
-
     public function sendAllEmails()
     {
         $this->release_test_deadline_send_email();

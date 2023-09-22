@@ -39,15 +39,6 @@
                 </li>
                 <li class="{{ request()->is('users*') ? 'active' : '' }}"><a href="{{route('users.index')}}"><i
                             class="icon-users"></i><span>Clienti</span></a></li>
-                {{--                <li class="{{ request()->is('profile*') || request()->is('users*') || request()->is('roles*') || request()->is('settings*') ? 'active' : '' }}">--}}
-                {{--                    <a href="#forms" class="has-arrow"><i class="icon-settings"></i><span>Settings</span></a>--}}
-                {{--                    <ul aria-expanded="false" class="collapse">--}}
-                {{--                        <li class="{{ request()->is('profile*') ? 'active' : '' }}"><a href="{{route('profile.index')}}">Profile</a></li>--}}
-                {{--                        <li class="{{ request()->is('users*') ? 'active' : '' }}"><a href="{{route('users.index')}}">Users</a></li>--}}
-                {{--                        <li class="{{ request()->is('roles*') ? 'active' : '' }}"><a href="{{route('roles.index')}}">Roles</a></li>--}}
-{{--                                                        <li class="{{ request()->is('settings*') ? 'active' : '' }}"><a href="{{route('settings.index')}}">settings</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
             </ul>
         </nav>
     </div>
