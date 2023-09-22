@@ -15,19 +15,19 @@
     <div class="container" style=" background-color: #e67238;">
         <div style=" background-color: #e67238; padding-right: 40px; display: inline-block;">
 
-            <img width="150px" style="padding-left: 10px;" height="50px"
+            <img width="150px" style="padding-left: 10px;margin-bottom: 10px;" height="50px"
                  src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('images/loding.png')))}}">
         </div>
 
         <div style="display: inline-block;  text-align: center;padding-left: 50px; margin-top: 16px;">
-            <h1 style="color: white; margin-top: 10px;font-family: Sans-Serif;">Tutti i Clienti</h1>
+            <h1 style="color: white; margin-top: 40px;font-family: Sans-Serif;">Tutti i Clienti</h1>
         </div>
     </div>
     <br>
     <div class="row">
         <table>
             <tr>
-                <th style="padding-right: 10px;font-family: Sans-Serif;">#</th>
+                <th style="padding-right: 10px;font-family: Sans-Serif;">No</th>
                 <th style="padding-right: 10px;font-family: Sans-Serif;">Nome</th>
                 <th style="padding-right: 20px;font-family: Sans-Serif;">Cognome</th>
                 <th style="padding-right: 10px;font-family: Sans-Serif;text-align: start;">Scadenza assicurazione</th>
