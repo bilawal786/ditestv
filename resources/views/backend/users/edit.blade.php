@@ -241,13 +241,6 @@
                                                    value="{{$user->village}}" data-default-file="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-4">
-                                        <div class="form-group" id="emergency_contact">
-                                            <strong>Rimborso Di Emergenza :</strong>
-                                            <input type="date" name="emergency_repayment_date" class="form-control" id=""
-                                                   value="{{$user->emergency_repayment_date}}" data-default-file="">
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4">
@@ -330,6 +323,194 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <div class="form-group d-flex">
+                                            <label class="form-check-label mr-3 font-5 "
+                                                   for="exampleCheck1">Possiede Abilitazioni o C.S :</label>
+                                            <div class="">
+                                                <label class="switch">
+                                                    <input type="checkbox" class="form-check-input"
+                                                           name="qualification" id="qualification" data-default-file=""
+                                                           @if($user->qualification === 'yes')checked @endif
+                                                    >
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="additionalCheckboxes" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-2">
+                                            <div class="form-group d-flex">
+                                                <label class="form-check-label mr-3 font-5" for="dl">D.L. :</label>
+                                                <div>
+                                                    <label class="switch">
+                                                        <input type="checkbox" class="form-check-input" name="dl"
+                                                               id="dl"
+                                                               data-default-file=""
+                                                               @if($user->dl === 'yes')checked @endif>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-2">
+                                            <div class="form-group d-flex">
+                                                <label class="form-check-label mr-3 font-5" for="ipCheckbox">I.P
+                                                    :</label>
+                                                <div class="">
+                                                    <label class="switch">
+                                                        <input type="checkbox" class="form-check-input" name="ip"
+                                                               id="ipCheckbox" data-default-file=""
+                                                               @if($user->ip === 'yes')checked @endif>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-2">
+                                            <div class="form-group d-flex">
+                                                <label class="form-check-label mr-3 font-5" for="ipTandem">I.P. Tandem
+                                                    :</label>
+                                                <div class="">
+                                                    <label class="switch">
+                                                        <input type="checkbox" class="form-check-input" name="ip_tandem"
+                                                               id="ipTandem" data-default-file=""
+                                                               @if($user->ip_tandem === 'yes')checked @endif>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-2">
+                                            <div class="form-group d-flex">
+                                                <label class="form-check-label mr-3 font-5" for="ipAff">I.P. AFF
+                                                    :</label>
+                                                <div class="">
+                                                    <label class="switch">
+                                                        <input type="checkbox" class="form-check-input" name="ip_aff"
+                                                               id="ipAff" data-default-file=""
+                                                               @if($user->ipAff === 'yes')checked @endif>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-2">
+                                            <div class="form-group d-flex">
+                                                <label class="form-check-label mr-3 font-5" for="ips">I.P.S :</label>
+                                                <div class="">
+                                                    <label class="switch">
+                                                        <input type="checkbox" class="form-check-input" name="ips"
+                                                               id="ips"
+                                                               data-default-file=""
+                                                               @if($user->ips === 'yes')checked @endif>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-2">
+                                            <div class="form-group d-flex">
+                                                <label class="form-check-label mr-3 font-5" for="ipe">I.P.E :</label>
+                                                <div class="">
+                                                    <label class="switch">
+                                                        <input type="checkbox" class="form-check-input" name="ipe"
+                                                               id="ipe"
+                                                               data-default-file=""
+                                                               @if($user->ipe === 'yes')checked @endif>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--------------------Release Date Start---------------------->
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="dlReleaseDate" style="display: none;">
+                                        <div class="form-group">
+                                            <strong>D.L. Data di rilascio :</strong>
+                                            <input type="date" name="dl_releaseDate" class="form-control"
+                                                   id="dlReleaseDateInput"
+                                                   value="{{ old('dl_releaseDate',$user->dl_releaseDate) }}"
+                                                   data-default-file="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="ipDateContainer"
+                                         style="display: none;">
+                                        <div class="form-group">
+                                            <strong>Data scadenza IP:</strong>
+                                            <input type="date" name="ip_expiryDate" class="form-control"
+                                                   id="ipDateInput"
+                                                   value="{{ old('ip_expiryDate',$user->ip_expiryDate) }}"
+                                                   data-default-file="">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="tandemReleaseDate"
+                                         style="display: none;">
+                                        <div class="form-group">
+                                            <strong>I.P Tandem Data di rilascio :</strong>
+                                            <input type="date" name="tandem_release_date" class="form-control"
+                                                   id="tandemReleaseDateInput"
+                                                   value="{{ old('tandem_release_date',$user->tandem_release_date) }}"
+                                                   data-default-file="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="AffReleaseDate"
+                                         style="display: none;">
+                                        <div class="form-group">
+                                            <strong>I.P. AFF Data di rilascio :</strong>
+                                            <input type="date" id="affReleaseDateInput" name="ip_aff_release_date"
+                                                   value="{{ old('ip_aff_release_date',$user->ip_aff_release_date) }}"
+                                                   class="form-control"
+                                                   data-default-file="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="ipsReleaseDate"
+                                         style="display: none;">
+                                        <div class="form-group">
+                                            <strong>I.P.S Data di rilascio :</strong>
+                                            <input type="date" id="ipsReleaseDateInput" name="ips_release_date"
+                                                   value="{{ old('ips_release_date',$user->ips_release_date) }}"
+                                                   class="form-control"
+                                                   data-default-file="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="ipeReleaseDate"
+                                         style="display: none;">
+                                        <div class="form-group">
+                                            <strong>I.P.E Data di rilascio :</strong>
+                                            <input type="date" id="ipeReleaseDateInput" name="ipe_release_date"
+                                                   value="{{ old('ipe_release_date',$user->ipe_release_date) }}"
+                                                   class="form-control"
+                                                   data-default-file="">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--------------Release Date End-------------->
+
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <button type="submit" class="btn btn-primary btn-round">Invia</button>
@@ -346,8 +527,10 @@
     </div>
     @push('script')
 
+
         <script>
             $(document).ready(function () {
+
                 var ownMaterialCheckbox = $('#own_material');
                 var expiryDateInput = $('#expiry_date input');
 
@@ -376,6 +559,7 @@
                         hideExpiryDateAndShowEmergencyContact();
                     }
                 });
+
             });
         </script>
 
@@ -418,6 +602,110 @@
                         addRequiredValidation();
                     }
                 });
+
+                var qualificationCheckbox = document.getElementById("qualification");
+                var additionalCheckboxes = document.getElementById("additionalCheckboxes");
+
+                qualificationCheckbox.addEventListener("change", function () {
+                    if (qualificationCheckbox.checked) {
+                        additionalCheckboxes.style.display = "block";
+                    } else {
+                        additionalCheckboxes.style.display = "none";
+                    }
+                });
+
+                var dl = document.getElementById("dl");
+                var dlReleaseDateDiv = document.getElementById("dlReleaseDate");
+                var dlReleaseDateInput = document.getElementById("dlReleaseDateInput");
+
+                dl.addEventListener("change", function () {
+                    if (dl.checked) {
+                        dlReleaseDateDiv.style.display = "block";
+                        dlReleaseDateInput.setAttribute("required", "required");
+                    } else {
+                        dlReleaseDateDiv.style.display = "none";
+                        dlReleaseDateInput.removeAttribute("required");
+                    }
+                });
+
+
+                var ipCheckbox = document.getElementById("ipCheckbox");
+                var ipDateContainer = document.getElementById("ipDateContainer");
+                var ipDateInput = document.getElementById("ipDateInput");
+
+                ipCheckbox.addEventListener("change", function () {
+                    if (ipCheckbox.checked) {
+                        ipDateContainer.style.display = "block";
+                        ipDateInput.setAttribute("required", "required");
+                    } else {
+                        ipDateContainer.style.display = "none";
+                        ipDateInput.removeAttribute("required");
+                    }
+                });
+
+
+                var ipTandem = document.getElementById("ipTandem");
+                var tandemReleaseDateDiv = document.getElementById("tandemReleaseDate");
+                var tandemReleaseDateInput = document.getElementById("tandemReleaseDateInput");
+
+                ipTandem.addEventListener("change", function () {
+                    if (ipTandem.checked) {
+                        tandemReleaseDateDiv.style.display = "block";
+                        tandemReleaseDateInput.setAttribute("required", "required");
+                    } else {
+                        tandemReleaseDateDiv.style.display = "none";
+                        tandemReleaseDateInput.removeAttribute("required");
+                    }
+                });
+
+
+                var ipAff = document.getElementById("ipAff");
+                var affReleaseDateDiv = document.getElementById("AffReleaseDate");
+                var affReleaseDateInput = document.getElementById("affReleaseDateInput");
+
+                ipAff.addEventListener("change", function () {
+                    if (ipAff.checked) {
+                        affReleaseDateDiv.style.display = "block";
+                        affReleaseDateInput.setAttribute("required", "required");
+                    } else {
+                        affReleaseDateDiv.style.display = "none";
+                        affReleaseDateInput.removeAttribute("required");
+                    }
+                });
+
+
+                var ips = document.getElementById("ips");
+                var ipsReleaseDateDiv = document.getElementById("ipsReleaseDate");
+                var ipsReleaseDateInput = document.getElementById("ipsReleaseDateInput");
+
+                ips.addEventListener("change", function () {
+                    if (ips.checked) {
+                        ipsReleaseDateDiv.style.display = "block";
+                        ipsReleaseDateInput.setAttribute("required", "required");
+                    } else {
+                        ipsReleaseDateDiv.style.display = "none";
+                        ipsReleaseDateInput.removeAttribute("required");
+                    }
+                });
+
+
+                var ipe = document.getElementById("ipe");
+                var ipeReleaseDateDiv = document.getElementById("ipeReleaseDate");
+                var ipeReleaseDateInput = document.getElementById("ipeReleaseDateInput");
+
+                ipe.addEventListener("change", function () {
+                    if (ipe.checked) {
+                        ipeReleaseDateDiv.style.display = "block";
+                        ipeReleaseDateInput.setAttribute("required", "required");
+                    } else {
+                        ipeReleaseDateDiv.style.display = "none";
+                        ipeReleaseDateInput.removeAttribute("required");
+                    }
+                });
+
+
+
+
             });
         </script>
 

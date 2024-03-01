@@ -41,7 +41,6 @@ class CreateAdminUserSeeder extends Seeder
             'medical_examination_deadline' => 'Back Office',
             'own_material' => 'Back Office',
             'repayment_expiry_date' => 'Back Office',
-            'emergency_repayment_date' => 'Back Office',
             'degree_of_contact' => 'Back Office',
             'user_image' => '/images/profile/user.png',
             'password' => Hash::make('12345678'),

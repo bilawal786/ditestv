@@ -27,16 +27,17 @@
     <div class="row">
         <table>
             <tr>
-                <th style="padding-right: 10px;font-family: Sans-Serif;">No</th>
-                <th style="padding-right: 10px;font-family: Sans-Serif;">Nome</th>
+{{--                <th style="padding-right: 10px;font-family: Sans-Serif;">No</th>--}}
+                <th style="font-family: Sans-Serif;padding-right: 10px;">Nome</th>
                 <th style="padding-right: 20px;font-family: Sans-Serif;">Cognome</th>
                 <th style="padding-right: 10px;font-family: Sans-Serif;text-align: start;">Scadenza assicurazione</th>
-                <th style="padding-right: 30px;font-family: Sans-Serif;">Scadenza attività minima</th>
-                <th style="padding-right: 20px;font-family: Sans-Serif;">Scadenza visita medica</th>
-                <th style="padding-right: 10px;font-family: Sans-Serif;padding-left: 10px;">Scadenza Del Rimborso Di
-                    Emergenza
+                <th style="padding-right: 30px;font-family: Sans-Serif;">Scadenza attività </th>
+                <th style="padding-right: 20px;font-family: Sans-Serif;">Scadenza dell'esame</th>
+                <th style="padding-right: 6px;font-family: Sans-Serif;padding-left: 10px;">Rimborso di emergenza
                 </th>
-                <th style="padding-right: 10px;padding-left: 10px;font-family: Sans-Serif;">Scadenza prova di sgancio
+                <th style="padding-right: 5px;padding-left: 0px;font-family: Sans-Serif;">Scadenza prova di sgancio
+                </th>
+                <th style="padding-left: 2px;font-family: Sans-Serif;">Scadenza IP
                 </th>
             </tr>
             @php
@@ -44,14 +45,17 @@
             @endphp
             @foreach ($users as $user)
                 <tr>
-                    <td>{{$i++}}</td>
-                    <td class="m-5">{{$user->first_name}}</td>
+{{--                    <td>{{$i++}}</td>--}}
+                    <td class="">{{$user->first_name}}</td>
                     <td class="">{{$user->last_name}}</td>
-                    <td class="m-5" style="padding-left: 5px; ">{{$user->insurance_expiration}}</td>
-                    <td class="m-5" style="padding-left: 5px;">{{$user->minimum_activity_deadline}}</td>
-                    <td class="m-5" style="padding-left: 5px;">{{$user->medical_examination_deadline}}</td>
-                    <td class="m-5" style="padding-left: 15px;">{{$user->repayment_expiry_date}}</td>
-                    <td class="m-5" style="padding-left: 15px;">{{$user->release_test_deadline}}</td>
+                    <td class="m-5" style="padding-left: 5px;">
+                        {{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}
+                    </td>{{--                    <td class="m-5" style="padding-left: 5px; ">{{$user->insurance_expiration}}</td>--}}
+                    <td class="m-5" style="padding-left: 5px;">{{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 5px;">{{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 15px;">{{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 15px;">{{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 15px;">{{date_format(date_create($user->ip_expiryDate),'d-m-Y')}}</td>
                 </tr>
             @endforeach
         </table>

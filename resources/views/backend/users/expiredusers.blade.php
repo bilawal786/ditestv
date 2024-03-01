@@ -34,7 +34,6 @@
                                 <th>own_material</th>
                                 proprio materiale
                                 <th>data di scadenza del rimborso</th>
-                                <th>data del rimborso di emergenza</th>
                                 <th>grado di contatto</th>
                                 <th>invia e-mail automatica</th>
                                 <th>stato della scadenza del test di rilascio</th>
@@ -42,6 +41,22 @@
                                 <th>>stato della data di scadenza</th>
                                 <th>stato di scadenza dell'assicurazione</th>
                                 <th>stato della scadenza della visita medica</th>
+                                <!---new add-->
+                                <th>Possiede Abilitazioni</th>
+                                <th>D.L</th>
+                                <th>I.P</th>
+                                <th>I.P. Tandem</th>
+                                <th>I.P. AFF</th>
+                                <th>I.P.S</th>
+                                <th>I.P.E</th>
+                                <th>D.L. Data di rilascio</th>
+                                <th>Data scadenza IP</th>
+                                <th>I.P Tandem Data di rilascio </th>
+                                <th>I.P. AFF Data di rilascio</th>
+                                <th>I.P.S Data di rilascio</th>
+                                <th>I.P.E Data di rilascio</th>
+
+
                             </tr>
                             </thead>
                             <tbody>
@@ -62,14 +77,13 @@
                                     <td>{{$user->student}}</td>
                                     <td>{{$user->license_number}}</td>
                                     <td>{{$user->released_on}}</td>
-                                    <td>{{$user->release_test_deadline}}</td>
-                                    <td>{{$user->minimum_activity_deadline}}</td>
+                                    <td>{{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}</td>
+                                    <td>{{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
                                     <td>{{$user->insurance_company}}</td>
-                                    <td>{{$user->insurance_expiration}}</td>
-                                    <td>{{$user->medical_examination_deadline}}</td>
+                                    <td>{{date_format(date_create($user->insurance_expiration), 'd-m-Y')}}</td>
+                                    <td>{{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
                                     <td>{{$user->own_material}}</td>
-                                    <td>{{$user->repayment_expiry_date}}</td>
-                                    <td>{{$user->emergency_repayment_date}}</td>
+                                    <td>{{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
                                     <td>{{$user->degree_of_contact}}</td>
                                     <td>{{$user->send_auto_email}}</td>
                                     <td>{{$user->release_test_deadline_status}}</td>
@@ -77,6 +91,21 @@
                                     <td>{{$user->expiry_date_status}}</td>
                                     <td>{{$user->insurance_expiration_status}}</td>
                                     <td>{{$user->medical_examination_deadline_status}}</td>
+                                    <!--new add--->
+                                    <td>{{$user->qualification}}</td>
+                                    <td>{{$user->dl}}</td>
+                                    <td>{{$user->ip}}</td>
+                                    <td>{{$user->ip_tandem}}</td>
+                                    <td>{{$user->ip_aff}}</td>
+                                    <td>{{$user->ips}}</td>
+                                    <td>{{$user->ipe}}</td>
+                                    <td>{{$user->dl_releaseDate}}</td>
+                                    <td>{{$user->ip_expiryDate}}</td>
+                                    <td>{{$user->tandem_release_date}}</td>
+                                    <td>{{$user->ip_aff_release_date}}</td>
+                                    <td>{{$user->ips_release_date}}</td>
+                                    <td>{{$user->ipe_release_date}}</td>
+
                                 </tr>
                             @endforeach
                             </tbody>

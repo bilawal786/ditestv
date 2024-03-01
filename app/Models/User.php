@@ -44,7 +44,6 @@ class User extends Authenticatable
         'medical_examination_deadline',
         'own_material',//checkbox
         'repayment_expiry_date',  //repayment expiry date    /on
-        'emergency_repayment_date',  //
         'degree_of_contact',
         'role',
         'password',
@@ -55,6 +54,22 @@ class User extends Authenticatable
         'expiry_date_status',
         'insurance_expiration_status',
         'medical_examination_deadline_status',
+
+        //new fields add
+        'qualification',
+        'dl',
+        'ip',
+        'ip_tandem',
+        'ip_aff',
+        'ips',
+        'ipe',
+        'dl_releaseDate',
+        'ip_expiryDate',
+        'tandem_release_date',
+        'ip_aff_release_date',
+        'ips_release_date',
+        'ipe_release_date',
+
     ];
 
     /**
@@ -93,6 +108,9 @@ class User extends Authenticatable
         }
         if (!empty($this->repayment_expiry_date) && Carbon::parse($this->repayment_expiry_date)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger">Scadenza Del Rimborso Di Emergenza</span>';
+        }
+        if (!empty($this->ip_expiryDate) && Carbon::parse($this->ip_expiryDate)->isPast()) {
+            $expiredDates[] = '<span class="badge badge-danger">Data scadenza IP</span>';
         }
         if (empty($expiredDates)) {
             return '<span class="badge badge-success">Not Expired</span>';

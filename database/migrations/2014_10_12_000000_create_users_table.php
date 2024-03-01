@@ -37,7 +37,6 @@ class CreateUsersTable extends Migration
             $table->string('medical_examination_deadline');
             $table->string('own_material')->default('no');
             $table->string('repayment_expiry_date');
-            $table->string('emergency_repayment_date')->nullable();
             $table->string('degree_of_contact')->nullable();
             $table->string('user_image')->nullable();
             $table->string('send_auto_email')->nullable();
@@ -46,6 +45,22 @@ class CreateUsersTable extends Migration
             $table->string('expiry_date_status')->nullable();
             $table->string('insurance_expiration_status')->nullable();
             $table->string('medical_examination_deadline_status')->nullable();
+
+            //new fields add
+            $table->string('qualification')->default('no');
+            $table->string('dl')->default('no');
+            $table->string('ip')->default('no');
+            $table->string('ip_tandem')->default('no');
+            $table->string('ip_aff')->default('no');
+            $table->string('ips')->default('no');
+            $table->string('ipe')->default('no');
+            $table->string('dl_releaseDate')->nullable();
+            $table->string('ip_expiryDate')->nullable();
+            $table->string('tandem_release_date')->nullable();
+            $table->string('ip_aff_release_date')->nullable();
+            $table->string('ips_release_date')->nullable();
+            $table->string('ipe_release_date')->nullable();
+
 
 //            0 admin 1 users
             $table->integer('role')->default(1);

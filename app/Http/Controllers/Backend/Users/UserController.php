@@ -126,9 +126,9 @@ class UserController extends Controller
         $user->own_material = $request->own_material ? 'yes' : 'no';
         if ($user->own_material == 'yes') {
             $user->repayment_expiry_date = $request->repayment_expiry_date;
-            $user->emergency_repayment_date = $request->emergency_repayment_date;
+//            $user->emergency_repayment_date = $request->emergency_repayment_date;
         } else {
-            $user->emergency_repayment_date = $request->emergency_repayment_date;
+//            $user->emergency_repayment_date = $request->emergency_repayment_date;
             $user->repayment_expiry_date = '';
         }
         if ($user->student == 'yes') {
@@ -142,6 +142,61 @@ class UserController extends Controller
         $user->degree_of_contact = $request->degree_of_contact;
         $user->password = $request->password ?? '123456700';
         $user->role = $request->role ?? '1';
+
+        //new fields add
+
+        //new fields add
+        $user->qualification = $request->qualification ? 'yes' : 'no';
+        if ($user->qualification == 'yes') {
+            $user->dl = $request->dl ? 'yes' : 'no';
+            $user->ip = $request->ip ? 'yes' : 'no';
+            $user->ip_tandem = $request->ip_tandem ? 'yes' : 'no';
+            $user->ip_aff = $request->ip_aff ? 'yes' : 'no';
+            $user->ips = $request->ips ? 'yes' : 'no';
+            $user->ipe = $request->ipe ? 'yes' : 'no';
+        } else {
+            $user->dl = $user->ip = $user->ip_tandem = $user->ip_aff = $user->ips = $user->ipe = 'no';
+        }
+
+        if ($user->dl === 'yes') {
+            $user->dl_releaseDate = $request->dl_releaseDate;
+        } else {
+            $user->dl_releaseDate = '';
+        }
+
+        if ($user->ip === 'yes') {
+            $user->ip_expiryDate = $request->ip_expiryDate;
+        } else {
+            $user->ip_expiryDate = '';
+        }
+
+        if ($user->ip_tandem === 'yes') {
+            $user->tandem_release_date = $request->tandem_release_date;
+        } else {
+            $user->tandem_release_date = '';
+        }
+
+        if ($user->ip_aff === 'yes') {
+            $user->ip_aff_release_date = $request->ip_aff_release_date ?: '';
+        } else {
+            $user->ip_aff_release_date = '';
+        }
+
+        if ($user->ips === 'yes') {
+            $user->ips_release_date = $request->ips_release_date;
+        } else {
+            $user->ips_release_date = '';
+        }
+
+        if ($user->ipe === 'yes') {
+            $user->ipe_release_date = $request->ipe_release_date;
+        } else {
+            $user->ipe_release_date = '';
+        }
+
+
+
+
         $user->save();
         $notification = array(
             'messege' => 'Cliente Creato Con Successo',
@@ -207,9 +262,9 @@ class UserController extends Controller
         $user->own_material = $request->own_material ? 'yes' : 'no';
         if ($user->own_material == 'yes') {
             $user->repayment_expiry_date = $request->repayment_expiry_date;
-            $user->emergency_repayment_date = $request->emergency_repayment_date;
+//            $user->emergency_repayment_date = $request->emergency_repayment_date;
         } else {
-            $user->emergency_repayment_date = $request->emergency_repayment_date;
+//            $user->emergency_repayment_date = $request->emergency_repayment_date;
             $user->repayment_expiry_date = '';
         }
         $user->degree_of_contact = $request->degree_of_contact;
@@ -225,6 +280,58 @@ class UserController extends Controller
 
         }
         $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';
+
+
+        //new fields
+        $user->qualification = $request->qualification ? 'yes' : 'no';
+        if ($user->qualification == 'yes') {
+            $user->dl = $request->dl ? 'yes' : 'no';
+            $user->ip = $request->ip ? 'yes' : 'no';
+            $user->ip_tandem = $request->ip_tandem ? 'yes' : 'no';
+            $user->ip_aff = $request->ip_aff ? 'yes' : 'no';
+            $user->ips = $request->ips ? 'yes' : 'no';
+            $user->ipe = $request->ipe ? 'yes' : 'no';
+        } else {
+            $user->dl = $user->ip = $user->ip_tandem = $user->ip_aff = $user->ips = $user->ipe = 'no';
+        }
+
+        if ($user->dl === 'yes') {
+            $user->dl_releaseDate = $request->dl_releaseDate;
+        } else {
+            $user->dl_releaseDate = '';
+        }
+
+        if ($user->ip === 'yes') {
+            $user->ip_expiryDate = $request->ip_expiryDate;
+        } else {
+            $user->ip_expiryDate = '';
+        }
+
+        if ($user->ip_tandem === 'yes') {
+            $user->tandem_release_date = $request->tandem_release_date;
+        } else {
+            $user->tandem_release_date = '';
+        }
+
+        if ($user->ip_aff === 'yes') {
+            $user->ip_aff_release_date = $request->ip_aff_release_date ?: '';
+        } else {
+            $user->ip_aff_release_date = '';
+        }
+
+        if ($user->ips === 'yes') {
+            $user->ips_release_date = $request->ips_release_date;
+        } else {
+            $user->ips_release_date = '';
+        }
+
+        if ($user->ipe === 'yes') {
+            $user->ipe_release_date = $request->ipe_release_date;
+        } else {
+            $user->ipe_release_date = '';
+        }
+
+
         $user->update();
         $notification = array(
             'messege' => 'Cliente Aggiornato Con Successo',

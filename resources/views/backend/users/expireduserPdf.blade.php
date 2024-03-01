@@ -8,6 +8,10 @@
                $expiredUsers[] = $user;
            }
        }
+
+//    $repaymentDate = date_create($user->repayment_expiry_date);
+//    $differenceInMonths = date_diff(now(), $repaymentDate)->m;
+
 @endphp
 <head>
     <meta charset="utf-8">
@@ -48,11 +52,14 @@
                     <td>{{$i++}}</td>
                     <td class="m-5">{{$user->first_name}}</td>
                     <td class="">{{$user->last_name}}</td>
-                    <td class="m-5" style="padding-left: 5px; ">{{$user->insurance_expiration}}</td>
-                    <td class="m-5" style="padding-left: 5px;">{{$user->minimum_activity_deadline}}</td>
-                    <td class="m-5" style="padding-left: 5px;">{{$user->medical_examination_deadline}}</td>
-                    <td class="m-5" style="padding-left: 15px;">{{$user->repayment_expiry_date}}</td>
-                    <td class="m-5" style="padding-left: 15px;">{{$user->release_test_deadline}}</td>
+                    <td class="m-5" style="padding-left: 5px;color: red; ">{{date_format(date_create($user->insurance_expiration), 'd-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 5px;">{{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 5px;">{{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
+{{--                    <td class="m-5" style="padding-left: 15px; color: {{ $differenceInMonths >= 1 ? 'red' : 'black' }}">--}}
+{{--                        {{ date_format($repaymentDate, 'd-m-Y') }}--}}
+{{--                    </td>--}}
+                    <td class="m-5" style="padding-left: 15px;">{{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 15px;">{{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}</td>
                 </tr>
             @endforeach
         </table>
