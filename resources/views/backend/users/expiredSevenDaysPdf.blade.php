@@ -41,7 +41,7 @@
                 <th style="font-family: Verdana;">Scadenza assicurazione</th>
                 <th style="padding-right: 30px;font-family: Verdana;">Scadenza attività </th>
                 <th style="padding-right: 10px;font-family: Verdana;">Scadenza dell'esame</th>
-                <th style="padding-right: 6px;font-family: Verdana;padding-left: 15px;">Rimborso di emergenza
+                <th style="padding-right: 6px;font-family: Verdana;padding-left: 15px;">Scadenza del rimborso
                 </th>
                 <th style="padding-right: 0px;padding-left: 10px;font-family: Verdana;">Scadenza prova di sgancio
                 </th>

@@ -400,9 +400,9 @@ class UserController extends Controller
             'title' => 'Welcome to ItSolutionStuff.com',
             'date' => date('m/d/Y'),
         ];
-        return view('backend.users.expiredSevenDaysPdf');
-//        $pdf = PDF::loadView('backend.users.expiredSevenDaysPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
-//        return $pdf->download('expiredSevenDays.pdf');
+//        return view('backend.users.expiredSevenDaysPdf');
+        $pdf = PDF::loadView('backend.users.expiredSevenDaysPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('expiredSevenDays.pdf');
     }
 
 }
