@@ -37,6 +37,9 @@ class UserController extends Controller
                     return $i++;
                 })
                 ->addIndexColumn()
+                ->addColumn('d_o_b', function ($row) {
+                    return \Carbon\Carbon::parse($row->d_o_b)->format('d-m-Y');
+                })
                 ->addColumn('action', function ($row) {
                     $btn = '<a href="' . route('users.edit', [$row->id]) . '">
                             <button class="btn btn-default btn-sm "><i class="fa fa-edit"></i></button>
@@ -56,7 +59,7 @@ class UserController extends Controller
                 ->addColumn('status', function ($row) {
                     return $row->showExpiredDate();
                 })
-                ->rawColumns(['action', 'status'])
+                ->rawColumns(['action', 'status','d_o_b'])
                 ->make(true);
         }
         return view('backend.users.index');
@@ -193,9 +196,6 @@ class UserController extends Controller
         } else {
             $user->ipe_release_date = '';
         }
-
-
-
 
         $user->save();
         $notification = array(
@@ -366,6 +366,12 @@ class UserController extends Controller
     {
         return Excel::download(new DataExport, 'expiredCustomers.xlsx');
     }
+
+
+    public function expiredSevenDays()
+    {
+        return Excel::download(new DataExport, 'expiredSevenDays.xlsx');
+    }
     public function userPdf()
     {
         $data = [
@@ -373,6 +379,7 @@ class UserController extends Controller
             'date' => date('m/d/Y'),
         ];
 
+//        return view('backend.users.usersPdf');
         $pdf = PDF::loadView('backend.users.usersPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->download('customers.pdf');
     }
@@ -385,6 +392,16 @@ class UserController extends Controller
         ];
         $pdf = PDF::loadView('backend.users.expireduserPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->download('expiredCustomers.pdf');
+    }
+
+    public function expiredDaysPDF()
+    {
+        $data = [
+            'title' => 'Welcome to ItSolutionStuff.com',
+            'date' => date('m/d/Y'),
+        ];
+        $pdf = PDF::loadView('backend.users.expiredSevenDaysPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('expiredSevenDays.pdf');
     }
 
 }

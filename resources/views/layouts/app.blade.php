@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
     @stack('style')
     <style>
+        .block-header {
+            padding: 10px;
+        }
         .error {
             width: 100%;
             margin-top: 0.25rem;

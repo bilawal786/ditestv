@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Ditestv | PDF</title>
 </head>
-<body>
+<body style="font-family: Verdana;font-size: 12px;">
 
 <div class="container" style="">
     <div class="container" style=" background-color: #e67238;">
@@ -20,24 +20,22 @@
         </div>
 
         <div style="display: inline-block;  text-align: center;padding-left: 50px; margin-top: 16px;">
-            <h1 style="color: white; margin-top: 40px;font-family: Sans-Serif;">Tutti i Clienti</h1>
+            <h1 style="color: white; margin-top: 40px;font-family: Verdana;">Tutti i Clienti</h1>
         </div>
     </div>
     <br>
     <div class="row">
         <table>
             <tr>
-{{--                <th style="padding-right: 10px;font-family: Sans-Serif;">No</th>--}}
-                <th style="font-family: Sans-Serif;padding-right: 10px;">Nome</th>
-                <th style="padding-right: 20px;font-family: Sans-Serif;">Cognome</th>
-                <th style="padding-right: 10px;font-family: Sans-Serif;text-align: start;">Scadenza assicurazione</th>
-                <th style="padding-right: 30px;font-family: Sans-Serif;">Scadenza attività </th>
-                <th style="padding-right: 20px;font-family: Sans-Serif;">Scadenza dell'esame</th>
-                <th style="padding-right: 6px;font-family: Sans-Serif;padding-left: 10px;">Rimborso di emergenza
+                <th style="font-family:  Verdana;padding-right: 10px;">Nome</th>
+                <th style="font-family: Verdana;">Scadenza assicurazione</th>
+                <th style="padding-right: 30px;font-family: Verdana;">Scadenza attività </th>
+                <th style="padding-right: 10px;font-family: Verdana;">Scadenza dell'esame</th>
+                <th style="padding-right: 6px;font-family: Verdana;padding-left: 15px;">Rimborso di emergenza
                 </th>
-                <th style="padding-right: 5px;padding-left: 0px;font-family: Sans-Serif;">Scadenza prova di sgancio
+                <th style="padding-right: 0px;padding-left: 10px;font-family: Verdana;">Scadenza prova di sgancio
                 </th>
-                <th style="padding-left: 2px;font-family: Sans-Serif;">Scadenza IP
+                <th style="font-family: Verdana;">Scadenza IP
                 </th>
             </tr>
             @php
@@ -46,16 +44,16 @@
             @foreach ($users as $user)
                 <tr>
 {{--                    <td>{{$i++}}</td>--}}
-                    <td class="">{{$user->first_name}}</td>
-                    <td class="">{{$user->last_name}}</td>
-                    <td class="m-5" style="padding-left: 5px;">
+                    <td class="" style="padding-left: 23px;">{{$user->first_name . ' ' . $user->last_name}}</td>
+{{--                    <td class="">{{$user->last_name}}</td>--}}
+                    <td class="m-5" style="padding-left: 21px;">
                         {{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}
                     </td>{{--                    <td class="m-5" style="padding-left: 5px; ">{{$user->insurance_expiration}}</td>--}}
-                    <td class="m-5" style="padding-left: 5px;">{{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
-                    <td class="m-5" style="padding-left: 5px;">{{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
-                    <td class="m-5" style="padding-left: 15px;">{{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
-                    <td class="m-5" style="padding-left: 15px;">{{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}</td>
-                    <td class="m-5" style="padding-left: 15px;">{{date_format(date_create($user->ip_expiryDate),'d-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 15px;">{{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 18px;">{{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 32px;">{{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
+                    <td class="m-5" style="padding-left: 30px;">{{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}</td>
+                    <td class="m-5">{{date_format(date_create($user->ip_expiryDate),'d-m-Y')}}</td>
                 </tr>
             @endforeach
         </table>

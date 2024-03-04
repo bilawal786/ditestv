@@ -1,10 +1,4 @@
-{{--@extends('layouts.app')--}}
-
-{{--@section('content')--}}
-
-
 <div>
-    {{--        @include('backend.users.includes.blockHeader')--}}
     <div>
         <div>
             <div>
@@ -33,18 +27,17 @@
                                 <th>compagnia assicurativa</th>
                                 <th>scadenza assicurativa</th>
                                 <th>scadenza visita medica</th>
-                                <th>proprio materiale</th>
+                                <th>own_material</th>
+                                proprio materiale
                                 <th>data di scadenza del rimborso</th>
                                 <th>grado di contatto</th>
-                                <th>ruolo</th>
                                 <th>invia e-mail automatica</th>
                                 <th>stato della scadenza del test di rilascio</th>
                                 <th>stato di scadenza attività minima</th>
                                 <th>>stato della data di scadenza</th>
                                 <th>stato di scadenza dell'assicurazione</th>
                                 <th>stato della scadenza della visita medica</th>
-
-                                <!--new add-->
+                                <!---new add-->
                                 <th>Possiede Abilitazioni</th>
                                 <th>D.L</th>
                                 <th>I.P</th>
@@ -62,7 +55,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $user)
+                            @foreach($expiredDays as $key => $user)
                                 <tr>
                                     <td>{{$user->first_name}}</td>
                                     <td>{{$user->last_name}}</td>
@@ -79,24 +72,31 @@
                                     <td>{{$user->student}}</td>
                                     <td>{{$user->license_number}}</td>
                                     <td>{{$user->released_on}}</td>
-                                    <td>{{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}</td>
-                                    <td>{{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
+                                    <td>
+
+                                        {{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}</td>
+                                    <td>
+
+                                        {{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
                                     <td>{{$user->insurance_company}}</td>
-                                    <td>{{date_format(date_create($user->insurance_expiration), 'd-m-Y')}}</td>
-                                    <td>{{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
+                                    <td>
+
+                                        {{date_format(date_create($user->insurance_expiration), 'd-m-Y')}}</td>
+                                    <td>
+
+                                        {{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
                                     <td>{{$user->own_material}}</td>
-                                    <td>{{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
+                                    <td>
+
+                                        {{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
                                     <td>{{$user->degree_of_contact}}</td>
-                                    <td>{{$user->role}}</td>
                                     <td>{{$user->send_auto_email}}</td>
-                                    <td>{{date_format(date_create($user->release_test_deadline_status), 'd-m-Y')}}</td>
+                                    <td>{{$user->release_test_deadline_status}}</td>
                                     <td>{{$user->minimum_activity_deadline_status}}</td>
                                     <td>{{$user->expiry_date_status}}</td>
                                     <td>{{$user->insurance_expiration_status}}</td>
                                     <td>{{$user->medical_examination_deadline_status}}</td>
-
-                                    <!-----new add---->
-
+                                    <!--new add--->
                                     <td>{{$user->qualification}}</td>
                                     <td>{{$user->dl}}</td>
                                     <td>{{$user->ip}}</td>
@@ -105,11 +105,14 @@
                                     <td>{{$user->ips}}</td>
                                     <td>{{$user->ipe}}</td>
                                     <td>{{ date_format(date_create($user->dl_releaseDate), 'd-m-Y')}}</td>
-                                    <td>{{date_format(date_create($user->ip_expiryDate), 'd-m-Y')}}</td>
+                                    <td>
+                                        {{$user->ip_expiryDate}}
+                                    </td>
                                     <td>{{ date_format(date_create($user->tandem_release_date), 'd-m-Y') }}</td>
                                     <td>{{date_format(date_create($user->ip_aff_release_date), 'd-m-Y')}}</td>
                                     <td>{{date_format(date_create($user->ips_release_date), 'd-m-Y')}}</td>
                                     <td>{{date_format(date_create($user->ipe_release_date), 'd-m-Y')}}</td>
+
                                 </tr>
                             @endforeach
                             </tbody>
@@ -117,9 +120,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
-
-{{--@endsection--}}

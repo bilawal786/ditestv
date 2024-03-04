@@ -56,10 +56,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/expiry/send', [UserController::class, 'expiry_date'])->name('expiry_date');
     Route::get('/all/emails', [UserController::class, 'sendAllEmails'])->name('sendAllEmails');
 
+    Route::get('/export/data', [UserController::class, 'expiredSevenDays'])->name('expiredSevenDays');
     Route::get('/export-data', [UserController::class, 'export'])->name('export.data');
     Route::get('/expired-data', [UserController::class, 'expiredUser'])->name('expired.data');
     Route::get('download/pdf', [UserController::class, 'userPDF'])->name('userPdf');
     Route::get('expired/user/pdf', [UserController::class, 'expireduserPDF'])->name('expireduser');
+    Route::get('expired/days/pdf', [UserController::class, 'expiredDaysPDF'])->name('expiredDays');
 
     Route::resource('profile', ProfileController::class);
     Route::resource('settings', SettingController::class);

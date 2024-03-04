@@ -1,8 +1,8 @@
 {{--@extends('layouts.app')--}}
 
 {{--@section('content')--}}
+
 <div>
-    {{--        @include('backend.users.includes.blockHeader')--}}
     <div>
         <div>
             <div>
@@ -77,13 +77,23 @@
                                     <td>{{$user->student}}</td>
                                     <td>{{$user->license_number}}</td>
                                     <td>{{$user->released_on}}</td>
-                                    <td>{{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}</td>
-                                    <td>{{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
+                                    <td>
+
+                                        {{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}</td>
+                                    <td>
+
+                                        {{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
                                     <td>{{$user->insurance_company}}</td>
-                                    <td>{{date_format(date_create($user->insurance_expiration), 'd-m-Y')}}</td>
-                                    <td>{{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
+                                    <td>
+
+                                        {{date_format(date_create($user->insurance_expiration), 'd-m-Y')}}</td>
+                                    <td>
+
+                                        {{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
                                     <td>{{$user->own_material}}</td>
-                                    <td>{{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
+                                    <td>
+
+                                        {{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
                                     <td>{{$user->degree_of_contact}}</td>
                                     <td>{{$user->send_auto_email}}</td>
                                     <td>{{$user->release_test_deadline_status}}</td>
@@ -99,12 +109,14 @@
                                     <td>{{$user->ip_aff}}</td>
                                     <td>{{$user->ips}}</td>
                                     <td>{{$user->ipe}}</td>
-                                    <td>{{$user->dl_releaseDate}}</td>
-                                    <td>{{$user->ip_expiryDate}}</td>
-                                    <td>{{$user->tandem_release_date}}</td>
-                                    <td>{{$user->ip_aff_release_date}}</td>
-                                    <td>{{$user->ips_release_date}}</td>
-                                    <td>{{$user->ipe_release_date}}</td>
+                                    <td>{{ date_format(date_create($user->dl_releaseDate), 'd-m-Y')}}</td>
+                                    <td>
+                                        {{$user->ip_expiryDate}}
+                                    </td>
+                                    <td>{{ date_format(date_create($user->tandem_release_date), 'd-m-Y') }}</td>
+                                    <td>{{date_format(date_create($user->ip_aff_release_date), 'd-m-Y')}}</td>
+                                    <td>{{date_format(date_create($user->ips_release_date), 'd-m-Y')}}</td>
+                                    <td>{{date_format(date_create($user->ipe_release_date), 'd-m-Y')}}</td>
 
                                 </tr>
                             @endforeach

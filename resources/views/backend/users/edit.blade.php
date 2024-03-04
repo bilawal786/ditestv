@@ -343,7 +343,7 @@
                                     </div>
                                 </div>
 
-                                <div id="additionalCheckboxes" style="display: none;">
+                                <div id="additionalCheckboxes" style="display: {{$user->qualification == "yes" ? 'block': 'none'}};">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-2">
                                             <div class="form-group d-flex">
@@ -439,7 +439,7 @@
 
                                 <!--------------------Release Date Start---------------------->
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-4" id="dlReleaseDate" style="display: none;">
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="dlReleaseDate" style="display: {{$user->dl == "yes" ? 'block': 'none'}};">
                                         <div class="form-group">
                                             <strong>D.L. Data di rilascio :</strong>
                                             <input type="date" name="dl_releaseDate" class="form-control"
@@ -450,7 +450,7 @@
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-4" id="ipDateContainer"
-                                         style="display: none;">
+                                         style="display: {{$user->ip == "yes" ? 'block': 'none'}};">
                                         <div class="form-group">
                                             <strong>Data scadenza IP:</strong>
                                             <input type="date" name="ip_expiryDate" class="form-control"
@@ -462,7 +462,7 @@
 
 
                                     <div class="col-xs-12 col-sm-12 col-md-4" id="tandemReleaseDate"
-                                         style="display: none;">
+                                         style="display: {{$user->ip_tandem == "yes" ? 'block': 'none'}};">
                                         <div class="form-group">
                                             <strong>I.P Tandem Data di rilascio :</strong>
                                             <input type="date" name="tandem_release_date" class="form-control"
@@ -475,7 +475,7 @@
 
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4" id="AffReleaseDate"
-                                         style="display: none;">
+                                         style="display: {{$user->ip_aff == "yes" ? 'block': 'none'}};">
                                         <div class="form-group">
                                             <strong>I.P. AFF Data di rilascio :</strong>
                                             <input type="date" id="affReleaseDateInput" name="ip_aff_release_date"
@@ -486,7 +486,7 @@
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-4" id="ipsReleaseDate"
-                                         style="display: none;">
+                                         style="display: {{$user->ips == "yes" ? 'block': 'none'}};">
                                         <div class="form-group">
                                             <strong>I.P.S Data di rilascio :</strong>
                                             <input type="date" id="ipsReleaseDateInput" name="ips_release_date"
@@ -497,7 +497,7 @@
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-4" id="ipeReleaseDate"
-                                         style="display: none;">
+                                         style="display: {{$user->ipe == "yes" ? 'block': 'none'}};">
                                         <div class="form-group">
                                             <strong>I.P.E Data di rilascio :</strong>
                                             <input type="date" id="ipeReleaseDateInput" name="ipe_release_date"

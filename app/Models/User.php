@@ -119,5 +119,39 @@ class User extends Authenticatable
         }
     }
 
+    public function expiredSevenDays()
+    {
+        $expiredDays = [];
+        $minimumActivity = Carbon::parse($this->minimum_activity_deadline);
+        $releaseTestDeadline = Carbon::parse($this->release_test_deadline);
+        $insuranceExpiration = Carbon::parse($this->insurance_expiration);
+        $medicalExamination = Carbon::parse($this->medical_examination_deadline);
+        $repaymentExpiry = Carbon::parse($this->repayment_expiry_date);
+        $ipExpiry = Carbon::parse($this->ip_expiryDate);
+
+        if ($minimumActivity->isPast() && $minimumActivity->diffInDays(Carbon::now()) >= 7) {
+            $expiredDays[] = '<span class="badge badge-danger">Scadenza minima attività</span>';
+        }
+        if ($releaseTestDeadline->isPast() && $releaseTestDeadline->diffInDays(Carbon::now()) >= 7) {
+            $expiredDays[] = '<span class="badge badge-danger">Scadenza del test di rilascio</span>';
+        }
+        if ($insuranceExpiration->isPast() && $insuranceExpiration->diffInDays(Carbon::now()) >= 7) {
+            $expiredDays[] = '<span class="badge badge-danger">Scadenza dell assicurazione</span>';
+        }
+        if ($medicalExamination->isPast() && $medicalExamination->diffInDays(Carbon::now()) >= 7) {
+            $expiredDays[] = '<span class="badge badge-danger">Scadenza visita medica</span>';
+        }
+        if ($repaymentExpiry->isPast() && $repaymentExpiry->diffInDays(Carbon::now()) >= 7) {
+            $expiredDays[] = '<span class="badge badge-danger">Scadenza Del Rimborso Di Emergenza</span>';
+        }
+        if ($ipExpiry->isPast() && $ipExpiry->diffInDays(Carbon::now()) >= 7) {
+            $expiredDays[] = '<span class="badge badge-danger">Data scadenza IP</span>';
+        }
+        else {
+            return implode(' ', $expiredDays);
+        }
+
+    }
+
 
 }
