@@ -287,8 +287,6 @@
                             </div>
 
 
-
-
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group d-flex">
@@ -444,69 +442,69 @@
                             </div>
 
 
-                                <!--------------------Release Date Start---------------------->
-                                <div class="row">
+                            <!--------------------Release Date Start---------------------->
+                            <div class="row">
 
-                                    <div class="col-xs-12 col-sm-12 col-md-4" id="dlReleaseDate" style="display: none;">
-                                        <div class="form-group">
-                                            <strong>D.L. Data di rilascio :</strong>
-                                            <input type="date" name="dl_releaseDate" class="form-control"
-                                                   id="dlReleaseDateInput" value="{{ old('dl_releaseDate') }}"
-                                                   data-default-file="">
-                                        </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4" id="dlReleaseDate" style="display: none;">
+                                    <div class="form-group">
+                                        <strong>D.L. Data di rilascio :</strong>
+                                        <input type="date" name="dl_releaseDate" class="form-control"
+                                               id="dlReleaseDateInput" value="{{ old('dl_releaseDate') }}"
+                                               data-default-file="">
                                     </div>
-
-                                    <div class="col-xs-12 col-sm-12 col-md-4" id="ipDateContainer" style="display: none;">
-                                        <div class="form-group">
-                                            <strong>Data scadenza IP:</strong>
-                                            <input type="date" name="ip_expiryDate" class="form-control" id="ipDateInput"
-                                                   value="{{ old('ip_expiryDate') }}" data-default-file="">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-xs-12 col-sm-12 col-md-4" id="tandemReleaseDate" style="display: none;">
-                                        <div class="form-group">
-                                            <strong>I.P Tandem Data di rilascio :</strong>
-                                            <input type="date" name="tandem_release_date" class="form-control"
-                                                   id="tandemReleaseDateInput" value="{{ old('tandem_release_date') }}"
-                                                   data-default-file="">
-                                        </div>
-                                    </div>
-
-
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-4" id="AffReleaseDate" style="display: none;">
-                                        <div class="form-group">
-                                            <strong>I.P. AFF Data di rilascio :</strong>
-                                            <input type="date" id="affReleaseDateInput" name="ip_aff_release_date"
-                                                   value="{{ old('ip_aff_release_date') }}" class="form-control"
-                                                   data-default-file="">
-                                        </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4" id="ipDateContainer" style="display: none;">
+                                    <div class="form-group">
+                                        <strong>Data scadenza IP:</strong>
+                                        <input type="date" name="ip_expiryDate" class="form-control" id="ipDateInput"
+                                               value="{{ old('ip_expiryDate') }}" data-default-file="">
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-4" id="ipsReleaseDate" style="display: none;">
-                                        <div class="form-group">
-                                            <strong>I.P.S Data di rilascio :</strong>
-                                            <input type="date" id="ipsReleaseDateInput" name="ips_release_date"
-                                                   value="{{ old('ips_release_date') }}" class="form-control"
-                                                   data-default-file="">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xs-12 col-sm-12 col-md-4" id="ipeReleaseDate" style="display: none;">
-                                        <div class="form-group">
-                                            <strong>I.P.E Data di rilascio :</strong>
-                                            <input type="date" id="ipeReleaseDateInput" name="ipe_release_date"
-                                                   value="{{ old('ipe_release_date') }}" class="form-control"
-                                                   data-default-file="">
-                                        </div>
-                                    </div>
-
                                 </div>
 
-                                <!--------------Release Date End-------------->
+
+                                <div class="col-xs-12 col-sm-12 col-md-4" id="tandemReleaseDate" style="display: none;">
+                                    <div class="form-group">
+                                        <strong>I.P Tandem Data di rilascio :</strong>
+                                        <input type="date" name="tandem_release_date" class="form-control"
+                                               id="tandemReleaseDateInput" value="{{ old('tandem_release_date') }}"
+                                               data-default-file="">
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-4" id="AffReleaseDate" style="display: none;">
+                                    <div class="form-group">
+                                        <strong>I.P. AFF Data di rilascio :</strong>
+                                        <input type="date" id="affReleaseDateInput" name="ip_aff_release_date"
+                                               value="{{ old('ip_aff_release_date') }}" class="form-control"
+                                               data-default-file="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4" id="ipsReleaseDate" style="display: none;">
+                                    <div class="form-group">
+                                        <strong>I.P.S Data di rilascio :</strong>
+                                        <input type="date" id="ipsReleaseDateInput" name="ips_release_date"
+                                               value="{{ old('ips_release_date') }}" class="form-control"
+                                               data-default-file="">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-4" id="ipeReleaseDate" style="display: none;">
+                                    <div class="form-group">
+                                        <strong>I.P.E Data di rilascio :</strong>
+                                        <input type="date" id="ipeReleaseDateInput" name="ipe_release_date"
+                                               value="{{ old('ipe_release_date') }}" class="form-control"
+                                               data-default-file="">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!--------------Release Date End-------------->
 
 
                             <div class="row">

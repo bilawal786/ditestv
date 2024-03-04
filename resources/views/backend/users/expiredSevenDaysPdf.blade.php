@@ -49,87 +49,23 @@
                 </th>
             </tr>
 
-            @foreach($users as $key => $user)
+
+            @foreach ($users as $user)
                 <tr>
-                    <td>{{$user->first_name . ' ' . $user->last_name}}</td>
-                    <td class="m-5" style="padding-left: 21px;">
+                    <td class="" style="padding-left: 23px;">{{$user->first_name . ' ' . $user->last_name}}</td>
+                    @foreach(['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $deadline)
                         @php
-                            $insuranceExpiration = \Carbon\Carbon::parse($user->insurance_expiration);
-                            $daysDifference = $insuranceExpiration->diffInDays(\Carbon\Carbon::now());
+                            $date = date_create($user->$deadline);
+                            $diffInDays = date_diff($date, date_create())->days;
+                            $color = ($diffInDays >= 0 && $diffInDays <= 7) ? 'red' : '';
                         @endphp
-                        @if (!empty($user->insurance_expiration) && $insuranceExpiration->isPast() && $daysDifference >= -7)
-                            <span class="" style="color: red;">{{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}</span>
-                        @else
-                            <span>{{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}</span>
-                        @endif
-                    </td>
-                    <td class="m-5" style="padding-left: 15px;">
-
-                        @php
-                            $insuranceExpiration = \Carbon\Carbon::parse($user->minimum_activity_deadline);
-                            $daysDifference = $insuranceExpiration->diffInDays(\Carbon\Carbon::now());
-                        @endphp
-                        @if (!empty($user->minimum_activity_deadline) && $insuranceExpiration->isPast() && $daysDifference >= -7)
-                            <span class="" style="color: red;">{{ date_format(date_create($user->minimum_activity_deadline), 'd-m-Y') }}</span>
-                        @else
-                            <span>{{ date_format(date_create($user->minimum_activity_deadline), 'd-m-Y') }}</span>
-                        @endif
-
-{{--                        <span class="expired-date">{{ date_format(date_create($user->minimum_activity_deadline), 'd-m-Y') }}</span>--}}
-                    </td>
-                    <td class="m-5" style="padding-left: 18px;">
-
-                        @php
-                            $insuranceExpiration = \Carbon\Carbon::parse($user->medical_examination_deadline);
-                            $daysDifference = $insuranceExpiration->diffInDays(\Carbon\Carbon::now());
-                        @endphp
-                        @if (!empty($user->medical_examination_deadline) && $insuranceExpiration->isPast() && $daysDifference >= -7)
-                            <span class="expired-date" style="color: red;">{{ date_format(date_create($user->medical_examination_deadline), 'd-m-Y') }}</span>
-                        @else
-                            <span>{{ date_format(date_create($user->medical_examination_deadline), 'd-m-Y') }}</span>
-                        @endif
-{{--                        <span class="expired-date">{{ date_format(date_create($user->medical_examination_deadline), 'd-m-Y') }}</span>--}}
-                    </td>
-                    <td class="m-5" style="padding-left: 32px;">
-
-                        @php
-                            $insuranceExpiration = \Carbon\Carbon::parse($user->repayment_expiry_date);
-                            $daysDifference = $insuranceExpiration->diffInDays(\Carbon\Carbon::now());
-                        @endphp
-                        @if (!empty($user->repayment_expiry_date) && $insuranceExpiration->isPast() && $daysDifference >= -7)
-                            <span class="expired-date" style="color: red;">{{ date_format(date_create($user->repayment_expiry_date), 'd-m-Y') }}</span>
-                        @else
-                            <span>{{ date_format(date_create($user->repayment_expiry_date), 'd-m-Y') }}</span>
-                        @endif
-{{--                        <span class="expired-date">{{ date_format(date_create($user->repayment_expiry_date), 'd-m-Y') }}</span>--}}
-                    </td>
-                    <td class="m-5" style="padding-left: 30px;">
-
-                        @php
-                            $insuranceExpiration = \Carbon\Carbon::parse($user->release_test_deadline);
-                            $daysDifference = $insuranceExpiration->diffInDays(\Carbon\Carbon::now());
-                        @endphp
-                        @if (!empty($user->release_test_deadline) && $insuranceExpiration->isPast() && $daysDifference >= -7)
-                            <span class="expired-date" style="color: red;">{{ date_format(date_create($user->release_test_deadline), 'd-m-Y') }}</span>
-                        @else
-                            <span>{{ date_format(date_create($user->release_test_deadline), 'd-m-Y') }}</span>
-                        @endif
-{{--                        <span class="expired-date">{{ date_format(date_create($user->release_test_deadline), 'd-m-Y') }}</span>--}}
-                    </td>
-                    <td class="m-5">
-                        @php
-                            $insuranceExpiration = \Carbon\Carbon::parse($user->ip_expiryDate);
-                            $daysDifference = $insuranceExpiration->diffInDays(\Carbon\Carbon::now());
-                        @endphp
-                        @if (!empty($user->ip_expiryDate) && $insuranceExpiration->isPast() && $daysDifference >= -7)
-                            <span class="expired-date" style="color: red;">{{ date_format(date_create($user->ip_expiryDate), 'd-m-Y') }}</span>
-                        @else
-                            <span>{{ date_format(date_create($user->ip_expiryDate), 'd-m-Y') }}</span>
-                        @endif
-{{--                        <span class="expired-date">{{ date_format(date_create($user->ip_expiryDate), 'd-m-Y') }}</span>--}}
-                    </td>
+                        <td class="m-5" style="padding-left: 21px; color: {{$color}}">
+                            {{ date_format($date, 'd-m-Y') }}
+                        </td>
+                    @endforeach
                 </tr>
             @endforeach
+
 
 
         </table>

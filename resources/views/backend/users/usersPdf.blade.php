@@ -43,12 +43,10 @@
             @endphp
             @foreach ($users as $user)
                 <tr>
-{{--                    <td>{{$i++}}</td>--}}
                     <td class="" style="padding-left: 23px;">{{$user->first_name . ' ' . $user->last_name}}</td>
-{{--                    <td class="">{{$user->last_name}}</td>--}}
                     <td class="m-5" style="padding-left: 21px;">
                         {{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}
-                    </td>{{--                    <td class="m-5" style="padding-left: 5px; ">{{$user->insurance_expiration}}</td>--}}
+                    </td>
                     <td class="m-5" style="padding-left: 15px;">{{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
                     <td class="m-5" style="padding-left: 18px;">{{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
                     <td class="m-5" style="padding-left: 32px;">{{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
