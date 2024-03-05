@@ -34,7 +34,7 @@
                                 <th>scadenza assicurativa</th>
                                 <th>scadenza visita medica</th>
                                 <th>proprio materiale</th>
-                                <th>data di scadenza del rimborso</th>
+                                <th>Scadenza Ripiegamento</th>
                                 <th>grado di contatto</th>
                                 <th>ruolo</th>
                                 <th>invia e-mail automatica</th>

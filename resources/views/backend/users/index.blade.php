@@ -6,6 +6,8 @@
             background-color: #1c1c1c !important; /* Use !important to override other styles */
             color: white;
         }
+
+
     </style>
     <div id="main-content">
         @include('backend.users.includes.blockHeader')
@@ -44,8 +46,12 @@
                     </div>
                 </div>
 
+                    <span class="bottom-right-text">Powered By Buri</span>
             </div>
+
         </div>
+
+
     </div>
 
     @push('style')

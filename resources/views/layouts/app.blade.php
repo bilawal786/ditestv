@@ -43,6 +43,14 @@
         .navbar-fixed-top .navbar-btn .logo {
              width: 62px;
          }
+
+        .bottom-right-text {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            color:darkgrey;
+            margin: 20px; /* Optional: Adjust the margin as per your preference */
+        }
     </style>
 </head>
 <body class="theme-orange">

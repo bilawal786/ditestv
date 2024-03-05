@@ -13,6 +13,17 @@
     $ipsChecked = 'yes';
     ?>
     <style>
+
+        @media screen and (max-width: 755px) and (max-height: 932px) {
+
+            .main{
+                display: flex;
+                    justify-content: space-between;
+            }
+
+        }
+
+
         /* Customize the checkbox size */
         .form-check-input[type="checkbox"] {
             width: 10px; /* Adjust the width */
@@ -256,7 +267,6 @@
                                                data-default-file="">
                                     </div>
                                 </div>
-
                             </div>
                             <div class="row">
 
@@ -277,7 +287,7 @@
 
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group" id="repayment_expiry_date">
-                                        <strong>Scadenza Del Rimborso Di Emergenza :</strong>
+                                        <strong>Scadenza Ripiegamento Emergenza :</strong>
                                         <input type="date" id="repayment_expiry_date" name="repayment_expiry_date"
                                                value="{{old('repayment_expiry_date')}}"
                                                class="form-control"
@@ -289,25 +299,31 @@
 
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group d-flex">
-                                        <label class="form-check-label mr-4 font-5"
+                                    <div class="form-group d-flex main ">
+
+                                        <div class="one">
+                                        <label class="form-check-label mr-lg-4 font-5 "
                                                for="exampleCheck1">Allievo :</label>
-                                        <div>
-                                            <label class="switch">
-                                                <input type="checkbox" name="student" id="student"
-                                                       class="form-check-input"
-                                                       data-default-file="">
-                                                <?php if ($Checked == 'yes'): ?><?php endif; ?>
-                                                <span class="slider round"></span>
-                                            </label>
                                         </div>
+                                        <div class="two">
+                                        <label class="switch">
+                                            <input type="checkbox" name="student" id="student"
+                                                   class="form-check-input"
+                                                   data-default-file="">
+                                            <?php if ($Checked == 'yes'): ?><?php endif; ?>
+                                            <span class="slider round"></span>
+                                        </label>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group d-flex">
+                                    <div class="form-group d-flex main">
+                                        <div class="one">
                                         <label class="form-check-label mr-3 font-5 "
                                                for="exampleCheck1">Possiede il materiale :</label>
-                                        <div class="">
+                                        </div>
+                                        <div class="two">
                                             <label class="switch">
                                                 <input type="checkbox" class="form-check-input"
                                                        name="own_material" id="own_material" data-default-file=""
@@ -319,10 +335,12 @@
                                 </div>
 
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group d-flex">
+                                    <div class="form-group d-flex main">
+                                        <div class="one">
                                         <label class="form-check-label mr-3 font-5 "
                                                for="exampleCheck1">E-mail automatica :</label>
-                                        <div class="">
+                                        </div>
+                                        <div class="two">
                                             <label class="switch">
                                                 <input type="checkbox" class="form-check-input"
                                                        name="send_auto_email" id="" data-default-file=""
@@ -336,10 +354,12 @@
 
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group d-flex">
+                                    <div class="form-group d-flex main">
+                                        <div class="one">
                                         <label class="form-check-label mr-3 font-5 "
                                                for="exampleCheck1">Possiede Abilitazioni o C.S :</label>
-                                        <div class="">
+                                        </div>
+                                        <div class="two">
                                             <label class="switch">
                                                 <input type="checkbox" class="form-check-input"
                                                        name="qualification" id="qualification" data-default-file=""
@@ -354,23 +374,29 @@
                             <div id="additionalCheckboxes" style="display: none;">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-2">
-                                        <div class="form-group d-flex">
+                                        <div class="form-group d-flex main">
+                                            <div class="one">
                                             <label class="form-check-label mr-3 font-5" for="dl">D.L. :</label>
-                                            <div>
+                                            </div>
+
+                                                <div class="two">
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="dl" id="dl"
                                                            data-default-file=""
                                                         <?php if ($dlChecked == 'yes'): ?><?php endif; ?>>
                                                     <span class="slider round"></span>
                                                 </label>
+
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-2">
-                                        <div class="form-group d-flex">
+                                        <div class="form-group d-flex main">
+                                            <div class="one">
                                             <label class="form-check-label mr-3 font-5" for="ipCheckbox">I.P :</label>
-                                            <div class="">
+                                            </div>
+                                            <div class="two">
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ip"
                                                            id="ipCheckbox" data-default-file=""
@@ -382,10 +408,12 @@
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-2">
-                                        <div class="form-group d-flex">
+                                        <div class="form-group d-flex main">
+                                            <div class="one">
                                             <label class="form-check-label mr-3 font-5" for="ipTandem">I.P. Tandem
                                                 :</label>
-                                            <div class="">
+                                        </div>
+                                            <div class="two">
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ip_tandem"
                                                            id="ipTandem" data-default-file=""
@@ -397,9 +425,11 @@
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-2">
-                                        <div class="form-group d-flex">
+                                        <div class="form-group d-flex main">
+                                            <div class="one">
                                             <label class="form-check-label mr-3 font-5" for="ipAff">I.P. AFF :</label>
-                                            <div class="">
+                                        </div>
+                                            <div class="two">
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ip_aff"
                                                            id="ipAff" data-default-file=""
@@ -411,9 +441,11 @@
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-2">
-                                        <div class="form-group d-flex">
+                                        <div class="form-group d-flex main">
+                                            <div class="one">
                                             <label class="form-check-label mr-3 font-5" for="ips">I.P.S :</label>
-                                            <div class="">
+                                        </div>
+                                            <div class="two">
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ips" id="ips"
                                                            data-default-file=""
@@ -425,9 +457,11 @@
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-2">
-                                        <div class="form-group d-flex">
+                                        <div class="form-group d-flex main">
+                                            <div class="one">
                                             <label class="form-check-label mr-3 font-5" for="ipe">I.P.E :</label>
-                                            <div class="">
+                                        </div>
+                                            <div class="two">
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ipe" id="ipe"
                                                            data-default-file=""
@@ -517,6 +551,7 @@
                     </div>
                 </div>
             </div>
+            <span class="bottom-right-text">Powered By Buri</span>
         </div>
     </div>
     @push('script')

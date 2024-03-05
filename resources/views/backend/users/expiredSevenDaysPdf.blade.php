@@ -20,6 +20,13 @@
         .expired-date {
             color: red;
         }
+        .bottom-right-text {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            color:darkgrey;
+            margin: 20px; /* Optional: Adjust the margin as per your preference */
+        }
     </style>
 </head>
 <body style="font-family: Verdana;font-size: 12px;">
@@ -35,13 +42,13 @@
     </div>
     <br>
     <div class="row">
-        <table>
+        <table style="width: 100%;">
             <tr>
                 <th style="font-family:  Verdana;padding-right: 10px;">Nome</th>
                 <th style="font-family: Verdana;">Scadenza assicurazione</th>
                 <th style="padding-right: 30px;font-family: Verdana;">Scadenza attività </th>
-                <th style="padding-right: 10px;font-family: Verdana;">Scadenza dell'esame</th>
-                <th style="padding-right: 6px;font-family: Verdana;padding-left: 15px;">Scadenza del rimborso
+                <th style="padding-right: 10px;font-family: Verdana;">Scadenza vista medica</th>
+                <th style="padding-right: 6px;font-family: Verdana;padding-left: 15px;">Scadenza Ripiegamento
                 </th>
                 <th style="padding-right: 0px;padding-left: 10px;font-family: Verdana;">Scadenza prova di sgancio
                 </th>
@@ -59,17 +66,15 @@
                             $diffInDays = date_diff($date, date_create())->days;
                             $color = ($diffInDays >= 0 && $diffInDays <= 7) ? 'red' : '';
                         @endphp
-                        <td class="m-5" style="padding-left: 21px; color: {{$color}}">
+                        <td class="m-5" style="padding-left: 18px; color: {{$color}}">
                             {{ date_format($date, 'd-m-Y') }}
                         </td>
                     @endforeach
                 </tr>
             @endforeach
-
-
-
         </table>
     </div>
+    <span class="bottom-right-text">Powered By Buri</span>
 </div>
 </body>
 

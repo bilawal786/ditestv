@@ -36,7 +36,7 @@
                                     <div class=" small-box bg-info">
                                         <div class="inner text-center">
                                             <h1 class="font-weight-bold">{{$countusers}}</h1>
-                                            <p>Clienti Totali</p>
+                                            <p>Soci reistrati</p>
                                         </div>
                                         <div class="icon">
                                             <i class="fa fa-folder-plus"></i>
@@ -49,7 +49,7 @@
                                 <div class=" small-box bg-secondary">
                                     <div class="inner text-center">
                                         <h1 class="font-weight-bold">{{$count}}</h1>
-                                        <p>Scaduta</p>
+                                        <p>Soci con scadenze</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-folder-plus"></i>
@@ -57,6 +57,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <span class="bottom-right-text">Powered By Buri</span>
                     </div>
                 </div>
             </div>

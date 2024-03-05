@@ -6,6 +6,14 @@
     ?>
 
     <style>
+        @media screen and (max-width: 755px) and (max-height: 932px) {
+
+            .main{
+                display: flex;
+                justify-content: space-between;
+            }
+
+        }
         .switch {
             position: relative;
             display: inline-block;
@@ -272,7 +280,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group" id="expiry_date">
-                                            <strong>Scadenza Del Rimborso Di Emergenza :</strong>
+                                            <strong>Scadenza Ripiegamento Emergenza :</strong>
                                             <input type="date" name="repayment_expiry_date" class="form-control" id=""
                                                    value="{{$user->repayment_expiry_date}}" data-default-file="">
                                         </div>
@@ -280,7 +288,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4">
-                                        <div class="form-group d-flex">
+                                        <div class="form-group d-flex main">
                                             <label class="form-check-label mr-5" for="exampleCheck1">Allievo
                                                 :</label>
                                             <label class="switch">
@@ -294,7 +302,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
-                                        <div class="form-group d-flex">
+                                        <div class="form-group d-flex main">
                                             <label class="form-check-label mr-5" for="">Possiede il
                                                 materiale :</label>
                                             <label class="switch">
@@ -310,7 +318,7 @@
                                     </div>
 
                                     <div class="col-xs-12 col-sm-12 col-md-4">
-                                        <div class="form-group d-flex">
+                                        <div class="form-group d-flex main">
                                             <label class="form-check-label mr-5" for="">E-mail automatica :</label>
                                             <label class="switch">
                                                 <input type="checkbox" class="form-check-input"
@@ -327,7 +335,7 @@
 
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4">
-                                        <div class="form-group d-flex">
+                                        <div class="form-group d-flex main">
                                             <label class="form-check-label mr-3 font-5 "
                                                    for="exampleCheck1">Possiede Abilitazioni o C.S :</label>
                                             <div class="">
@@ -346,7 +354,7 @@
                                 <div id="additionalCheckboxes" style="display: {{$user->qualification == "yes" ? 'block': 'none'}};">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-2">
-                                            <div class="form-group d-flex">
+                                            <div class="form-group d-flex main">
                                                 <label class="form-check-label mr-3 font-5" for="dl">D.L. :</label>
                                                 <div>
                                                     <label class="switch">
@@ -361,7 +369,7 @@
                                         </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-2">
-                                            <div class="form-group d-flex">
+                                            <div class="form-group d-flex main">
                                                 <label class="form-check-label mr-3 font-5" for="ipCheckbox">I.P
                                                     :</label>
                                                 <div class="">
@@ -376,9 +384,9 @@
                                         </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-2">
-                                            <div class="form-group d-flex">
-                                                <label class="form-check-label mr-3 font-5" for="ipTandem">I.P. Tandem
-                                                    :</label>
+                                            <div class="form-group d-flex main">
+                                                <label class="form-check-label mr-3 font-5" for="ipTandem">I.P.Tandem:
+                                                    </label>
                                                 <div class="">
                                                     <label class="switch">
                                                         <input type="checkbox" class="form-check-input" name="ip_tandem"
@@ -391,7 +399,7 @@
                                         </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-2">
-                                            <div class="form-group d-flex">
+                                            <div class="form-group d-flex main">
                                                 <label class="form-check-label mr-3 font-5" for="ipAff">I.P. AFF
                                                     :</label>
                                                 <div class="">
@@ -406,7 +414,7 @@
                                         </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-2">
-                                            <div class="form-group d-flex">
+                                            <div class="form-group d-flex main">
                                                 <label class="form-check-label mr-3 font-5" for="ips">I.P.S :</label>
                                                 <div class="">
                                                     <label class="switch">
@@ -421,7 +429,7 @@
                                         </div>
 
                                         <div class="col-xs-12 col-sm-12 col-md-2">
-                                            <div class="form-group d-flex">
+                                            <div class="form-group d-flex main">
                                                 <label class="form-check-label mr-3 font-5" for="ipe">I.P.E :</label>
                                                 <div class="">
                                                     <label class="switch">
@@ -523,10 +531,10 @@
                 </div>
 
             </div>
+            <span class="bottom-right-text">Powered By Buri</span>
         </div>
     </div>
     @push('script')
-
 
         <script>
             $(document).ready(function () {

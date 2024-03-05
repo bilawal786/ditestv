@@ -107,7 +107,7 @@ class User extends Authenticatable
             $expiredDates[] = '<span class="badge badge-danger">Scadenza visita medica</span>';
         }
         if (!empty($this->repayment_expiry_date) && Carbon::parse($this->repayment_expiry_date)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza Del Rimborso Di Emergenza</span>';
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza ripegamento emergenza</span>';
         }
         if (!empty($this->ip_expiryDate) && Carbon::parse($this->ip_expiryDate)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger">Data scadenza IP</span>';

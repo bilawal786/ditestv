@@ -33,7 +33,7 @@
                                 <th>scadenza visita medica</th>
                                 <th>own_material</th>
                                 proprio materiale
-                                <th>data di scadenza del rimborso</th>
+                                <th>Scadenza Ripiegamento</th>
                                 <th>grado di contatto</th>
                                 <th>invia e-mail automatica</th>
                                 <th>stato della scadenza del test di rilascio</th>

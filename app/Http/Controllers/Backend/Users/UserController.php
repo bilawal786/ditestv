@@ -360,11 +360,11 @@ class UserController extends Controller
 
     public function export()
     {
-        return Excel::download(new UserExport, 'customers.xlsx');
+        return Excel::download(new UserExport, 'Tuttisoci.xlsx');
     }
     public function expiredUser()
     {
-        return Excel::download(new DataExport, 'expiredCustomers.xlsx');
+        return Excel::download(new DataExport, 'Sociscadenze.xlsx');
     }
 
 
@@ -380,8 +380,8 @@ class UserController extends Controller
         ];
 
 //        return view('backend.users.usersPdf');
-        $pdf = PDF::loadView('backend.users.usersPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
-        return $pdf->download('customers.pdf');
+        $pdf = PDF::loadView('backend.users.usersPdf', $data)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');
+        return $pdf->download('Tuttisoci.pdf');
     }
 
     public function expireduserPDF()
@@ -390,8 +390,8 @@ class UserController extends Controller
             'title' => 'Welcome to ItSolutionStuff.com',
             'date' => date('m/d/Y'),
         ];
-        $pdf = PDF::loadView('backend.users.expireduserPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
-        return $pdf->download('expiredCustomers.pdf');
+        $pdf = PDF::loadView('backend.users.expireduserPdf', $data)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');;
+        return $pdf->download('Sociscadenze.pdf');
     }
 
     public function expiredDaysPDF()
@@ -401,8 +401,8 @@ class UserController extends Controller
             'date' => date('m/d/Y'),
         ];
 //        return view('backend.users.expiredSevenDaysPdf');
-        $pdf = PDF::loadView('backend.users.expiredSevenDaysPdf', $data)->setOptions(['defaultFont' => 'sans-serif']);
-        return $pdf->download('expiredSevenDays.pdf');
+        $pdf = PDF::loadView('backend.users.expiredSevenDaysPdf', $data)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');
+        return $pdf->download('Sociscadenze7gg.pdf');
     }
 
 }

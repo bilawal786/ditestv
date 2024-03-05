@@ -38,7 +38,7 @@
                             class="icon-home"></i><span>Pannello Di Controllo</span></a>
                 </li>
                 <li class="{{ request()->is('users*') ? 'active' : '' }}"><a href="{{route('users.index')}}"><i
-                            class="icon-users"></i><span>Clienti</span></a></li>
+                            class="icon-users"></i><span>Tabella Scadenze</span></a></li>
             </ul>
         </nav>
     </div>

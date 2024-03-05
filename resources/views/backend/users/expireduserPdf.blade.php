@@ -20,6 +20,13 @@
         .expired-date {
             color: red;
         }
+        .bottom-right-text {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            color:darkgrey;
+            margin: 20px; /* Optional: Adjust the margin as per your preference */
+        }
         </style>
 </head>
 <body style="font-family: Verdana;font-size: 12px;">
@@ -30,18 +37,18 @@
                  src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('images/loding.png')))}}">
         </div>
         <div style="display: inline-block;  text-align: center; padding-left: 50px; margin-top: 16px;">
-            <h1 style="color: white;margin-top: 40px;">Clienti Scaduti</h1>
+            <h1 style="color: white;margin-top: 40px;">Scoci con scadenze attive</h1>
         </div>
     </div>
     <br>
     <div class="row">
-        <table>
+        <table style="width: 100%;">
             <tr>
                 <th style="font-family:  Verdana;padding-right: 10px;">Nome</th>
                 <th style="font-family: Verdana;">Scadenza assicurazione</th>
                 <th style="padding-right: 30px;font-family: Verdana;">Scadenza attività </th>
-                <th style="padding-right: 10px;font-family: Verdana;">Scadenza dell'esame</th>
-                <th style="padding-right: 6px;font-family: Verdana;padding-left: 15px;">Rimborso di emergenza
+                <th style="padding-right: 10px;font-family: Verdana;">Scadenza vista medica</th>
+                <th style="padding-right: 6px;font-family: Verdana;padding-left: 15px;">Scadenza Ripiegamento
                 </th>
                 <th style="padding-right: 0px;padding-left: 10px;font-family: Verdana;">Scadenza prova di sgancio
                 </th>
@@ -104,6 +111,7 @@
 
         </table>
     </div>
+    <span class="bottom-right-text">Powered By Buri</span>
 </div>
 </body>
 
