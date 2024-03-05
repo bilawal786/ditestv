@@ -129,9 +129,7 @@ class UserController extends Controller
         $user->own_material = $request->own_material ? 'yes' : 'no';
         if ($user->own_material == 'yes') {
             $user->repayment_expiry_date = $request->repayment_expiry_date;
-//            $user->emergency_repayment_date = $request->emergency_repayment_date;
         } else {
-//            $user->emergency_repayment_date = $request->emergency_repayment_date;
             $user->repayment_expiry_date = '';
         }
         if ($user->student == 'yes') {
@@ -146,7 +144,6 @@ class UserController extends Controller
         $user->password = $request->password ?? '123456700';
         $user->role = $request->role ?? '1';
 
-        //new fields add
 
         //new fields add
         $user->qualification = $request->qualification ? 'yes' : 'no';
@@ -367,7 +364,6 @@ class UserController extends Controller
         return Excel::download(new DataExport, 'Sociscadenze.xlsx');
     }
 
-
     public function expiredSevenDays()
     {
         return Excel::download(new DataExport, 'expiredSevenDays.xlsx');
@@ -390,6 +386,8 @@ class UserController extends Controller
             'title' => 'Welcome to ItSolutionStuff.com',
             'date' => date('m/d/Y'),
         ];
+//        return view('backend.users.expireduserPdf');
+
         $pdf = PDF::loadView('backend.users.expireduserPdf', $data)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');;
         return $pdf->download('Sociscadenze.pdf');
     }

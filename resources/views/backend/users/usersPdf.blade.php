@@ -28,7 +28,7 @@
                  src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('images/loding.png')))}}">
         </div>
 
-        <div style="display: inline-block;  text-align: center;padding-left: 50px; margin-top: 16px;">
+        <div style="display: inline-block;  text-align: center;padding-left: 50px;margin-left: 200px; margin-top: 16px;">
             <h1 style="color: white; margin-top: 40px;font-family: Verdana;">Tutti i Clienti</h1>
         </div>
     </div>
@@ -36,7 +36,7 @@
     <div class="row">
         <table style="width: 100%;">
             <tr>
-                <th style="font-family:  Verdana;padding-right: 10px;">Nome</th>
+                <th style="font-family:  Verdana;padding-right: 45px;">Nome</th>
                 <th style="font-family: Verdana;">Scadenza assicurazione</th>
                 <th style="padding-right: 30px;font-family: Verdana;">Scadenza attività</th>
                 <th style="padding-right: 10px;font-family: Verdana;">Scadenza vista medica</th>
@@ -54,17 +54,57 @@
                 <tr>
                     <td class="" style="padding-left: 23px;">{{$user->first_name . ' ' . $user->last_name}}</td>
                     <td class="m-5" style="padding-left: 21px;">
-                        {{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}
+{{--                        {{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}--}}
+
+                        @if(!empty($user->insurance_expiration))
+                            {{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}
+                        @else
+
+                        @endif
                     </td>
                     <td class="m-5"
-                        style="padding-left: 15px;">{{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}</td>
+                        style="padding-left: 15px;">
+{{--                        {{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}--}}
+                        @if(!empty($user->minimum_activity_deadline))
+                            {{ date_format(date_create($user->minimum_activity_deadline), 'd-m-Y') }}
+                        @else
+
+                        @endif
+                    </td>
+
+                    <td class="m-5" style="padding-left: 18px;">
+                        @if(!empty($user->medical_examination_deadline))
+                            {{ date_format(date_create($user->medical_examination_deadline), 'd-m-Y') }}
+                        @else
+
+                        @endif
+                    </td>
                     <td class="m-5"
-                        style="padding-left: 18px;">{{date_format(date_create($user->medical_examination_deadline), 'd-m-Y')}}</td>
+                        style="padding-left: 32px;">
+{{--                        {{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}--}}
+                        @if(!empty($user->repayment_expiry_date))
+                            {{ date_format(date_create($user->repayment_expiry_date), 'd-m-Y') }}
+                        @else
+
+                        @endif
+                    </td>
                     <td class="m-5"
-                        style="padding-left: 32px;">{{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}</td>
-                    <td class="m-5"
-                        style="padding-left: 30px;">{{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}</td>
-                    <td class="m-5">{{date_format(date_create($user->ip_expiryDate),'d-m-Y')}}</td>
+                        style="padding-left: 30px;">
+{{--                        {{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}--}}
+                        @if(!empty($user->release_test_deadline))
+                            {{ date_format(date_create($user->release_test_deadline), 'd-m-Y') }}
+                        @else
+
+                        @endif
+                    </td>
+                    <td class="m-5">
+{{--                        {{date_format(date_create($user->ip_expiryDate),'d-m-Y')}}--}}
+                        @if(!empty($user->ip_expiryDate))
+                            {{ date_format(date_create($user->ip_expiryDate), 'd-m-Y') }}
+                        @else
+
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </table>
@@ -72,7 +112,7 @@
 
 
 
-    <span class="bottom-right-text">Powered By Buri</span>
+
 </div>
 </body>
 
@@ -178,7 +218,7 @@
 {{--        </table>--}}
 {{--    </div>--}}
 
-{{--    <span class="bottom-right-text">Powered By Buri</span>--}}
+{{--    --}}
 {{--</div>--}}
 {{--</body>--}}
 

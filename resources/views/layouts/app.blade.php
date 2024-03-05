@@ -1,8 +1,8 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @php
     $setting = \App\Models\Settings::first();
 @endphp
-    <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <title>{{$setting->title}}</title>
     <!-- CSRF Token -->
@@ -28,6 +28,7 @@
         .block-header {
             padding: 10px;
         }
+
         .error {
             width: 100%;
             margin-top: 0.25rem;
@@ -40,16 +41,34 @@
             height: 80px;
             margin: 0 auto;
         }
+
         .navbar-fixed-top .navbar-btn .logo {
-             width: 62px;
-         }
+            width: 62px;
+        }
 
         .bottom-right-text {
             position: fixed;
             bottom: 0;
             right: 0;
-            color:darkgrey;
+            color: darkgrey;
             margin: 20px; /* Optional: Adjust the margin as per your preference */
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #e67238;
+            color: white;
+            padding: 7px;
+            text-align: right;
+            padding-right: 35px;
+            z-index: 1;
+        }
+
+        .footer span {
+            /*padding-left: 200px;*/
         }
     </style>
 </head>
@@ -69,8 +88,10 @@
         @if(!request()->is('login'))
             @include('backend.includes.navigation')
             @include('backend.includes.leftsidebar')
+            @include('backend.includes.footer')
         @endif
         @yield('content')
+
     </div>
 </div>
 

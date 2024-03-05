@@ -13,20 +13,8 @@
         $countusers = \App\Models\User::Where('role',1)->count();
     @endphp
     <div id="main-content">
-        <div class="block-header">
-            <div class="row clearfix">
-                <div class="col-md-6 col-sm-12">
-                    <h2>Pannello Di Controllo</h2>
-                </div>
-                <div class="col-md-6 col-sm-12 text-right">
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('dashboard.index')}}"><i class="icon-home"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
+
+        <div class="container-fluid" style="margin-top: 10px;">
             <div class="row clearfix">
                 <div class="col-12">
                     <div class="top_report">
@@ -58,10 +46,11 @@
                             </div>
                         </div>
 
-                        <span class="bottom-right-text">Powered By Buri</span>
+{{--                        <span class="bottom-right-text"></span>--}}
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

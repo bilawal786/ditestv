@@ -514,7 +514,7 @@
                     </div>
                 </div>
             </div>
-            <span class="bottom-right-text">Powered By Buri</span>
+
         </div>
 
         @endsection
