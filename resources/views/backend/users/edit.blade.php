@@ -463,7 +463,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-4" id="ipDateContainer"
                                          style="display: {{$user->ip == "yes" ? 'block': 'none'}};">
                                         <div class="form-group">
-                                            <strong>Data scadenza IP: {{date_format($user->ip_expiryDate,'m-d-Y')}}</strong>
+                                            <strong>Data scadenza IP:</strong>
                                             <input type="date" name="ip_expiryDate" class="form-control" id="ipDateInput"
                                                    value="{{ date('Y-m-d', strtotime($user->ip_expiryDate)) }}">
 
