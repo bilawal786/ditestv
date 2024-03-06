@@ -93,12 +93,35 @@ class EmailService
             }
         }
     }
+
+
+    public function ip_expiry_date()
+    {
+        $users = User::where('role', 1)->get();
+        $today = Carbon::now()->addDays(30)->format('Y-m-d');
+        foreach ($users as $user) {
+            if ($user->send_auto_email == 'yes') {
+                $releaseTestDeadline = Carbon::parse($user->ip_expiryDate)->format('Y-m-d');
+                if ($user->ip_expiryDate !== $user->ip_expiryDate) {
+                    if ($today == $releaseTestDeadline) {
+                        dispatch(new SendEmailJob($user, 'ip_expiryDate'))->delay(10);
+                        $user->expiry_date_status = $user->ip_expiryDate;
+                        $user->update();
+                    }
+                }
+            }
+        }
+    }
+
+
+
     public function sendAllEmails()
     {
         $this->release_test_deadline_send_email();
         $this->minimum_activity_deadline();
         $this->insurance_expiration();
         $this->medical_examination_deadline();
+        $this->ip_expiry_date();
         $this->expiry_date();
         return redirect()->back();
     }

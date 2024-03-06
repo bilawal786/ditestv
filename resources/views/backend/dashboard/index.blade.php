@@ -46,7 +46,7 @@
                             </div>
                         </div>
 
-{{--                        <span class="bottom-right-text"></span>--}}
+                        {{--                        <span class="bottom-right-text"></span>--}}
                     </div>
                 </div>
             </div>

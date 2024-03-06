@@ -138,8 +138,6 @@ class User extends Authenticatable
     }
 
 
-
-
     public function isWithinRange($date)
     {
         return $date && $date->lte(Carbon::now()) && $date->gte(Carbon::now()->subDays(8));
