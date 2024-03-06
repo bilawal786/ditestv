@@ -244,6 +244,16 @@
                                                    value="{{$user->village}}" data-default-file="">
                                         </div>
                                     </div>
+
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <div class="form-group" id="released_on">
+                                            <strong>Rilasciata il :</strong>
+                                            <input type="text" name="released_on" class="form-control" id=""
+                                                   value="{{$user->released_on}}" data-default-file="">
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4">
@@ -263,16 +273,7 @@
                                                    value="{{$user->license_number}}" data-default-file="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-4">
-                                        <div class="form-group" id="released_on">
-                                            <strong>Rilasciata il :</strong>
-                                            <input type="text" name="released_on" class="form-control" id=""
-                                                   value="{{$user->released_on}}" data-default-file="">
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group" id="expiry_date">
                                             <strong>Scadenza Ripiegamento Emergenza :</strong>
@@ -280,7 +281,12 @@
                                                    value="{{date_format($user->repayment_expiry_date,'Y-m-d')}}" data-default-file="">
                                         </div>
                                     </div>
+
                                 </div>
+
+{{--                                <div class="row">--}}
+{{--                                   --}}
+{{--                                </div>--}}
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group d-flex main">

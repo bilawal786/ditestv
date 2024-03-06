@@ -265,8 +265,7 @@
                                                data-default-file="">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Contatto Di Emergenza :</strong>
@@ -276,7 +275,9 @@
                                                data-default-file="">
                                     </div>
                                 </div>
+
                             </div>
+
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group d-flex main">
