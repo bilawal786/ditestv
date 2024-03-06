@@ -163,7 +163,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group" id="license_number">
                                         <strong>Numero di licenza :</strong>
                                         <input type="text" name="license_number" readonly class="form-control" id=""
                                                value="{{$user->license_number}}" data-default-file="">
@@ -185,8 +185,8 @@
                                                value="{{$user->birth_place}}" data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-4" >
+                                    <div class="form-group" id="released_on">
                                         <strong>Rilasciata il :</strong>
                                         <input type="text" name="released_on" readonly class="form-control" id=""
                                                value="{{$user->released_on}}" data-default-file="">
@@ -248,7 +248,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group" id="expiry_date">
                                         <strong>Scadenza Ripiegamento Emergenza :</strong>
                                         <input type="date" name="repayment_expiry_date" readonly
                                                value="{{date('Y-m-d', strtotime($user->repayment_expiry_date,))}}"
@@ -282,7 +282,7 @@
                                     <div class="form-group d-flex main">
                                         <label class="form-check-label mr-5" for="exampleCheck1">Allievo :</label>
                                         <label class="switch">
-                                            <input type="checkbox" name="student" class="form-check-input"
+                                            <input type="checkbox" name="student" id="student" class="form-check-input"
                                                    id="exampleCheck1" value="{{$user->student}}"
                                                    data-default-file=""
                                                    @if($user->student === 'yes')checked @endif>
@@ -297,7 +297,7 @@
                                         <label class="switch">
                                             <input type="checkbox" class="form-check-input"
                                                    value="{{$user->own_material}}"
-                                                   id="exampleCheck1"
+                                                   id="own_material"
                                                    name="own_material"
                                                    data-default-file=""
                                                    @if($user->own_material === 'yes')checked @endif>
@@ -522,6 +522,38 @@
             <script>
                 $(document).ready(function () {
 
+                    var ownMaterialCheckbox = $('#own_material');
+                    var expiryDateInput = $('#expiry_date input');
+
+
+                    function showExpiryDateAndHideEmergencyContact() {
+                        expiryDateInput.closest('.form-group').show();
+                        expiryDateInput.prop('required', true);
+                    }
+
+                    function hideExpiryDateAndShowEmergencyContact() {
+                        expiryDateInput.closest('.form-group').hide();
+                        expiryDateInput.prop('required', false);
+                    }
+
+                    // Initial check
+                    if (ownMaterialCheckbox.prop('checked')) {
+                        showExpiryDateAndHideEmergencyContact();
+                    } else {
+                        hideExpiryDateAndShowEmergencyContact();
+                    }
+
+                    ownMaterialCheckbox.change(function () {
+                        if (ownMaterialCheckbox.prop('checked')) {
+                            showExpiryDateAndHideEmergencyContact();
+                        } else {
+                            hideExpiryDateAndShowEmergencyContact();
+                        }
+                    });
+
+
+
+
 
                     var qualificationCheckbox = document.getElementById("qualification");
                     var additionalCheckboxes = document.getElementById("additionalCheckboxes");
@@ -620,6 +652,44 @@
                         } else {
                             ipeReleaseDateDiv.style.display = "none";
                             ipeReleaseDateInput.removeAttribute("required");
+                        }
+                    });
+
+
+                    var studentCheckbox = $('#student');
+                    var releasedOn = $('#released_on input');
+                    var licenseNumber = $('#license_number input');
+
+                    function addRequiredValidation() {
+                        releasedOn.prop('required', true);
+                        licenseNumber.prop('required', true);
+                    }
+
+                    function removeRequiredValidation() {
+                        releasedOn.prop('required', false);
+                        licenseNumber.prop('required', false);
+                    }
+
+                    if (studentCheckbox.prop('checked')) {
+                        releasedOn.closest('.form-group').hide();
+                        licenseNumber.closest('.form-group').hide();
+                        removeRequiredValidation();
+                    } else {
+                        releasedOn.closest('.form-group').show();
+                        licenseNumber.closest('.form-group').show();
+
+                        addRequiredValidation();
+                    }
+
+                    studentCheckbox.change(function () {
+                        if (studentCheckbox.prop('checked')) {
+                            releasedOn.closest('.form-group').hide();
+                            licenseNumber.closest('.form-group').hide();
+                            removeRequiredValidation();
+                        } else {
+                            releasedOn.closest('.form-group').show();
+                            licenseNumber.closest('.form-group').show();
+                            addRequiredValidation();
                         }
                     });
 
