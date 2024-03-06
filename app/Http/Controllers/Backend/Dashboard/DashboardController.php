@@ -25,6 +25,7 @@ class DashboardController extends Controller
                 Carbon::parse($user->release_test_deadline)->isPast() ||
                 Carbon::parse($user->insurance_expiration)->isPast() ||
                 Carbon::parse($user->medical_examination_deadline)->isPast() ||
+                Carbon::parse($user->ip_expiryDate)->isPast() ||
                 (!empty($user->repayment_expiry_date) && Carbon::parse($user->repayment_expiry_date)->isPast())
             ) {
                 $count++;

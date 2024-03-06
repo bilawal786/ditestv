@@ -145,6 +145,4 @@ class User extends Authenticatable
         return $date && $date->lte(Carbon::now()) && $date->gte(Carbon::now()->subDays(8));
     }
 
-
-
 }
