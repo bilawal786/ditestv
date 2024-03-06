@@ -275,7 +275,6 @@
                                                data-default-file="">
                                     </div>
                                 </div>
-
                             </div>
 
                             <div class="row">
@@ -396,7 +395,7 @@
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ip_aff"
                                                            id="ipAff" data-default-file=""
-                                                           @if($user->ipAff === 'yes')checked @endif>
+                                                           @if($user->ip_aff === 'yes')checked @endif>
                                                     <span class="slider round"></span>
                                                 </label>
                                             </div>
