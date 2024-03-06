@@ -26,10 +26,7 @@
                    class="btn btn-sm btn-secondary mb-lg-0 mb-sm-3 mb-xs-3">
                     <i class="fa fa-file-excel-o"></i> Esporta scaduti  soci
                 </a>
-                {{--            <a href="{{ route('expiredSevenDays') }}" style="margin-right: 5px; margin-bottom: 10px;"--}}
-                {{--               class="btn btn-sm btn-danger btn-round" title="">--}}
-                {{--                Sette giorni scaduti--}}
-                {{--            </a>--}}
+
 
             </div>
     </div>
