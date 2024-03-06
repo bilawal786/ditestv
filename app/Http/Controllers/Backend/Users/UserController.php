@@ -400,7 +400,7 @@ class UserController extends Controller
         ];
 //        return view('backend.users.expiredSevenDaysPdf');
         $pdf = PDF::loadView('backend.users.expiredSevenDaysPdf', $data)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');
-        return $pdf->download('Sociscadenze7gg.pdf');
+        return $pdf->download('Sociscadenze8gg.pdf');
     }
 
 }
