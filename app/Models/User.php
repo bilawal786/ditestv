@@ -24,7 +24,6 @@ class User extends Authenticatable
      */
 
 
-
     protected $fillable = [
         'first_name',
         'last_name',
@@ -48,7 +47,7 @@ class User extends Authenticatable
         'medical_examination_deadline',
         'repayment_expiry_date',
         'own_material',//checkbox
-          //repayment expiry date    /on
+        //repayment expiry date    /on
         'degree_of_contact',
         'role',
         'password',
@@ -106,35 +105,37 @@ class User extends Authenticatable
     ];
 
 
-
     public function showExpiredDate()
     {
         $expiredDates = [];
 
         if (Carbon::parse($this->minimum_activity_deadline)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza minima attività</span>';
+            $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza minima attività</span><br>';
         }
         if (Carbon::parse($this->release_test_deadline)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza del test di rilascio</span>';
+            $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza del test di rilascio</span><br>';
         }
         if (Carbon::parse($this->insurance_expiration)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza dell assicurazione</span>';
+            $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza dell assicurazione</span><br>';
         }
         if (Carbon::parse($this->medical_examination_deadline)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza visita medica</span>';
+            $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza visita medica</span><br>';
         }
 
         if (!empty($this->repayment_expiry_date) && Carbon::parse($this->repayment_expiry_date)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Scadenza ripegamento emergenza</span>';
+            $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza ripegamento emergenza</span><br>';
         }
+
         if (!empty($this->ip_expiryDate) && Carbon::parse($this->ip_expiryDate)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger">Scadenza IP</span>';
         }
+
         if (empty($expiredDates)) {
             return '<span class="badge badge-success">NESSUNA SCADENZA</span>';
         } else {
             return implode(' ', $expiredDates);
         }
+
     }
 
 

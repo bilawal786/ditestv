@@ -36,7 +36,7 @@ class CreateUsersTable extends Migration
             $table->string('insurance_expiration');
             $table->string('medical_examination_deadline');
             $table->string('own_material')->default('no');
-            $table->string('repayment_expiry_date');
+            $table->string('repayment_expiry_date')->nullable();
             $table->string('degree_of_contact')->nullable();
             $table->string('user_image')->nullable();
             $table->string('send_auto_email')->nullable();

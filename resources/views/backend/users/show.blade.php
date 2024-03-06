@@ -5,7 +5,7 @@
 
         @media screen and (max-width: 755px) and (max-height: 932px) {
 
-            .main{
+            .main {
                 display: flex;
                 justify-content: space-between;
             }
@@ -185,7 +185,7 @@
                                                value="{{$user->birth_place}}" data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4" >
+                                <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group" id="released_on">
                                         <strong>Rilasciata il :</strong>
                                         <input type="text" name="released_on" readonly class="form-control" id=""
@@ -199,7 +199,8 @@
                                         <strong>Scadenza prova di sgancio :</strong>
                                         <input type="date" name="release_test_deadline" readonly class="form-control"
                                                id=""
-                                               value="{{ date('Y-m-d', strtotime($user->release_test_deadline))}}" data-default-file="">
+                                               value="{{ date('Y-m-d', strtotime($user->release_test_deadline))}}"
+                                               data-default-file="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
@@ -207,7 +208,8 @@
                                         <strong>Scadenza attività minima :</strong>
                                         <input type="date" name="minimum_activity_deadline" readonly
                                                class="form-control" id=""
-                                               value="{{date('Y-m-d', strtotime($user->minimum_activity_deadline))}}" data-default-file="">
+                                               value="{{date('Y-m-d', strtotime($user->minimum_activity_deadline))}}"
+                                               data-default-file="">
                                     </div>
                                 </div>
 
@@ -225,7 +227,8 @@
                                         <strong>Scadenza assicurazione :</strong>
                                         <input type="date" name="insurance_expiration" readonly class="form-control"
                                                id=""
-                                               value="{{date('Y-m-d', strtotime($user->insurance_expiration))}}" data-default-file="">
+                                               value="{{date('Y-m-d', strtotime($user->insurance_expiration))}}"
+                                               data-default-file="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
@@ -233,7 +236,8 @@
                                         <strong>Scadenza visita medica :</strong>
                                         <input type="date" name="medical_examination_deadline" readonly
                                                class="form-control"
-                                               id="" value="{{date('Y-m-d', strtotime($user->medical_examination_deadline))}}"
+                                               id=""
+                                               value="{{date('Y-m-d', strtotime($user->medical_examination_deadline))}}"
                                                data-default-file="">
                                     </div>
                                 </div>
@@ -251,7 +255,7 @@
                                     <div class="form-group" id="expiry_date">
                                         <strong>Scadenza Ripiegamento Emergenza :</strong>
                                         <input type="date" name="repayment_expiry_date" readonly
-                                               value="{{date('Y-m-d', strtotime($user->repayment_expiry_date,))}}"
+                                               value="{{ !empty($user->repayment_expiry_date) ? date('Y-m-d', strtotime($user->repayment_expiry_date)) : '' }}"
                                                class="form-control"
                                                data-default-file="">
                                     </div>
@@ -375,7 +379,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-2">
                                         <div class="form-group d-flex main">
                                             <label class="form-check-label mr-3 font-5" for="ipTandem">I.P.Tandem:
-                                                </label>
+                                            </label>
                                             <div class="">
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ip_tandem"
@@ -453,7 +457,7 @@
                                         <strong>Data scadenza IP:</strong>
                                         <input type="date" name="ip_expiryDate" class="form-control"
                                                id="ipDateInput"
-                                               value="{{ old('ip_expiryDate',date('Y-m-d', strtotime($user->ip_expiryDate))) }}"
+                                               value="{{ !empty($user->ip_expiryDate) ? date('Y-m-d', strtotime($user->ip_expiryDate)) : '' }}"
                                                data-default-file="" readonly>
                                     </div>
                                 </div>
@@ -550,9 +554,6 @@
                             hideExpiryDateAndShowEmergencyContact();
                         }
                     });
-
-
-
 
 
                     var qualificationCheckbox = document.getElementById("qualification");

@@ -129,8 +129,6 @@ class UserController extends Controller
         $user->own_material = $request->own_material ? 'yes' : 'no';
         if ($user->own_material == 'yes') {
             $user->repayment_expiry_date = $request->repayment_expiry_date;
-        } else {
-            $user->repayment_expiry_date = '';
         }
         if ($user->student == 'yes') {
             $user->released_on = '';
@@ -160,38 +158,26 @@ class UserController extends Controller
 
         if ($user->dl === 'yes') {
             $user->dl_releaseDate = $request->dl_releaseDate;
-        } else {
-            $user->dl_releaseDate = '';
         }
 
         if ($user->ip === 'yes') {
             $user->ip_expiryDate = $request->ip_expiryDate;
-        } else {
-            $user->ip_expiryDate = '';
         }
 
         if ($user->ip_tandem === 'yes') {
             $user->tandem_release_date = $request->tandem_release_date;
-        } else {
-            $user->tandem_release_date = '';
         }
 
         if ($user->ip_aff === 'yes') {
             $user->ip_aff_release_date = $request->ip_aff_release_date ?: '';
-        } else {
-            $user->ip_aff_release_date = '';
         }
 
         if ($user->ips === 'yes') {
             $user->ips_release_date = $request->ips_release_date;
-        } else {
-            $user->ips_release_date = '';
         }
 
         if ($user->ipe === 'yes') {
             $user->ipe_release_date = $request->ipe_release_date;
-        } else {
-            $user->ipe_release_date = '';
         }
 
         $user->save();
@@ -260,9 +246,6 @@ class UserController extends Controller
         if ($user->own_material == 'yes') {
             $user->repayment_expiry_date = $request->repayment_expiry_date;
 //            $user->emergency_repayment_date = $request->emergency_repayment_date;
-        } else {
-//            $user->emergency_repayment_date = $request->emergency_repayment_date;
-            $user->repayment_expiry_date = '';
         }
         $user->degree_of_contact = $request->degree_of_contact;
         $user->password = $request->password ?? '123456700';
@@ -294,40 +277,27 @@ class UserController extends Controller
 
         if ($user->dl === 'yes') {
             $user->dl_releaseDate = $request->dl_releaseDate;
-        } else {
-            $user->dl_releaseDate = '';
         }
 
         if ($user->ip === 'yes') {
             $user->ip_expiryDate = $request->ip_expiryDate;
-        } else {
-            $user->ip_expiryDate = '';
         }
 
         if ($user->ip_tandem === 'yes') {
             $user->tandem_release_date = $request->tandem_release_date;
-        } else {
-            $user->tandem_release_date = '';
         }
 
         if ($user->ip_aff === 'yes') {
-            $user->ip_aff_release_date = $request->ip_aff_release_date ?: '';
-        } else {
-            $user->ip_aff_release_date = '';
+            $user->ip_aff_release_date = $request->ip_aff_release_date ;
         }
 
         if ($user->ips === 'yes') {
             $user->ips_release_date = $request->ips_release_date;
-        } else {
-            $user->ips_release_date = '';
         }
 
         if ($user->ipe === 'yes') {
             $user->ipe_release_date = $request->ipe_release_date;
-        } else {
-            $user->ipe_release_date = '';
         }
-
 
         $user->update();
         $notification = array(

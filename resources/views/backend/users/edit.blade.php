@@ -278,7 +278,7 @@
                                         <div class="form-group" id="expiry_date">
                                             <strong>Scadenza Ripiegamento Emergenza :</strong>
                                             <input type="date" name="repayment_expiry_date" class="form-control" id=""
-                                                   value="{{date_format($user->repayment_expiry_date,'Y-m-d')}}" data-default-file="">
+                                                   value="{{$user->repayment_expiry_date?$user->repayment_expiry_date->format('Y-m-d'):''}}" data-default-file="">
                                         </div>
                                     </div>
 
@@ -465,11 +465,10 @@
                                         <div class="form-group">
                                             <strong>Data scadenza IP:</strong>
                                             <input type="date" name="ip_expiryDate" class="form-control" id="ipDateInput"
-                                                   value="{{ date('Y-m-d', strtotime($user->ip_expiryDate)) }}">
+                                                   value="{{$user->ip_expiryDate?$user->ip_expiryDate->format('Y-m-d'):''}} ">
 
                                         </div>
                                     </div>
-
 
                                     <div class="col-xs-12 col-sm-12 col-md-4" id="tandemReleaseDate"
                                          style="display: {{$user->ip_tandem == "yes" ? 'block': 'none'}};">

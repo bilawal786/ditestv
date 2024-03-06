@@ -94,8 +94,7 @@ class EmailService
         }
     }
 
-
-    public function ip_expiry_date()
+    public function ip_expiryDate()
     {
         $users = User::where('role', 1)->get();
         $today = Carbon::now()->addDays(30)->format('Y-m-d');
@@ -121,7 +120,7 @@ class EmailService
         $this->minimum_activity_deadline();
         $this->insurance_expiration();
         $this->medical_examination_deadline();
-        $this->ip_expiry_date();
+        $this->ip_expiryDate();
         $this->expiry_date();
         return redirect()->back();
     }
