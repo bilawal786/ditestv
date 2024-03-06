@@ -29,7 +29,7 @@
         </div>
 
         <div style="display: inline-block;  text-align: center;padding-left: 50px;margin-left: 200px; margin-top: 16px;">
-            <h1 style="color: white; margin-top: 40px;font-family: Verdana;">Tutti i Clienti</h1>
+            <h1 style="color: white; margin-top: 40px;font-family: Verdana;">Tutti i soci</h1>
         </div>
     </div>
     <br>
@@ -54,8 +54,6 @@
                 <tr>
                     <td class="" style="padding-left: 23px;">{{$user->first_name . ' ' . $user->last_name}}</td>
                     <td class="m-5" style="padding-left: 21px;">
-{{--                        {{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}--}}
-
                         @if(!empty($user->insurance_expiration))
                             {{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}
                         @else
@@ -64,7 +62,6 @@
                     </td>
                     <td class="m-5"
                         style="padding-left: 15px;">
-{{--                        {{date_format(date_create($user->minimum_activity_deadline), 'd-m-Y')}}--}}
                         @if(!empty($user->minimum_activity_deadline))
                             {{ date_format(date_create($user->minimum_activity_deadline), 'd-m-Y') }}
                         @else
@@ -81,7 +78,6 @@
                     </td>
                     <td class="m-5"
                         style="padding-left: 32px;">
-{{--                        {{date_format(date_create($user->repayment_expiry_date), 'd-m-Y')}}--}}
                         @if(!empty($user->repayment_expiry_date))
                             {{ date_format(date_create($user->repayment_expiry_date), 'd-m-Y') }}
                         @else
@@ -90,7 +86,6 @@
                     </td>
                     <td class="m-5"
                         style="padding-left: 30px;">
-{{--                        {{date_format(date_create($user->release_test_deadline), 'd-m-Y')}}--}}
                         @if(!empty($user->release_test_deadline))
                             {{ date_format(date_create($user->release_test_deadline), 'd-m-Y') }}
                         @else
@@ -98,7 +93,6 @@
                         @endif
                     </td>
                     <td class="m-5">
-{{--                        {{date_format(date_create($user->ip_expiryDate),'d-m-Y')}}--}}
                         @if(!empty($user->ip_expiryDate))
                             {{ date_format(date_create($user->ip_expiryDate), 'd-m-Y') }}
                         @else

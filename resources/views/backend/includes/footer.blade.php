@@ -1,4 +1,4 @@
 <div class="footer">
-    <span class="">Powered By Buri</span>
+    <span class="">Powered by Buri for SkyDive Verona.</span>
 </div>
 

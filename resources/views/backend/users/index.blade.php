@@ -3,7 +3,7 @@
 @section('content')
     <style>
         .black-bg-row {
-            background-color: #1c1c1c !important; /* Use !important to override other styles */
+            background-color: #191970 !important; /* Use !important to override other styles */
             color: white;
         }
 
@@ -89,7 +89,7 @@
                         {data: 'action', name: 'action', orderable: false, searchable: false},
                     ],
                     createdRow: function (row, data, dataIndex) {
-                        if (data.status !== '<span class="badge badge-success">Not Expired</span>') {
+                        if (data.status !== '<span class="badge badge-success">NESSUNA SCADENZA</span>') {
                             $(row).addClass('black-bg-row');
                         }
                     },

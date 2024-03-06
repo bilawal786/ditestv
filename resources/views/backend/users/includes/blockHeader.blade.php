@@ -18,13 +18,13 @@
                     <i class="fa fa-file-pdf-o"></i> PDF soci con scadenze </a>
 
                 <a href="{{ route('expiredDays') }}" class="btn btn-sm btn-danger mb-lg-0 mb-sm-3 ">
-                    <i class="fa fa-file-pdf-o"></i> Scad 7 giorni</a>
+                    <i class="fa fa-file-pdf-o"></i> Scad 8 giorni</a>
 
                 <a href="{{ route('export.data') }}" class="btn btn-sm btn-success mb-lg-0  mb-sm-3">
                     <i class="fa fa-file-excel-o"></i> Esporta tutti i soci</a>
                 <a href="{{ route('expired.data') }}"
                    class="btn btn-sm btn-secondary mb-lg-0 mb-sm-3 mb-xs-3">
-                    <i class="fa fa-file-excel-o"></i> Esporta Utenti Scaduti
+                    <i class="fa fa-file-excel-o"></i> Esporta scaduti  soci
                 </a>
                 {{--            <a href="{{ route('expiredSevenDays') }}" style="margin-right: 5px; margin-bottom: 10px;"--}}
                 {{--               class="btn btn-sm btn-danger btn-round" title="">--}}

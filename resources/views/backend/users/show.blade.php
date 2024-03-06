@@ -199,7 +199,7 @@
                                         <strong>Scadenza prova di sgancio :</strong>
                                         <input type="date" name="release_test_deadline" readonly class="form-control"
                                                id=""
-                                               value="{{$user->release_test_deadline}}" data-default-file="">
+                                               value="{{ date('Y-m-d', strtotime($user->release_test_deadline))}}" data-default-file="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
@@ -207,7 +207,7 @@
                                         <strong>Scadenza attività minima :</strong>
                                         <input type="date" name="minimum_activity_deadline" readonly
                                                class="form-control" id=""
-                                               value="{{$user->minimum_activity_deadline}}" data-default-file="">
+                                               value="{{date('Y-m-d', strtotime($user->minimum_activity_deadline))}}" data-default-file="">
                                     </div>
                                 </div>
 
@@ -225,7 +225,7 @@
                                         <strong>Scadenza assicurazione :</strong>
                                         <input type="date" name="insurance_expiration" readonly class="form-control"
                                                id=""
-                                               value="{{$user->insurance_expiration}}" data-default-file="">
+                                               value="{{date('Y-m-d', strtotime($user->insurance_expiration))}}" data-default-file="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
@@ -233,7 +233,7 @@
                                         <strong>Scadenza visita medica :</strong>
                                         <input type="date" name="medical_examination_deadline" readonly
                                                class="form-control"
-                                               id="" value="{{$user->medical_examination_deadline}}"
+                                               id="" value="{{date('Y-m-d', strtotime($user->medical_examination_deadline))}}"
                                                data-default-file="">
                                     </div>
                                 </div>
@@ -251,7 +251,7 @@
                                     <div class="form-group">
                                         <strong>Scadenza Ripiegamento Emergenza :</strong>
                                         <input type="date" name="repayment_expiry_date" readonly
-                                               value="{{$user->repayment_expiry_date}}"
+                                               value="{{date('Y-m-d', strtotime($user->repayment_expiry_date,))}}"
                                                class="form-control"
                                                data-default-file="">
                                     </div>
@@ -453,7 +453,7 @@
                                         <strong>Data scadenza IP:</strong>
                                         <input type="date" name="ip_expiryDate" class="form-control"
                                                id="ipDateInput"
-                                               value="{{ old('ip_expiryDate',$user->ip_expiryDate) }}"
+                                               value="{{ old('ip_expiryDate',date('Y-m-d', strtotime($user->ip_expiryDate))) }}"
                                                data-default-file="" readonly>
                                     </div>
                                 </div>

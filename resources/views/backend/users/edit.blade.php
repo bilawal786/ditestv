@@ -8,12 +8,13 @@
     <style>
         @media screen and (max-width: 755px) and (max-height: 932px) {
 
-            .main{
+            .main {
                 display: flex;
                 justify-content: space-between;
             }
 
         }
+
         .switch {
             position: relative;
             display: inline-block;
@@ -103,7 +104,6 @@
                                     </ul>
                                 </div>
                             @endif
-                            {{--                            {!! Form::open(array('route' => 'users.edit',$user->id,'method'=>'POST')) !!}--}}
                             <form method="POST" action="{{route('users.update',[$user->id])}}"
                                   enctype="multipart/form-data">
                                 @csrf
@@ -173,11 +173,6 @@
                                             <input type="text" required name="resident" class="form-control" id=""
                                                    value="{{$user->resident}}" data-default-file="">
                                         </div>
-                                        {{--                                        <div class="form-group" id="license_number">--}}
-                                        {{--                                            <strong>Numero di licenza :</strong>--}}
-                                        {{--                                            <input type="number" name="license_number" class="form-control" id=""--}}
-                                        {{--                                                   value="{{$user->license_number}}" data-default-file="">--}}
-                                        {{--                                        </div>--}}
                                     </div>
                                 </div>
                                 <div class="row">
@@ -200,7 +195,7 @@
                                             <strong>Scadenza prova di sgancio :</strong>
                                             <input type="date" required name="release_test_deadline"
                                                    class="form-control" id=""
-                                                   value="{{$user->release_test_deadline}}" data-default-file="">
+                                                   value="{{date_format( $user->release_test_deadline ,'Y-m-d')}}" data-default-file="">
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +205,7 @@
                                             <strong>Scadenza assicurazione :</strong>
                                             <input type="date" required name="insurance_expiration" class="form-control"
                                                    id=""
-                                                   value="{{$user->insurance_expiration}}" data-default-file="">
+                                                   value="{{date_format($user->insurance_expiration,'Y-m-d')}}" data-default-file="">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
@@ -219,7 +214,7 @@
                                             <input type="date" required name="minimum_activity_deadline"
                                                    class="form-control"
                                                    id=""
-                                                   value="{{$user->minimum_activity_deadline}}" data-default-file="">
+                                                   value="{{date_format($user->minimum_activity_deadline,'Y-m-d')}}" data-default-file="">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
@@ -237,7 +232,7 @@
                                             <strong>Scadenza visita medica :</strong>
                                             <input type="date" required name="medical_examination_deadline"
                                                    class="form-control"
-                                                   id="" value="{{$user->medical_examination_deadline}}"
+                                                   id="" value="{{date_format($user->medical_examination_deadline,'Y-m-d')}}"
                                                    data-default-file="">
                                         </div>
                                     </div>
@@ -282,7 +277,7 @@
                                         <div class="form-group" id="expiry_date">
                                             <strong>Scadenza Ripiegamento Emergenza :</strong>
                                             <input type="date" name="repayment_expiry_date" class="form-control" id=""
-                                                   value="{{$user->repayment_expiry_date}}" data-default-file="">
+                                                   value="{{date_format($user->repayment_expiry_date,'Y-m-d')}}" data-default-file="">
                                         </div>
                                     </div>
                                 </div>
@@ -351,7 +346,8 @@
                                     </div>
                                 </div>
 
-                                <div id="additionalCheckboxes" style="display: {{$user->qualification == "yes" ? 'block': 'none'}};">
+                                <div id="additionalCheckboxes"
+                                     style="display: {{$user->qualification == "yes" ? 'block': 'none'}};">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-2">
                                             <div class="form-group d-flex main">
@@ -386,7 +382,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-2">
                                             <div class="form-group d-flex main">
                                                 <label class="form-check-label mr-3 font-5" for="ipTandem">I.P.Tandem:
-                                                    </label>
+                                                </label>
                                                 <div class="">
                                                     <label class="switch">
                                                         <input type="checkbox" class="form-check-input" name="ip_tandem"
@@ -447,7 +443,8 @@
 
                                 <!--------------------Release Date Start---------------------->
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-4" id="dlReleaseDate" style="display: {{$user->dl == "yes" ? 'block': 'none'}};">
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="dlReleaseDate"
+                                         style="display: {{$user->dl == "yes" ? 'block': 'none'}};">
                                         <div class="form-group">
                                             <strong>D.L. Data di rilascio :</strong>
                                             <input type="date" name="dl_releaseDate" class="form-control"
@@ -460,11 +457,10 @@
                                     <div class="col-xs-12 col-sm-12 col-md-4" id="ipDateContainer"
                                          style="display: {{$user->ip == "yes" ? 'block': 'none'}};">
                                         <div class="form-group">
-                                            <strong>Data scadenza IP:</strong>
-                                            <input type="date" name="ip_expiryDate" class="form-control"
-                                                   id="ipDateInput"
-                                                   value="{{ old('ip_expiryDate',$user->ip_expiryDate) }}"
-                                                   data-default-file="">
+                                            <strong>Data scadenza IP: {{date_format($user->ip_expiryDate,'m-d-Y')}}</strong>
+                                            <input type="date" name="ip_expiryDate" class="form-control" id="ipDateInput"
+                                                   value="{{ date('Y-m-d', strtotime($user->ip_expiryDate)) }}">
+
                                         </div>
                                     </div>
 
@@ -710,8 +706,6 @@
                         ipeReleaseDateInput.removeAttribute("required");
                     }
                 });
-
-
 
 
             });

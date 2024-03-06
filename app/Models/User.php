@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Crypt;
 
 
 class User extends Authenticatable
@@ -21,6 +22,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -42,8 +46,9 @@ class User extends Authenticatable
         'insurance_company',
         'insurance_expiration',
         'medical_examination_deadline',
+        'repayment_expiry_date',
         'own_material',//checkbox
-        'repayment_expiry_date',  //repayment expiry date    /on
+          //repayment expiry date    /on
         'degree_of_contact',
         'role',
         'password',
@@ -72,6 +77,16 @@ class User extends Authenticatable
 
     ];
 
+
+    protected $dates = [
+        'release_test_deadline',
+        'minimum_activity_deadline',
+        'insurance_expiration',
+        'medical_examination_deadline',
+        'repayment_expiry_date',
+        'ip_expiryDate',
+
+    ];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -89,6 +104,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
 
     public function showExpiredDate()
     {
@@ -111,47 +128,23 @@ class User extends Authenticatable
             $expiredDates[] = '<span class="badge badge-danger">Scadenza ripegamento emergenza</span>';
         }
         if (!empty($this->ip_expiryDate) && Carbon::parse($this->ip_expiryDate)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger">Data scadenza IP</span>';
+            $expiredDates[] = '<span class="badge badge-danger">Scadenza IP</span>';
         }
         if (empty($expiredDates)) {
-            return '<span class="badge badge-success">Not Expired</span>';
+            return '<span class="badge badge-success">NESSUNA SCADENZA</span>';
         } else {
             return implode(' ', $expiredDates);
         }
     }
 
 
-    public function expiredSevenDays()
+
+
+    public function isWithinRange($date)
     {
-        $expiredDays = [];
-        $minimumActivity = Carbon::parse($this->minimum_activity_deadline);
-        $releaseTestDeadline = Carbon::parse($this->release_test_deadline);
-        $insuranceExpiration = Carbon::parse($this->insurance_expiration);
-        $medicalExamination = Carbon::parse($this->medical_examination_deadline);
-        $repaymentExpiry = Carbon::parse($this->repayment_expiry_date);
-        $ipExpiry = Carbon::parse($this->ip_expiryDate);
-
-        if ($minimumActivity->isPast()) {
-            $expiredDays['minimum_activity_deadline'] = $minimumActivity->diffInDays(Carbon::now());
-        }
-        if ($releaseTestDeadline->isPast()) {
-            $expiredDays['release_test_deadline'] = $releaseTestDeadline->diffInDays(Carbon::now());
-        }
-        if ($insuranceExpiration->isPast()) {
-            $expiredDays['insurance_expiration'] = $insuranceExpiration->diffInDays(Carbon::now());
-        }
-        if ($medicalExamination->isPast()) {
-            $expiredDays['medical_examination_deadline'] = $medicalExamination->diffInDays(Carbon::now());
-        }
-        if ($repaymentExpiry->isPast()) {
-            $expiredDays['repayment_expiry_date'] = $repaymentExpiry->diffInDays(Carbon::now());
-        }
-        if ($ipExpiry->isPast()) {
-            $expiredDays['ip_expiryDate'] = $ipExpiry->diffInDays(Carbon::now());
-        }
-
-        return $expiredDays;
+        return $date && $date->lte(Carbon::now()) && $date->gte(Carbon::now()->subDays(8));
     }
+
 
 
 }
