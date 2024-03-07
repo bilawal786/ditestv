@@ -63,11 +63,10 @@
                             @if($user->insurance_expiration->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->insurance_expiration->isFuture())
                                 <div style="color: red">
                                     {{$user->insurance_expiration->format('d-m-Y')}}
-                                    ({{$user->insurance_expiration->diffInDays(\Carbon\Carbon::now()->subDay())}} days
-                                    left)
+
                                 </div>
                             @else
-                                @if($user->insurance_expiration->isToday())
+                                @if($user->insurance_expiration->isToday() || $user->insurance_expiration->isPast())
                                     <div style="color: red">
                                         {{$user->insurance_expiration->format('d-m-Y')}}
                                     </div>
@@ -82,11 +81,10 @@
                             @if($user->minimum_activity_deadline->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->minimum_activity_deadline->isFuture())
                                 <div style="color: red">
                                     {{$user->minimum_activity_deadline->format('d-m-Y')}}
-                                    ({{$user->minimum_activity_deadline->diffInDays(\Carbon\Carbon::now()->subDay())}}
-                                    days left)
+
                                 </div>
                             @else
-                                @if($user->minimum_activity_deadline->isToday())
+                                @if($user->minimum_activity_deadline->isToday() || $user->minimum_activity_deadline->isPast())
                                     <div style="color: red">
                                         {{$user->minimum_activity_deadline->format('d-m-Y')}}
                                     </div>
@@ -101,11 +99,10 @@
                             @if($user->medical_examination_deadline->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->medical_examination_deadline->isFuture())
                                 <div style="color: red">
                                     {{$user->medical_examination_deadline->format('d-m-Y')}}
-                                    ({{$user->medical_examination_deadline->diffInDays(\Carbon\Carbon::now()->subDay())}}
-                                    days left)
+
                                 </div>
                             @else
-                                @if($user->medical_examination_deadline->isToday())
+                                @if($user->medical_examination_deadline->isToday() || $user->medical_examination_deadline->isPast())
                                     <div style="color: red">
                                         {{$user->medical_examination_deadline->format('d-m-Y')}}
                                     </div>
@@ -120,11 +117,10 @@
                             @if($user->repayment_expiry_date->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->repayment_expiry_date->isFuture())
                                 <div style="color: red">
                                     {{$user->repayment_expiry_date->format('d-m-Y')}}
-                                    ({{$user->repayment_expiry_date->diffInDays(\Carbon\Carbon::now()->subDay())}} days
-                                    left)
+
                                 </div>
                             @else
-                                @if($user->repayment_expiry_date->isToday())
+                                @if($user->repayment_expiry_date->isToday() || $user->repayment_expiry_date->isPast())
                                     <div style="color: red">
                                         {{$user->repayment_expiry_date->format('d-m-Y')}}
                                     </div>
@@ -139,11 +135,10 @@
                             @if($user->release_test_deadline->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->release_test_deadline->isFuture())
                                 <div style="color: red">
                                     {{$user->release_test_deadline->format('d-m-Y')}}
-                                    ({{$user->release_test_deadline->diffInDays(\Carbon\Carbon::now()->subDay())}} days
-                                    left)
+
                                 </div>
                             @else
-                                @if($user->release_test_deadline->isToday())
+                                @if($user->release_test_deadline->isToday() || $user->release_test_deadline->isPast())
                                     <div style="color: red">
                                         {{$user->release_test_deadline->format('d-m-Y')}}
                                     </div>
@@ -158,10 +153,10 @@
                             @if($user->ip_expiryDate->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->ip_expiryDate->isFuture())
                                 <div style="color: red">
                                     {{$user->ip_expiryDate->format('d-m-Y')}}
-                                    ({{$user->ip_expiryDate->diffInDays(\Carbon\Carbon::now()->subDay())}} days left)
+
                                 </div>
                             @else
-                                @if($user->ip_expiryDate->isToday())
+                                @if($user->ip_expiryDate->isToday() || $user->ip_expiryDate->isPast())
                                     <div style="color: red">
                                         {{$user->ip_expiryDate->format('d-m-Y')}}
                                     </div>
