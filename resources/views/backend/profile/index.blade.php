@@ -39,9 +39,6 @@
                             </ul>
                         </div>
                         <div class="body">
-                            <small class="text-muted">Address: </small>
-                            <p>{{Auth::user()->address}}</p>
-                            <hr>
                             <small class="text-muted">Email address: </small>
                             <p>{{Auth::user()->email}}</p>
                             <hr>
@@ -119,14 +116,6 @@
                                                 <div class="form-group">
                                                     <label>User Image:</label>
                                                     <input type="file" id="dropify-event-profile" name="user_image" data-default-file="{{Auth::user()->user_image}}">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-12">
-                                                <div class="form-group">
-                                                    <label>Address:</label>
-                                                    <textarea rows="9" type="text" name="address"
-                                                              class="form-control"
-                                                              placeholder="Address">{{Auth::user()->address}}</textarea>
                                                 </div>
                                             </div>
                                         </div>

@@ -59,7 +59,6 @@ class ProfileController extends Controller
             'first_name'=>$request->first_name,
             'last_name'=>$request->last_name,
             'phone_number'=>$request->phone,
-            'address'=>$request->address,
             'user_image'=>$user_img ?? '/images/profile/user.png',
         ]);
         $notification = array(
