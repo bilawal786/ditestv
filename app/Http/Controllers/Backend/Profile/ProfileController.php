@@ -58,7 +58,7 @@ class ProfileController extends Controller
         User::where('id', Auth::user()->id)->update([
             'first_name'=>$request->first_name,
             'last_name'=>$request->last_name,
-            'phone'=>$request->phone,
+            'phone_number'=>$request->phone,
             'address'=>$request->address,
             'user_image'=>$user_img ?? '/images/profile/user.png',
         ]);
