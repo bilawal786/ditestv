@@ -105,7 +105,7 @@
                                                                         class="fa fa-phone"></i></span>
                                                         </div>
                                                         <input type="text" name="phone"
-                                                               value="{{Auth::user()->phone}}" class="form-control"
+                                                               value="{{Auth::user()->phone_number}}" class="form-control"
                                                                placeholder="Phone no.">
                                                     </div>
                                                 </div>
