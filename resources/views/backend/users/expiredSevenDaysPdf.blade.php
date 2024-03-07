@@ -55,6 +55,8 @@
                 </th>
             </tr>
 
+
+
             @foreach ($users as $user)
                 <tr>
                     <td class="">{{$user->first_name . ' ' . $user->last_name}}</td>
@@ -168,6 +170,8 @@
                     </td>
                 </tr>
             @endforeach
+
+
 
         </table>
     </div>

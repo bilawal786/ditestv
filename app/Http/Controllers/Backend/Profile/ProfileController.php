@@ -62,7 +62,7 @@ class ProfileController extends Controller
             'user_image'=>$user_img ?? '/images/profile/user.png',
         ]);
         $notification = array(
-            'messege' => 'User successfully Updated',
+            'messege' => 'Profilo aggiornato con successo',
             'alert-type' => 'success'
         );
         return Redirect()->back()->with($notification);

@@ -5,7 +5,7 @@
         <div class="block-header">
             <div class="row clearfix">
                 <div class="col-md-6 col-sm-12">
-                    <h2>User Profile</h2>
+                    <h2>Profilo utente</h2>
                 </div>
                 <div class="col-md-6 col-sm-12 text-right">
                     <ul class="breadcrumb">
@@ -30,7 +30,7 @@
 
                     <div class="card">
                         <div class="header">
-                            <h2>Info</h2>
+                            <h2>Infoinformazioni</h2>
                             <ul class="header-dropdown dropdown dropdown-animated scale-left">
                                 <li><a href="javascript:void(0);" data-toggle="cardloading"
                                        data-loading-effect="pulse"><i class="icon-refresh"></i></a></li>
@@ -39,11 +39,11 @@
                             </ul>
                         </div>
                         <div class="body">
-                            <small class="text-muted">Email address: </small>
+                            <small class="text-muted">Indirizzo e-mail: </small>
                             <p>{{Auth::user()->email}}</p>
                             <hr>
-                            <small class="text-muted">Phone: </small>
-                            <p>{{Auth::user()->phone}}</p>
+                            <small class="text-muted">Telefono: </small>
+                            <p>{{Auth::user()->phone_number}}</p>
                         </div>
                     </div>
                 </div>
@@ -53,9 +53,9 @@
                         <div class="body">
                             <ul class="nav nav-tabs-new">
                                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile">Profile
-                                        Edit</a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#password">Reset
-                                        Password</a></li>
+                                        Modificare</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#password">Resetta la password
+                                    </a></li>
                             </ul>
                         </div>
                     </div>
@@ -63,10 +63,12 @@
                         <div class="tab-pane blog-page active" id="Overview">
 
                         </div>
+
                         <div class="tab-pane" id="profile">
                             <div class="card">
                                 <div class="header bline">
-                                    <h2>Basic Information</h2>
+                                    <h2>Informazioni generali
+                                    </h2>
                                     <ul class="header-dropdown dropdown dropdown-animated scale-left">
                                         <li><a href="javascript:void(0);" data-toggle="cardloading"
                                                data-loading-effect="pulse"><i class="icon-refresh"></i></a></li>
@@ -80,25 +82,26 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
-                                                    <label>First Name:</label>
+                                                    <label>Nome di battesimo:</label>
                                                     <input type="text" name="first_name"
                                                            value="{{Auth::user()->first_name}}" class="form-control"
-                                                           placeholder="First Name">
+                                                           placeholder="Nome di battesimo
+">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
-                                                    <label>Last Name:</label>
+                                                    <label>Cognome:</label>
                                                     <input type="text" name="last_name"
                                                            value="{{Auth::user()->last_name}}" class="form-control"
-                                                           placeholder="Last Name">
+                                                           placeholder="Cognome">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
-                                                    <label>Phone No.:</label>
+                                                    <label>Numero di telefono.:</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i
@@ -106,7 +109,7 @@
                                                         </div>
                                                         <input type="text" name="phone"
                                                                value="{{Auth::user()->phone_number}}" class="form-control"
-                                                               placeholder="Phone no.">
+                                                               placeholder="Telefono">
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,12 +117,13 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-12">
                                                 <div class="form-group">
-                                                    <label>User Image:</label>
+                                                    <label>Immagine dell'utente
+                                                        :</label>
                                                     <input type="file" id="dropify-event-profile" name="user_image" data-default-file="{{Auth::user()->user_image}}">
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-round">Update</button>
+                                        <button type="submit" class="btn btn-primary btn-round">Aggiornamento</button>
                                     </form>
                                 </div>
                             </div>
@@ -127,7 +131,7 @@
                         <div class="tab-pane" id="password">
                             <div class="card">
                                 <div class="header bline">
-                                    <h2>Change Password</h2>
+                                    <h2>Cambia password</h2>
                                     <ul class="header-dropdown dropdown dropdown-animated scale-left">
                                         <li><a href="javascript:void(0);" data-toggle="cardloading"
                                                data-loading-effect="pulse"><i class="icon-refresh"></i></a></li>
@@ -142,21 +146,21 @@
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="form-group">
                                                     <input type="password" name="oldPassword" class="form-control"
-                                                           placeholder="Current Password">
+                                                           placeholder="password attuale">
                                                     @if($errors->has('oldPassword'))
                                                         <div class="error">{{ $errors->first('oldPassword') }}</div>
                                                     @endif
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="password" name="newPassword" class="form-control"
-                                                           placeholder="New Password">
+                                                           placeholder="nuova password">
                                                     @if($errors->has('newPassword'))
                                                         <div class="error">{{ $errors->first('newPassword') }}</div>
                                                     @endif
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="password" name="conformPassword"
-                                                           class="form-control" placeholder="Confirm New Password">
+                                                           class="form-control" placeholder="Conferma la nuova password">
                                                     @if($errors->has('conformPassword'))
                                                         <div
                                                             class="error">{{ $errors->first('conformPassword') }}</div>
@@ -164,7 +168,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-round">Update</button>
+                                        <button type="submit" class="btn btn-primary btn-round">Aggiornamento</button>
                                         &nbsp;&nbsp;
                                     </form>
                                 </div>

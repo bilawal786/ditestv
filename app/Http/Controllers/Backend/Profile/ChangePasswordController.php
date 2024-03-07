@@ -24,14 +24,14 @@ class ChangePasswordController extends Controller
                 $users->password = bcrypt($request->newPassword);
                 User::where( 'id' , Auth::user()->id)->update( array( 'password' =>  $users->password));
                 $notification = array(
-                    'messege' => 'password updated successfully',
+                    'messege' => 'password aggiornata con successo',
                     'alert-type' => 'success'
                 );
                 return Redirect()->back()->with($notification);
             }
             else{
                 $notification = array(
-                    'messege' => 'new password can not be the old password!',
+                    'messege' => 'la nuova password non può essere la vecchia password!',
                     'alert-type' => 'error'
                 );
                 return Redirect()->back()->with($notification);
@@ -39,7 +39,7 @@ class ChangePasswordController extends Controller
         }
         else{
             $notification = array(
-                'messege' => 'old password doesnt matched',
+                'messege' => 'la vecchia password non corrisponde',
                 'alert-type' => 'error'
             );
             return Redirect()->back()->with($notification);

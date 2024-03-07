@@ -21,10 +21,10 @@
                         <div class="row">
                             @if (auth()->user()->role == 0)
                                 <div class="mt-2 mb-2 col-md-3 col-sm-6">
-                                    <div class=" small-box bg-info">
-                                        <div class="inner text-center">
-                                            <h1 class="font-weight-bold">{{$countusers}}</h1>
-                                            <p>Soci reistrati</p>
+                                    <div class=" small-box bg-success">
+                                        <div class="inner text-center pt-3">
+                                            <h1 class="font-weight-bold"><i class="fa fa-user-plus"></i> {{$countusers}}</h1>
+                                            <h5>Soci reistrati</h5>
                                         </div>
                                         <div class="icon">
                                             <i class="fa fa-folder-plus"></i>
@@ -34,10 +34,10 @@
                             @endif
                             <div class="mt-2 mb-2 col-md-3 col-sm-6">
                                 <!-- small box -->
-                                <div class=" small-box bg-secondary">
-                                    <div class="inner text-center">
-                                        <h1 class="font-weight-bold">{{$count}}</h1>
-                                        <p>Soci con scadenze</p>
+                                <div class=" small-box bg-danger">
+                                    <div class="inner text-center pt-3">
+                                        <h1 class="font-weight-bold"><i class="fa fa-warning"></i> {{$count}}</h1>
+                                        <h5>Soci con scadenze</h5>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-folder-plus"></i>

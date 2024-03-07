@@ -287,7 +287,7 @@
                                         <label class="form-check-label mr-5" for="exampleCheck1">Allievo :</label>
                                         <label class="switch">
                                             <input type="checkbox" name="student" id="student" class="form-check-input"
-                                                   id="exampleCheck1" value="{{$user->student}}"
+                                                   id="exampleCheck1" value="{{$user->student}}" disabled
                                                    data-default-file=""
                                                    @if($user->student === 'yes')checked @endif>
                                             <span class="slider round"></span>
@@ -299,7 +299,7 @@
                                         <label class="form-check-label mr-5" for="exampleCheck1">Possiede il
                                             materiale :</label>
                                         <label class="switch">
-                                            <input type="checkbox" class="form-check-input"
+                                            <input type="checkbox" class="form-check-input" disabled
                                                    value="{{$user->own_material}}"
                                                    id="own_material"
                                                    name="own_material"
@@ -316,7 +316,7 @@
                                             :</label>
                                         <label class="switch">
                                             <input type="checkbox" name="send_auto_email" class="form-check-input"
-                                                   id="exampleCheck1" value="{{$user->send_auto_email}}"
+                                                   id="exampleCheck1" value="{{$user->send_auto_email}}" disabled
                                                    data-default-file=""
                                                    @if($user->send_auto_email === 'yes')checked @endif>
                                             <span class="slider round"></span>
@@ -333,7 +333,7 @@
                                         <div class="">
                                             <label class="switch">
                                                 <input type="checkbox" class="form-check-input"
-                                                       name="qualification" id="qualification" data-default-file=""
+                                                       name="qualification" id="qualification" data-default-file="" disabled
                                                        @if($user->qualification === 'yes')checked @endif
                                                 >
                                                 <span class="slider round"></span>
@@ -352,7 +352,7 @@
                                             <div>
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="dl"
-                                                           id="dl"
+                                                           id="dl" disabled
                                                            data-default-file=""
                                                            @if($user->dl === 'yes')checked @endif>
                                                     <span class="slider round"></span>
@@ -368,7 +368,7 @@
                                             <div class="">
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ip"
-                                                           id="ipCheckbox" data-default-file=""
+                                                           id="ipCheckbox" data-default-file="" disabled
                                                            @if($user->ip === 'yes')checked @endif>
                                                     <span class="slider round"></span>
                                                 </label>
@@ -383,7 +383,7 @@
                                             <div class="">
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ip_tandem"
-                                                           id="ipTandem" data-default-file=""
+                                                           id="ipTandem" data-default-file="" disabled
                                                            @if($user->ip_tandem === 'yes')checked @endif>
                                                     <span class="slider round"></span>
                                                 </label>
@@ -398,7 +398,7 @@
                                             <div class="">
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ip_aff"
-                                                           id="ipAff" data-default-file=""
+                                                           id="ipAff" data-default-file="" disabled
                                                            @if($user->ip_aff === 'yes')checked @endif>
                                                     <span class="slider round"></span>
                                                 </label>
@@ -413,7 +413,7 @@
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ips"
                                                            id="ips"
-                                                           data-default-file=""
+                                                           data-default-file="" disabled
                                                            @if($user->ips === 'yes')checked @endif>
                                                     <span class="slider round"></span>
                                                 </label>
@@ -428,7 +428,7 @@
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input" name="ipe"
                                                            id="ipe"
-                                                           data-default-file=""
+                                                           data-default-file="" disabled
                                                            @if($user->ipe === 'yes')checked @endif>
                                                     <span class="slider round"></span>
                                                 </label>

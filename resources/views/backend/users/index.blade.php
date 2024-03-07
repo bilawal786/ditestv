@@ -14,15 +14,15 @@
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12">
-                    <div class="card planned_task">
-                        <div class="header">
-                            <ul class="header-dropdown dropdown dropdown-animated scale-left">
-                                <li><a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse"><i
-                                            class="icon-refresh"></i></a></li>
-                                <li><a href="javascript:void(0);" class="full-screen"><i
-                                            class="icon-size-fullscreen"></i></a></li>
-                            </ul>
-                        </div>
+                    <div class="card planned_task pt-3">
+{{--                        <div class="header">--}}
+{{--                            <ul class="header-dropdown dropdown dropdown-animated scale-left">--}}
+{{--                                <li><a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse"><i--}}
+{{--                                            class="icon-refresh"></i></a></li>--}}
+{{--                                <li><a href="javascript:void(0);" class="full-screen"><i--}}
+{{--                                            class="icon-size-fullscreen"></i></a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
                         <div class="container col-12 table-responsive">
                             <table class="table table-bordered data-table">
                                 <thead>
