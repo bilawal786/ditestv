@@ -113,7 +113,7 @@ class User extends Authenticatable
             $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza minima attività</span><br>';
         }
         if (Carbon::parse($this->release_test_deadline)->isPast()) {
-            $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza del test di rilascio</span><br>';
+            $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza prova di sgancio</span><br>';
         }
         if (Carbon::parse($this->insurance_expiration)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza dell assicurazione</span><br>';

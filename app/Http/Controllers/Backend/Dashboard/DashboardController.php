@@ -18,19 +18,14 @@ class DashboardController extends Controller
     {
         $usersQuery = User::query();
         $users = $usersQuery->where('role', 1)->get();
-        $count = 0;
+        $expiredUsers = [];
         foreach ($users as $user) {
-            if (
-                Carbon::parse($user->minimum_activity_deadline)->isPast() ||
-                Carbon::parse($user->release_test_deadline)->isPast() ||
-                Carbon::parse($user->insurance_expiration)->isPast() ||
-                Carbon::parse($user->medical_examination_deadline)->isPast() ||
-                Carbon::parse($user->ip_expiryDate)->isPast() ||
-                (!empty($user->repayment_expiry_date) && Carbon::parse($user->repayment_expiry_date)->isPast())
-            ) {
-                $count++;
+            if ($user->showExpiredDate() !== '<span class="badge badge-success">NESSUNA SCADENZA</span>') {
+                $expiredUsers[] = $user;
             }
         }
+        $count = count($expiredUsers);
+
         return view('backend.dashboard.index', compact('count'));
     }
 
