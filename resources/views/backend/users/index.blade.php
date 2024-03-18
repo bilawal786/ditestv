@@ -31,9 +31,6 @@
                                     <th>Nome</th>
                                     <th>Cogonome</th>
                                     <th>Data di nascita</th>
-                                    <th>Email</th>
-                                    <th>Città</th>
-                                    <th>Provincia</th>
                                     <th>Allievo</th>
                                     <th>Stato</th>
                                     <th width="100px">Azione</th>
@@ -81,9 +78,6 @@
                         {data: 'first_name', name: 'first_name'},
                         {data: 'last_name', name: 'last_name'},
                         {data: 'd_o_b', name: 'd_o_b'},
-                        {data: 'email', name: 'email'},
-                        {data: 'city', name: 'city'},
-                        {data: 'province', name: 'province'},
                         {data: 'student', name: 'student'},
                         {data: 'status', name: 'status'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},

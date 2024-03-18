@@ -144,14 +144,14 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Numero Telefono :</strong>
-                                        {!! Form::number('phone_number', old('phone_number'), array('class' => 'form-control','required' => 'required')) !!}
+                                        {!! Form::number('phone_number', old('phone_number'), array('class' => 'form-control')) !!}
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Contatto Di Emergenza : </strong>
-                                        <input type="number" required name="emergency_phone_number"
+                                        <input type="number" name="emergency_phone_number"
                                                value="{{old('emergency_phone_number')}}"
                                                class="form-control" id=""
                                                data-default-file="">
@@ -160,7 +160,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Città :</strong>
-                                        <input type="text" required name="city" class="form-control" id=""
+                                        <input type="text" name="city" class="form-control" id=""
                                                value="{{old('city')}}" data-default-file="">
                                     </div>
                                 </div>
@@ -169,7 +169,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Residente : </strong>
-                                        <input type="text" required name="resident" value="{{old('resident')}}"
+                                        <input type="text" name="resident" value="{{old('resident')}}"
                                                class="form-control" id=""
                                                data-default-file="">
                                     </div>
@@ -177,14 +177,14 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Provincia :</strong>
-                                        <input type="text" required name="province" class="form-control" id=""
+                                        <input type="text" name="province" class="form-control" id=""
                                                value="{{old('province')}}" data-default-file="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>CAP :</strong>
-                                        <input type="number" required name="postal_code" class="form-control" id=""
+                                        <input type="number" name="postal_code" class="form-control" id=""
                                                value="{{old('postal_code')}}" data-default-file="">
                                     </div>
                                 </div>
@@ -193,14 +193,14 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Data di Nascita :</strong>
-                                        <input type="date" required name="d_o_b" class="form-control" id=""
+                                        <input type="date" name="d_o_b" class="form-control" id=""
                                                value="{{old('d_o_b')}}" data-default-file="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Luogo di Nascita :</strong>
-                                        <input type="text" required name="birth_place" class="form-control" id=""
+                                        <input type="text" name="birth_place" class="form-control" id=""
                                                value="{{old('birth_place')}}" data-default-file="">
                                     </div>
                                 </div>
@@ -234,7 +234,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Compagnia assicuratva :</strong>
-                                        <input type="text" required name="insurance_company" class="form-control" id=""
+                                        <input type="text" name="insurance_company" class="form-control" id=""
                                                value="{{old('insurance_company')}}" data-default-file="">
                                     </div>
                                 </div>
@@ -252,7 +252,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Paese :</strong>
-                                        <input type="text" required name="village" value="{{old('village')}}"
+                                        <input type="text" name="village" value="{{old('village')}}"
                                                class="form-control" id=""
                                                data-default-file="">
                                     </div>
@@ -261,7 +261,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <strong>Grado del contatto :</strong>
-                                        <input type="text" required name="degree_of_contact"
+                                        <input type="text" name="degree_of_contact"
                                                value="{{old('degree_of_contact')}}"
                                                class="form-control" id=""
                                                data-default-file="">
@@ -274,7 +274,7 @@
                                     <div class="form-group" id="license_number">
                                         <strong>Numero di licenza :</strong>
                                         <input type="text" name="license_number" class="form-control" id=""
-                                               value="{{old('license_number')}}" data-default-file="">
+                                               value="{{old('license_number')}}" >
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4">
@@ -576,10 +576,10 @@
                 dl.addEventListener("change", function () {
                     if (dl.checked) {
                         dlReleaseDateDiv.style.display = "block";
-                        dlReleaseDateInput.setAttribute("required", "required");
+                        // dlReleaseDateInput.setAttribute("required", "required");
                     } else {
                         dlReleaseDateDiv.style.display = "none";
-                        dlReleaseDateInput.removeAttribute("required");
+                        // dlReleaseDateInput.removeAttribute("required");
                     }
                 });
 
@@ -591,10 +591,10 @@
                 ipCheckbox.addEventListener("change", function () {
                     if (ipCheckbox.checked) {
                         ipDateContainer.style.display = "block";
-                        ipDateInput.setAttribute("required", "required");
+                        // ipDateInput.setAttribute("required", "required");
                     } else {
                         ipDateContainer.style.display = "none";
-                        ipDateInput.removeAttribute("required");
+                        // ipDateInput.removeAttribute("required");
                     }
                 });
 
@@ -606,10 +606,10 @@
                 ipTandem.addEventListener("change", function () {
                     if (ipTandem.checked) {
                         tandemReleaseDateDiv.style.display = "block";
-                        tandemReleaseDateInput.setAttribute("required", "required");
+                        // tandemReleaseDateInput.setAttribute("required", "required");
                     } else {
                         tandemReleaseDateDiv.style.display = "none";
-                        tandemReleaseDateInput.removeAttribute("required");
+                        // tandemReleaseDateInput.removeAttribute("required");
                     }
                 });
 
@@ -621,10 +621,10 @@
                 ipAff.addEventListener("change", function () {
                     if (ipAff.checked) {
                         affReleaseDateDiv.style.display = "block";
-                        affReleaseDateInput.setAttribute("required", "required");
+                        // affReleaseDateInput.setAttribute("required", "required");
                     } else {
                         affReleaseDateDiv.style.display = "none";
-                        affReleaseDateInput.removeAttribute("required");
+                        // affReleaseDateInput.removeAttribute("required");
                     }
                 });
 
@@ -636,10 +636,10 @@
                 ips.addEventListener("change", function () {
                     if (ips.checked) {
                         ipsReleaseDateDiv.style.display = "block";
-                        ipsReleaseDateInput.setAttribute("required", "required");
+                        // ipsReleaseDateInput.setAttribute("required", "required");
                     } else {
                         ipsReleaseDateDiv.style.display = "none";
-                        ipsReleaseDateInput.removeAttribute("required");
+                        // ipsReleaseDateInput.removeAttribute("required");
                     }
                 });
 
@@ -651,10 +651,10 @@
                 ipe.addEventListener("change", function () {
                     if (ipe.checked) {
                         ipeReleaseDateDiv.style.display = "block";
-                        ipeReleaseDateInput.setAttribute("required", "required");
+                        // ipeReleaseDateInput.setAttribute("required", "required");
                     } else {
                         ipeReleaseDateDiv.style.display = "none";
-                        ipeReleaseDateInput.removeAttribute("required");
+                        // ipeReleaseDateInput.removeAttribute("required");
                     }
                 });
 
@@ -702,13 +702,13 @@
                 var licenseNumber = $('#license_number input');
 
                 function addRequiredValidation() {
-                    releasedOn.prop('required', true);
-                    licenseNumber.prop('required', true);
+                    // releasedOn.prop('required', true);
+                    // licenseNumber.prop('required', true);
                 }
 
                 function removeRequiredValidation() {
-                    releasedOn.prop('required', false);
-                    licenseNumber.prop('required', false);
+                    // releasedOn.prop('required', false);
+                    // licenseNumber.prop('required', false);
                 }
 
                 if (studentCheckbox.prop('checked')) {

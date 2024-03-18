@@ -90,55 +90,55 @@ class UserController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'email' => 'unique:users|required',
-                'phone_number' => 'required',
-                'resident' => 'required',
-                'city' => 'required',
-                'province' => 'required',
-                'postal_code' => 'required',
-                'village' => 'required',
-                'd_o_b' => 'required',
-                'birth_place' => 'required',
+//                'phone_number' => 'required',
+//                'resident' => 'required',
+//                'city' => 'required',
+//                'province' => 'required',
+//                'postal_code' => 'required',
+//                'village' => 'required',
+//                'd_o_b' => 'required',
+//                'birth_place' => 'required',
                 'release_test_deadline' => 'required',
                 'minimum_activity_deadline' => 'required',
-                'insurance_company' => 'required',
+//                'insurance_company' => 'required',
                 'insurance_expiration' => 'required',
                 'medical_examination_deadline' => 'required',
-                'degree_of_contact' => 'required',
+//                'degree_of_contact' => 'required',
             ]
         );
         $user = new User();
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
+        $user->first_name = $request->first_name??"";
+        $user->last_name = $request->last_name??"";
         $user->email = $request->email;
         $request->request->add(['user_image' => '/images/profile/user.png']);
-        $user->phone_number = $request->phone_number;
-        $user->emergency_phone_number = $request->emergency_phone_number;
-        $user->resident = $request->resident;
-        $user->city = $request->city;
-        $user->province = $request->province;
-        $user->postal_code = $request->postal_code;
-        $user->village = $request->village;
-        $user->d_o_b = $request->d_o_b;
-        $user->birth_place = $request->birth_place;
-        $user->release_test_deadline = $request->release_test_deadline;
-        $user->minimum_activity_deadline = $request->minimum_activity_deadline;
-        $user->insurance_company = $request->insurance_company;
-        $user->insurance_expiration = $request->insurance_expiration;
+        $user->phone_number = $request->phone_number??"";
+        $user->emergency_phone_number = $request->emergency_phone_number??"";
+        $user->resident = $request->resident??"";
+        $user->city = $request->city??"";
+        $user->province = $request->province??"";
+        $user->postal_code = $request->postal_code??"";
+        $user->village = $request->village??"";
+        $user->d_o_b = $request->d_o_b??"";
+        $user->birth_place = $request->birth_place??"";
+        $user->release_test_deadline = $request->release_test_deadline??"";
+        $user->minimum_activity_deadline = $request->minimum_activity_deadline??"";
+        $user->insurance_company = $request->insurance_company??"";
+        $user->insurance_expiration = $request->insurance_expiration??"";
         $user->medical_examination_deadline = $request->medical_examination_deadline;
         $user->student = $request->student ? 'yes' : 'no';
         $user->own_material = $request->own_material ? 'yes' : 'no';
         if ($user->own_material == 'yes') {
-            $user->repayment_expiry_date = $request->repayment_expiry_date;
+            $user->repayment_expiry_date = $request->repayment_expiry_date??"";
         }
         if ($user->student == 'yes') {
             $user->released_on = '';
             $user->license_number = '';
         } else {
-            $user->released_on = $request->released_on;
-            $user->license_number = $request->license_number;
+            $user->released_on = $request->released_on??"";
+            $user->license_number = $request->license_number??"";
         }
         $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';
-        $user->degree_of_contact = $request->degree_of_contact;
+        $user->degree_of_contact = $request->degree_of_contact??"";
         $user->password = $request->password ?? '123456700';
         $user->role = $request->role ?? '1';
 
@@ -225,29 +225,29 @@ class UserController extends Controller
             'email' => 'unique:users,email,' . $id . ',id|required',
         ]);
         $user = User::find($id);
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-        $user->phone_number = $request->phone_number;
-        $user->emergency_phone_number = $request->emergency_phone_number;
-        $user->resident = $request->resident;
-        $user->city = $request->city;
-        $user->province = $request->province;
-        $user->postal_code = $request->postal_code;
-        $user->village = $request->village;
-        $user->d_o_b = $request->d_o_b;
-        $user->birth_place = $request->birth_place;
-        $user->release_test_deadline = $request->release_test_deadline;
-        $user->minimum_activity_deadline = $request->minimum_activity_deadline;
-        $user->insurance_company = $request->insurance_company;
-        $user->insurance_expiration = $request->insurance_expiration;
-        $user->medical_examination_deadline = $request->medical_examination_deadline;
+        $user->first_name = $request->first_name??"";
+        $user->last_name = $request->last_name??"";
+        $user->email = $request->email??"";
+        $user->phone_number = $request->phone_number??"";
+        $user->emergency_phone_number = $request->emergency_phone_number??"";
+        $user->resident = $request->resident??"";
+        $user->city = $request->city??"";
+        $user->province = $request->province??"";
+        $user->postal_code = $request->postal_code??"";
+        $user->village = $request->village??"";
+        $user->d_o_b = $request->d_o_b??"";
+        $user->birth_place = $request->birth_place??"";
+        $user->release_test_deadline = $request->release_test_deadline??"";
+        $user->minimum_activity_deadline = $request->minimum_activity_deadline??"";
+        $user->insurance_company = $request->insurance_company??"";
+        $user->insurance_expiration = $request->insurance_expiration??"";
+        $user->medical_examination_deadline = $request->medical_examination_deadline??"";
         $user->own_material = $request->own_material ? 'yes' : 'no';
         if ($user->own_material == 'yes') {
-            $user->repayment_expiry_date = $request->repayment_expiry_date;
+            $user->repayment_expiry_date = $request->repayment_expiry_date??"";
 //            $user->emergency_repayment_date = $request->emergency_repayment_date;
         }
-        $user->degree_of_contact = $request->degree_of_contact;
+        $user->degree_of_contact = $request->degree_of_contact??"";
         $user->password = $request->password ?? '123456700';
         $user->role = $request->role ?? '1';
         $user->student = $request->student ? 'yes' : 'no';
@@ -255,8 +255,8 @@ class UserController extends Controller
             $user->released_on = '';
             $user->license_number = '';
         } else {
-            $user->released_on = $request->released_on;
-            $user->license_number = $request->license_number;
+            $user->released_on = $request->released_on??"";
+            $user->license_number = $request->license_number??"";
 
         }
         $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';

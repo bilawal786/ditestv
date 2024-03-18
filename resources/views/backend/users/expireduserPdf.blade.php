@@ -4,7 +4,7 @@
     $users = \App\Models\User::where('role', 1)->get();
        $expiredUsers = [];
        foreach ($users as $user) {
-           if ($user->showExpiredDate() !== '<span class="badge badge-success">Not Expired</span>') {
+           if ($user->showExpiredDate() !== '<span class="badge badge-success">NESSUNA SCADENZA</span>') {
                $expiredUsers[] = $user;
            }
        }
