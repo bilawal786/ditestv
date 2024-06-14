@@ -222,10 +222,10 @@
                                                value="{{old('insurance_expiration')}}" data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <div class="form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-4" id="minimum_activity_deadline_container">
+                                    <div class="form-group" >
                                         <strong>Scadenza attività minima :</strong>
-                                        <input type="date" required name="minimum_activity_deadline"
+                                        <input type="date"  name="minimum_activity_deadline"
                                                class="form-control" id=""
                                                value="{{old('minimum_activity_deadline')}}" data-default-file="">
                                     </div>
@@ -557,6 +557,22 @@
     @push('script')
 
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const studentCheckbox = document.getElementById('student');
+                const deadlineContainer = document.getElementById('minimum_activity_deadline_container');
+
+                function toggleDeadlineContainer() {
+                    if (studentCheckbox.checked) {
+                        deadlineContainer.style.display = 'none';
+                    } else {
+                        deadlineContainer.style.display = 'block';
+                    }
+                }
+                studentCheckbox.addEventListener('change', toggleDeadlineContainer);
+                // Initialize the visibility on page load
+                toggleDeadlineContainer();
+            });
+
             document.addEventListener("DOMContentLoaded", function () {
                 var qualificationCheckbox = document.getElementById("qualification");
                 var additionalCheckboxes = document.getElementById("additionalCheckboxes");

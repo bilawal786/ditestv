@@ -44,6 +44,7 @@
         <table style="width: 100%;">
             <tr>
                 <th style="font-family:  Verdana;padding-right: 45px;">Nome</th>
+                <th style="font-family:  Verdana;padding-right: 45px;">CertoNome</th>
                 <th style="font-family: Verdana;">Scadenza assicurazione</th>
                 <th style="padding-right: 30px;font-family: Verdana;">Scadenza attività </th>
                 <th style="padding-right: 10px;font-family: Verdana;">Scadenza vista medica</th>
@@ -58,9 +59,10 @@
 
             @foreach ($expiredUsers as $user)
                 <tr>
-                    <td class="" style="padding-left: 28px;">{{$user->first_name . ' ' . $user->last_name}}</td>
+                    <td class="" style="padding-left: 8px;">{{$user->first_name}}</td>
+                    <td class="" style="padding-left: 23px;">{{$user->last_name}}</td>
                     @foreach (['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $field)
-                        <td class="m-5" style="padding-left: {{ $field === 'repayment_expiry_date' ? '30px' : '18px' }};">
+                        <td class="m-5" style="padding-left: {{ $field === 'repayment_expiry_date' || $field === 'release_test_deadline' ? '30px' : '18px' }};">
                             @if (!empty($user->$field) && \Carbon\Carbon::parse($user->$field)->isPast())
                                 <span class="expired-date">{{ date_format(date_create($user->$field), 'd-m-Y') }}</span>
                             @elseif (!empty($user->$field))

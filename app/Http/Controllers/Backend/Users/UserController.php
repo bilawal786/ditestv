@@ -2,23 +2,17 @@
 
 namespace App\Http\Controllers\Backend\Users;
 
+use App\Exports\DataExport;
 use App\Exports\UserExport;
-use Carbon\Carbon;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
-use PDF;
-use App\Jobs\SendEmailJob;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\DataExport;
-use App\Mail\SendEmailTest;
-use Illuminate\Support\Facades\Mail;
+use PDF;
+use Spatie\Permission\Models\Role;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
@@ -99,7 +93,7 @@ class UserController extends Controller
 //                'd_o_b' => 'required',
 //                'birth_place' => 'required',
                 'release_test_deadline' => 'required',
-                'minimum_activity_deadline' => 'required',
+//                'minimum_activity_deadline' => 'required',
 //                'insurance_company' => 'required',
                 'insurance_expiration' => 'required',
                 'medical_examination_deadline' => 'required',
@@ -121,7 +115,6 @@ class UserController extends Controller
         $user->d_o_b = $request->d_o_b??"";
         $user->birth_place = $request->birth_place??"";
         $user->release_test_deadline = $request->release_test_deadline??"";
-        $user->minimum_activity_deadline = $request->minimum_activity_deadline??"";
         $user->insurance_company = $request->insurance_company??"";
         $user->insurance_expiration = $request->insurance_expiration??"";
         $user->medical_examination_deadline = $request->medical_examination_deadline;
@@ -133,9 +126,12 @@ class UserController extends Controller
         if ($user->student == 'yes') {
             $user->released_on = '';
             $user->license_number = '';
+            $user->minimum_activity_deadline = null;
         } else {
             $user->released_on = $request->released_on??"";
             $user->license_number = $request->license_number??"";
+            $user->minimum_activity_deadline = $request->minimum_activity_deadline ?? "";
+
         }
         $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';
         $user->degree_of_contact = $request->degree_of_contact??"";
@@ -254,10 +250,11 @@ class UserController extends Controller
         if ($user->student == 'yes') {
             $user->released_on = '';
             $user->license_number = '';
+            $user->minimum_activity_deadline = null;
         } else {
+            $user->minimum_activity_deadline = $request->minimum_activity_deadline;
             $user->released_on = $request->released_on??"";
             $user->license_number = $request->license_number??"";
-
         }
         $user->send_auto_email = $request->send_auto_email ? 'yes' : 'no';
 
@@ -338,6 +335,7 @@ class UserController extends Controller
     {
         return Excel::download(new DataExport, 'expiredSevenDays.xlsx');
     }
+
     public function userPdf()
     {
         $data = [
@@ -368,8 +366,9 @@ class UserController extends Controller
             'title' => 'Welcome to ItSolutionStuff.com',
             'date' => date('m/d/Y'),
         ];
-//        return view('backend.users.expiredSevenDaysPdf');
         $pdf = PDF::loadView('backend.users.expiredSevenDaysPdf', $data)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');
+//        return view('backend.users.expiredSevenDaysPdf');
+
         return $pdf->download('Sociscadenze8gg.pdf');
     }
 

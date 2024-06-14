@@ -208,13 +208,12 @@
                                                    value="{{date_format($user->insurance_expiration,'Y-m-d')}}" data-default-file="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="minimum_activity_deadline_container">
                                         <div class="form-group">
                                             <strong>Scadenza attività minima :</strong>
-                                            <input type="date" required name="minimum_activity_deadline"
-                                                   class="form-control"
-                                                   id=""
-                                                   value="{{date_format($user->minimum_activity_deadline,'Y-m-d')}}" data-default-file="">
+                                            <input type="date" name="minimum_activity_deadline" class="form-control"
+                                                   value="{{ !empty($user->minimum_activity_deadline) ? date('Y-m-d', strtotime($user->minimum_activity_deadline)) : '' }}">
+{{--                                            <input type="date"  name="minimum_activity_deadline" class="form-control" id="" value="{{date_format($user->minimum_activity_deadline,'Y-m-d')}}" data-default-file="">--}}
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
@@ -318,7 +317,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-4 ">
                                         <div class="form-group d-flex main">
                                             <label class="form-check-label mr-5" for="">E-mail automatica :</label>
                                             <label class="switch">
@@ -449,19 +448,17 @@
 
                                 <!--------------------Release Date Start---------------------->
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-4" id="dlReleaseDate"
-                                         style="display: {{$user->dl == "yes" ? 'block': 'none'}};">
-                                        <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="dlReleaseDate" style="display: {{$user->dl == "yes" ? 'block': 'none'}};" >
+                                        <div class="form-group" >
                                             <strong>D.L. Data di rilascio :</strong>
                                             <input type="date" name="dl_releaseDate" class="form-control"
                                                    id="dlReleaseDateInput"
                                                    value="{{ old('dl_releaseDate',$user->dl_releaseDate) }}"
-                                                   data-default-file="">
+                                                   data-default-file="" >
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-12 col-md-4" id="ipDateContainer"
-                                         style="display: {{$user->ip == "yes" ? 'block': 'none'}};">
+                                    <div class="col-xs-12 col-sm-12 col-md-4" id="ipDateContainer" style="display: {{$user->ip == "yes" ? 'block': 'none'}};">
                                         <div class="form-group">
                                             <strong>Data scadenza IP:</strong>
                                             <input type="date" name="ip_expiryDate" class="form-control" id="ipDateInput"
@@ -538,6 +535,22 @@
     @push('script')
 
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const studentCheckbox = document.getElementById('student');
+                const deadlineContainer = document.getElementById('minimum_activity_deadline_container');
+
+                function toggleDeadlineContainer() {
+                    if (studentCheckbox.checked) {
+                        deadlineContainer.style.display = 'none';
+                    } else {
+                        deadlineContainer.style.display = 'block';
+                    }
+                }
+                studentCheckbox.addEventListener('change', toggleDeadlineContainer);
+                // Initialize the visibility on page load
+                toggleDeadlineContainer();
+            });
+
             $(document).ready(function () {
 
                 var ownMaterialCheckbox = $('#own_material');
@@ -570,10 +583,8 @@
                 });
 
             });
-        </script>
 
 
-        <script>
             $(document).ready(function () {
                 var studentCheckbox = $('#student');
                 var releasedOn = $('#released_on input');

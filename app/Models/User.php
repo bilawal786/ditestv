@@ -109,7 +109,10 @@ class User extends Authenticatable
     {
         $expiredDates = [];
 
-        if (Carbon::parse($this->minimum_activity_deadline)->isPast()) {
+//        if (Carbon::parse($this->minimum_activity_deadline)->isPast()) {
+//            $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza minima attività</span><br>';
+//        }
+        if (!empty($this->minimum_activity_deadline) && Carbon::parse($this->minimum_activity_deadline)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza minima attività</span><br>';
         }
         if (Carbon::parse($this->release_test_deadline)->isPast()) {
@@ -121,6 +124,10 @@ class User extends Authenticatable
         if (Carbon::parse($this->medical_examination_deadline)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza visita medica</span><br>';
         }
+
+//        if (!empty($this->repayment_expiry_date) && Carbon::parse($this->repayment_expiry_date)->isPast()) {
+//            $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza ripegamento emergenza</span><br>';
+//        }
 
         if (!empty($this->repayment_expiry_date) && Carbon::parse($this->repayment_expiry_date)->isPast()) {
             $expiredDates[] = '<span class="badge badge-danger mb-1">Scadenza ripegamento emergenza</span><br>';

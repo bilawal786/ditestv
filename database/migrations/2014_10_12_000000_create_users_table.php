@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('license_number');
             $table->string('released_on');
             $table->string('release_test_deadline');
-            $table->string('minimum_activity_deadline');
+            $table->string('minimum_activity_deadline')->nullable();
             $table->string('insurance_company');
             $table->string('insurance_expiration');
             $table->string('medical_examination_deadline');
