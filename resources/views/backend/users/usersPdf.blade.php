@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 @php
-    $users = \App\Models\User::where('role',1)->get();
+//    $users = \App\Models\User::where('role',1)->get();
+     $users = \App\Models\User::where('role', 1)
+                        ->orderBy('last_name', 'asc')
+                        ->orderBy('first_name', 'asc')
+                        ->get();
 @endphp
 <head>
     <meta charset="utf-8">
@@ -36,8 +40,8 @@
     <div class="row">
         <table style="width: 100%;">
             <tr>
-                <th style="font-family:  Verdana;padding-right: 45px;">Nome</th>
                 <th style="font-family:  Verdana;padding-right: 45px;">CertoNome</th>
+                <th style="font-family:  Verdana;padding-right: 45px;">Nome</th>
                 <th style="font-family: Verdana;">Scadenza assicurazione</th>
                 <th style="padding-right: 30px;font-family: Verdana;">Scadenza attività</th>
                 <th style="padding-right: 10px;font-family: Verdana;">Scadenza vista medica</th>
@@ -53,8 +57,9 @@
             @endphp
             @foreach ($users as $user)
                 <tr>
-                    <td class="" style="padding-left: 0px;">{{$user->first_name}}</td>
                     <td class="" style="padding-left: 23px;">{{$user->last_name}}</td>
+                    <td class="" style="padding-left: 0px;">{{$user->first_name}}</td>
+
                     <td class="m-5" style="padding-left: 21px;">
                         @if(!empty($user->insurance_expiration))
                             {{ date_format(date_create($user->insurance_expiration), 'd-m-Y') }}
