@@ -1,4 +1,4 @@
 <div class="footer">
-    <span class="">Powered by Buri for SkyDive Verona.</span>
+    <span class="">Powered by DiscoveRig SRLS.</span>
 </div>
 

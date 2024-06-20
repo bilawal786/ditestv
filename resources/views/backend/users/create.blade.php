@@ -99,7 +99,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card planned_task">
                         <div class="header">
-                            <h4>Crea Nuovo Cliente</h4>
+                            <h4>Crea Nuovo Socio </h4>
                             <ul class="header-dropdown dropdown dropdown-animated scale-left">
                                 <li><a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse"><i
                                             class="icon-refresh"></i></a></li>
