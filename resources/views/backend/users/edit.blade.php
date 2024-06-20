@@ -208,12 +208,13 @@
                                                    value="{{date_format($user->insurance_expiration,'Y-m-d')}}" data-default-file="">
                                         </div>
                                     </div>
+
                                     <div class="col-xs-12 col-sm-12 col-md-4" id="minimum_activity_deadline_container">
                                         <div class="form-group">
                                             <strong>Scadenza attività minima :</strong>
-                                            <input type="date" name="minimum_activity_deadline" class="form-control"
+                                            <input type="date" name="minimum_activity_deadline"
+                                                   id="minimum_activity_deadline" class="form-control"
                                                    value="{{ !empty($user->minimum_activity_deadline) ? date('Y-m-d', strtotime($user->minimum_activity_deadline)) : '' }}">
-{{--                                            <input type="date"  name="minimum_activity_deadline" class="form-control" id="" value="{{date_format($user->minimum_activity_deadline,'Y-m-d')}}" data-default-file="">--}}
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
@@ -236,16 +237,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-4" >
                                         <div class="form-group">
                                             <strong>Paese :</strong>
                                             <input type="text" name="village" class="form-control" id=""
-                                                   value="{{$user->village}}" data-default-file="">
+                                                   value="{{$user->village}}" data-default-file="" >
                                         </div>
                                     </div>
 
 
-                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-4" >
                                         <div class="form-group" id="released_on">
                                             <strong>Rilasciata il :</strong>
                                             <input type="text" name="released_on" class="form-control" id=""
@@ -333,7 +334,7 @@
                                 </div>
 
 
-                                <div class="row">
+                                <div class="row" >
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group d-flex main">
                                             <label class="form-check-label mr-3 font-5 "
@@ -342,8 +343,7 @@
                                                 <label class="switch">
                                                     <input type="checkbox" class="form-check-input"
                                                            name="qualification" id="qualification" data-default-file=""
-                                                           @if($user->qualification === 'yes')checked @endif
-                                                    >
+                                                           @if($user->qualification === 'yes')checked @endif>
                                                     <span class="slider round"></span>
                                                 </label>
                                             </div>
@@ -351,8 +351,7 @@
                                     </div>
                                 </div>
 
-                                <div id="additionalCheckboxes"
-                                     style="display: {{$user->qualification == "yes" ? 'block': 'none'}};">
+                                <div id="additionalCheckboxes" style="display: {{$user->qualification == "yes" ? 'block': 'none'}};">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-2">
                                             <div class="form-group d-flex main">
@@ -482,7 +481,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4" id="AffReleaseDate"
                                          style="display: {{$user->ip_aff == "yes" ? 'block': 'none'}};">
-                                        <div class="form-group">
+                                        <div class="form-group" >
                                             <strong>I.P. AFF Data di rilascio :</strong>
                                             <input type="date" id="affReleaseDateInput" name="ip_aff_release_date"
                                                    value="{{ old('ip_aff_release_date',$user->ip_aff_release_date) }}"
@@ -535,19 +534,37 @@
     @push('script')
 
         <script>
+            // document.addEventListener('DOMContentLoaded', function() {
+            //     const studentCheckbox = document.getElementById('student');
+            //     const deadlineContainer = document.getElementById('minimum_activity_deadline_container');
+            //
+            //     function toggleDeadlineContainer() {
+            //         if (studentCheckbox.checked) {
+            //             deadlineContainer.style.display = 'none';
+            //         } else {
+            //             deadlineContainer.style.display = 'block';
+            //         }
+            //     }
+            //     studentCheckbox.addEventListener('change', toggleDeadlineContainer);
+            //     toggleDeadlineContainer();
+            // });
+
             document.addEventListener('DOMContentLoaded', function() {
                 const studentCheckbox = document.getElementById('student');
                 const deadlineContainer = document.getElementById('minimum_activity_deadline_container');
+                const deadlineInput = document.getElementById('minimum_activity_deadline');
 
                 function toggleDeadlineContainer() {
                     if (studentCheckbox.checked) {
                         deadlineContainer.style.display = 'none';
+                        deadlineInput.removeAttribute('required');
                     } else {
                         deadlineContainer.style.display = 'block';
+                        deadlineInput.setAttribute('required', 'required');
                     }
                 }
+
                 studentCheckbox.addEventListener('change', toggleDeadlineContainer);
-                // Initialize the visibility on page load
                 toggleDeadlineContainer();
             });
 

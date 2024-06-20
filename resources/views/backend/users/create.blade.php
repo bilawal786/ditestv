@@ -223,13 +223,20 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4" id="minimum_activity_deadline_container">
-                                    <div class="form-group" >
+                                    <div class="form-group">
                                         <strong>Scadenza attività minima :</strong>
-                                        <input type="date"  name="minimum_activity_deadline"
-                                               class="form-control" id=""
-                                               value="{{old('minimum_activity_deadline')}}" data-default-file="">
+                                        <input type="date" name="minimum_activity_deadline" id="minimum_activity_deadline" class="form-control"
+                                               value="{{ !empty($user->minimum_activity_deadline) ? date('Y-m-d', strtotime($user->minimum_activity_deadline)) : '' }}">
                                     </div>
                                 </div>
+
+{{--                                <div class="col-xs-12 col-sm-12 col-md-4" id="minimum_activity_deadline_container">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <strong>Scadenza attività minima :</strong>--}}
+{{--                                        <input type="date" name="minimum_activity_deadline" id="minimum_activity_deadline" class="form-control"--}}
+{{--                                               value="{{old('minimum_activity_deadline')}}">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group">
@@ -297,7 +304,7 @@
                             </div>
 
 
-                            <div class="row">
+                            <div class="row" >
                                 <div class="col-xs-12 col-sm-12 col-md-4">
                                     <div class="form-group d-flex main ">
 
@@ -314,10 +321,10 @@
                                             <span class="slider round"></span>
                                         </label>
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
+
+                                <div class="col-xs-12 col-sm-12 col-md-4" >
                                     <div class="form-group d-flex main">
                                         <div class="one">
                                         <label class="form-check-label mr-3 font-5 "
@@ -488,7 +495,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xs-12 col-sm-12 col-md-4" id="ipDateContainer" style="display: none;">
+                                <div class="col-xs-12 col-sm-12 col-md-4 " id="ipDateContainer" style="display: none;">
                                     <div class="form-group">
                                         <strong>Data scadenza IP:</strong>
                                         <input type="date" name="ip_expiryDate" class="form-control" id="ipDateInput"
@@ -498,7 +505,7 @@
 
 
                                 <div class="col-xs-12 col-sm-12 col-md-4" id="tandemReleaseDate" style="display: none;">
-                                    <div class="form-group">
+                                    <div class="form-group ">
                                         <strong>I.P Tandem Data di rilascio :</strong>
                                         <input type="date" name="tandem_release_date" class="form-control"
                                                id="tandemReleaseDateInput" value="{{ old('tandem_release_date') }}"
@@ -510,7 +517,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-4" id="AffReleaseDate" style="display: none;">
+                                <div class="col-xs-12 col-sm-12 col-md-4 " id="AffReleaseDate" style="display: none;">
                                     <div class="form-group">
                                         <strong>I.P. AFF Data di rilascio :</strong>
                                         <input type="date" id="affReleaseDateInput" name="ip_aff_release_date"
@@ -541,7 +548,7 @@
                             <!--------------Release Date End-------------->
 
 
-                            <div class="row">
+                            <div class="row" >
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <button type="submit" class="btn btn-primary btn-round">Invia</button>
                                 </div>
@@ -560,19 +567,21 @@
             document.addEventListener('DOMContentLoaded', function() {
                 const studentCheckbox = document.getElementById('student');
                 const deadlineContainer = document.getElementById('minimum_activity_deadline_container');
+                const deadlineInput = document.getElementById('minimum_activity_deadline');
 
                 function toggleDeadlineContainer() {
                     if (studentCheckbox.checked) {
                         deadlineContainer.style.display = 'none';
+                        deadlineInput.removeAttribute('required');
                     } else {
                         deadlineContainer.style.display = 'block';
+                        deadlineInput.setAttribute('required', 'required');
                     }
                 }
+
                 studentCheckbox.addEventListener('change', toggleDeadlineContainer);
-                // Initialize the visibility on page load
                 toggleDeadlineContainer();
             });
-
             document.addEventListener("DOMContentLoaded", function () {
                 var qualificationCheckbox = document.getElementById("qualification");
                 var additionalCheckboxes = document.getElementById("additionalCheckboxes");

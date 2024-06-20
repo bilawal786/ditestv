@@ -61,7 +61,6 @@
                 </th>
             </tr>
 
-
             @foreach ($expiredUsers as $user)
                 <tr>
                     <td class="" style="padding-left: 23px;">{{$user->last_name}}</td>
@@ -74,12 +73,40 @@
                             @elseif (!empty($user->$field))
                                 {{ date_format(date_create($user->$field), 'd-m-Y') }}
                             @else
-                                No date available
+                                @if ($field === 'ip_expiryDate')
+                                    NO IP
+                                @elseif ($field === 'repayment_expiry_date')
+                                    NO MATERIALE
+                                @elseif ($field === 'minimum_activity_deadline')
+                                    ALLIEVO
+                                @else
+                                    No date available
+                                @endif
                             @endif
                         </td>
                     @endforeach
                 </tr>
             @endforeach
+
+
+            {{--            @foreach ($expiredUsers as $user)--}}
+{{--                <tr>--}}
+{{--                    <td class="" style="padding-left: 23px;">{{$user->last_name}}</td>--}}
+{{--                    <td class="" style="padding-left: 8px;">{{$user->first_name}}</td>--}}
+
+{{--                    @foreach (['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $field)--}}
+{{--                        <td class="m-5" style="padding-left: {{ $field === 'repayment_expiry_date' || $field === 'release_test_deadline' ? '30px' : '18px' }};">--}}
+{{--                            @if (!empty($user->$field) && \Carbon\Carbon::parse($user->$field)->isPast())--}}
+{{--                                <span class="expired-date">{{ date_format(date_create($user->$field), 'd-m-Y') }}</span>--}}
+{{--                            @elseif (!empty($user->$field))--}}
+{{--                                {{ date_format(date_create($user->$field), 'd-m-Y') }}--}}
+{{--                            @else--}}
+{{--                                No date available--}}
+{{--                            @endif--}}
+{{--                        </td>--}}
+{{--                    @endforeach--}}
+{{--                </tr>--}}
+{{--            @endforeach--}}
 
 {{--            @foreach ($expiredUsers as $user)--}}
 {{--                <tr>--}}
