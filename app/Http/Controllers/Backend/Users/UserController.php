@@ -363,7 +363,7 @@ class UserController extends Controller
     public function expiredDaysPDF()
     {
         $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
+            'title' => 'Ditestv',
             'date' => date('m/d/Y'),
         ];
         $pdf = PDF::loadView('backend.users.expiredSevenDaysPdf', $data)->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');

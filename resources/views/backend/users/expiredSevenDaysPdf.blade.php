@@ -82,51 +82,25 @@
                         <td>{{$user->last_name}}</td>
                         <td>{{$user->first_name }}</td>
 
-                        <td>
-                            @if($user->insurance_expiration && $user->insurance_expiration->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->insurance_expiration->isFuture())
-                                <div style="color: red">
-                                    {{$user->insurance_expiration->format('d-m-Y')}}
-                                </div>
-                            @endif
-                        </td>
-                        <td>
-                            @if($user->minimum_activity_deadline && $user->minimum_activity_deadline->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->minimum_activity_deadline->isFuture())
-                                <div style="color: red">
-                                    {{$user->minimum_activity_deadline->format('d-m-Y')}}
-                                </div>
-                            @endif
-                        </td>
-                        <td>
-                            @if($user->medical_examination_deadline && $user->medical_examination_deadline->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->medical_examination_deadline->isFuture())
-                                <div style="color: red">
-                                    {{$user->medical_examination_deadline->format('d-m-Y')}}
-                                </div>
-                            @endif
-                        </td>
-                        <td>
-                            @if($user->repayment_expiry_date && $user->repayment_expiry_date->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->repayment_expiry_date->isFuture())
-                                <div style="color: red">
-                                    {{$user->repayment_expiry_date->format('d-m-Y')}}
-                                </div>
-                            @endif
-                        </td>
-                        <td>
-                            @if($user->release_test_deadline && $user->release_test_deadline->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->release_test_deadline->isFuture())
-                                <div style="color: red">
-                                    {{$user->release_test_deadline->format('d-m-Y')}}
-                                </div>
-                            @endif
-                        </td>
-                        <td>
-                            @if($user->ip_expiryDate && $user->ip_expiryDate->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->ip_expiryDate->isFuture())
-                                <div style="color: red">
-                                    {{$user->ip_expiryDate->format('d-m-Y')}}
-                                </div>
-                            @endif
-                        </td>
+                        @foreach (['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $dateField)
+                            <td>
+                                @if($dateField == 'ip_expiryDate' && !$user->$dateField)
+                                    <div style="color: black">NO IP</div>
+                                @elseif($dateField == 'minimum_activity_deadline' && !$user->$dateField)
+                                    <div style="color: black">ALLIEVO</div>
+                                @else
+                                    @if($user->$dateField)
+                                        <div style="color: {{ $user->$dateField->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->$dateField->isFuture() ? 'red' : 'black' }}">
+                                            {{$user->$dateField->format('d-m-Y')}}
+                                        </div>
+                                    @endif
+                                @endif
+                            </td>
+                        @endforeach
                     </tr>
                 @endif
             @endforeach
+
 
 
 
