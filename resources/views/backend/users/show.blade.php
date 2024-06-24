@@ -203,13 +203,21 @@
                                                data-default-file="">
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
+{{--                                <div class="col-xs-12 col-sm-12 col-md-4">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <strong>Scadenza attività minima :</strong>--}}
+{{--                                        <input type="date" name="minimum_activity_deadline" readonly--}}
+{{--                                               class="form-control" id=""--}}
+{{--                                               value="{{date('Y-m-d', strtotime($user->minimum_activity_deadline))}}"--}}
+{{--                                               data-default-file="">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+                                <div class="col-xs-12 col-sm-12 col-md-4" id="minimum_activity_deadline_container">
                                     <div class="form-group">
                                         <strong>Scadenza attività minima :</strong>
                                         <input type="date" name="minimum_activity_deadline" readonly
-                                               class="form-control" id=""
-                                               value="{{date('Y-m-d', strtotime($user->minimum_activity_deadline))}}"
-                                               data-default-file="">
+                                               id="minimum_activity_deadline" class="form-control"
+                                               value="{{ !empty($user->minimum_activity_deadline) ? date('Y-m-d', strtotime($user->minimum_activity_deadline)) : '' }}">
                                     </div>
                                 </div>
 
@@ -524,6 +532,24 @@
         @endsection
         @push('script')
             <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const studentCheckbox = document.getElementById('student');
+                    const deadlineContainer = document.getElementById('minimum_activity_deadline_container');
+                    const deadlineInput = document.getElementById('minimum_activity_deadline');
+
+                    function toggleDeadlineContainer() {
+                        if (studentCheckbox.checked) {
+                            deadlineContainer.style.display = 'none';
+                            deadlineInput.removeAttribute('required');
+                        } else {
+                            deadlineContainer.style.display = 'block';
+                            deadlineInput.setAttribute('required', 'required');
+                        }
+                    }
+
+                    studentCheckbox.addEventListener('change', toggleDeadlineContainer);
+                    toggleDeadlineContainer();
+                });
                 $(document).ready(function () {
 
                     var ownMaterialCheckbox = $('#own_material');
