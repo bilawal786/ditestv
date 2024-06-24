@@ -29,6 +29,13 @@
         th {
             text-align: left;
         }
+        table {
+            border-collapse: collapse;
+        }
+        tr td, tr th {
+            border-bottom: 1px solid black;
+            padding: 5px;
+        }
     </style>
 </head>
 <body style="font-family: Verdana;font-size: 12px;">
@@ -79,8 +86,8 @@
                 {{-- Display row if we are not showing the name --}}
                 @if (!$showName)
                     <tr>
-                        <td>{{$user->last_name}}</td>
-                        <td>{{$user->first_name }}</td>
+                        <td >{{$user->last_name}}</td>
+                        <td >{{$user->first_name }}</td>
 
                         @foreach (['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $dateField)
                             <td>

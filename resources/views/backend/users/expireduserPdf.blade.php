@@ -31,6 +31,13 @@
             color:darkgrey;
             margin: 20px; /* Optional: Adjust the margin as per your preference */
         }
+        table {
+            border-collapse: collapse;
+        }
+        tr td, tr th {
+            border-bottom: 1px solid black;
+            padding: 5px;
+        }
         </style>
 </head>
 <body style="font-family: Verdana;font-size: 12px;">
