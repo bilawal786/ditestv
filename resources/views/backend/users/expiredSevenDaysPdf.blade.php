@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 @php
-//    $users =  \App\Models\User::where('role', 1)->get();
     $users = \App\Models\User::where('role', 1)
                         ->orderBy('last_name', 'asc')
                         ->orderBy('first_name', 'asc')
                         ->get();
+   $expiredUsers = [];
+foreach ($users as $user) {
+    foreach (['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $dateField) {
+        if ($user->$dateField) {
+            $date = \Carbon\Carbon::parse($user->$dateField);
+            if ($date->isPast() || ($date->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $date->isFuture())) {
+                $expiredUsers[] = $user;
+                break; // No need to check further fields for this user
+            }
+        }
+    }
+}
 @endphp
 
 
@@ -68,164 +79,74 @@
             </tr>
 
 
-            @foreach ($users as $user)
-                @php
-                    $showName = true;
-                @endphp
+            @foreach ($expiredUsers as $user)
+                <tr>
+                    <td>{{$user->last_name}}</td>
+                    <td>{{$user->first_name}}</td>
 
-                {{-- Check each date field --}}
-                @foreach (['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $dateField)
-                    @if ($user->$dateField && $user->$dateField->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->$dateField->isFuture())
-                        @php
-                            $showName = false; // Found a matching date, do not show the name
-                            break; // No need to check further, exit the loop
-                        @endphp
-                    @endif
-                @endforeach
-
-                {{-- Display row if we are not showing the name --}}
-                @if (!$showName)
-                    <tr>
-                        <td >{{$user->last_name}}</td>
-                        <td >{{$user->first_name }}</td>
-
-                        @foreach (['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $dateField)
-                            <td>
-                                @if($dateField == 'ip_expiryDate' && !$user->$dateField)
-                                    <div style="color: black">NO IP</div>
-                                @elseif($dateField == 'minimum_activity_deadline' && !$user->$dateField)
-                                    <div style="color: black">ALLIEVO</div>
-                                @else
-                                    @if($user->$dateField)
-                                        <div style="color: {{ $user->$dateField->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->$dateField->isFuture() ? 'red' : 'black' }}">
-                                            {{$user->$dateField->format('d-m-Y')}}
-                                        </div>
-                                    @endif
+                    @foreach (['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $dateField)
+                        <td>
+                            @if($dateField == 'ip_expiryDate' && !$user->$dateField)
+                                <div style="color: black">NO IP</div>
+                            @elseif($dateField == 'minimum_activity_deadline' && !$user->$dateField)
+                                <div style="color: black">ALLIEVO</div>
+                            @elseif ($dateField == 'repayment_expiry_date' && !$user->$dateField)
+                                <div style="color: black">NO MATERIALE</div>
+                            @else
+                                @if($user->$dateField)
+                                    @php
+                                        $date = \Carbon\Carbon::parse($user->$dateField);
+                                    @endphp
+                                    <div style="color: {{ $date->isPast() || ($date->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $date->isFuture()) ? 'red' : 'black' }}">
+                                        {{ $date->format('d-m-Y') }}
+                                    </div>
                                 @endif
-                            </td>
-                        @endforeach
-                    </tr>
-                @endif
+                            @endif
+                        </td>
+                    @endforeach
+                </tr>
             @endforeach
 
 
+{{--            @foreach ($users as $user)--}}
+{{--                @php--}}
+{{--                    $showName = true;--}}
+{{--                @endphp--}}
 
-
-            {{--            @foreach ($users as $user)--}}
-{{--                <tr>--}}
-{{--                    <td class="">{{$user->first_name . ' ' . $user->last_name}}</td>--}}
-{{--                    <td>--}}
-{{--                        @if($user->insurance_expiration)--}}
-{{--                            @if($user->insurance_expiration->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->insurance_expiration->isFuture())--}}
-{{--                                <div style="color: red">--}}
-{{--                                    {{$user->insurance_expiration->format('d-m-Y')}}--}}
-
-{{--                                </div>--}}
-{{--                            @else--}}
-{{--                                @if($user->insurance_expiration->isToday() || $user->insurance_expiration->isPast())--}}
-{{--                                    <div style="color: red">--}}
-{{--                                        {{$user->insurance_expiration->format('d-m-Y')}}--}}
-{{--                                    </div>--}}
-{{--                                @else--}}
-{{--                                    {{$user->insurance_expiration->format('d-m-Y')}}--}}
-{{--                                @endif--}}
-{{--                            @endif--}}
-{{--                        @endif--}}
-{{--                    </td>--}}
-{{--                    <td>--}}
-{{--                        @if($user->minimum_activity_deadline)--}}
-{{--                            @if($user->minimum_activity_deadline->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->minimum_activity_deadline->isFuture())--}}
-{{--                                <div style="color: red">--}}
-{{--                                    {{$user->minimum_activity_deadline->format('d-m-Y')}}--}}
-
-{{--                                </div>--}}
-{{--                            @else--}}
-{{--                                @if($user->minimum_activity_deadline->isToday() || $user->minimum_activity_deadline->isPast())--}}
-{{--                                    <div style="color: red">--}}
-{{--                                        {{$user->minimum_activity_deadline->format('d-m-Y')}}--}}
-{{--                                    </div>--}}
-{{--                                @else--}}
-{{--                                    {{$user->minimum_activity_deadline->format('d-m-Y')}}--}}
-{{--                                @endif--}}
-{{--                            @endif--}}
-{{--                        @endif--}}
-{{--                    </td>--}}
-{{--                    <td>--}}
-{{--                        @if($user->medical_examination_deadline)--}}
-{{--                            @if($user->medical_examination_deadline->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->medical_examination_deadline->isFuture())--}}
-{{--                                <div style="color: red">--}}
-{{--                                    {{$user->medical_examination_deadline->format('d-m-Y')}}--}}
-
-{{--                                </div>--}}
-{{--                            @else--}}
-{{--                                @if($user->medical_examination_deadline->isToday() || $user->medical_examination_deadline->isPast())--}}
-{{--                                    <div style="color: red">--}}
-{{--                                        {{$user->medical_examination_deadline->format('d-m-Y')}}--}}
-{{--                                    </div>--}}
-{{--                                @else--}}
-{{--                                    {{$user->medical_examination_deadline->format('d-m-Y')}}--}}
-{{--                                @endif--}}
-{{--                            @endif--}}
-{{--                    </td>--}}
+{{--                --}}{{-- Check each date field --}}
+{{--                @foreach (['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $dateField)--}}
+{{--                    @if ($user->$dateField && $user->$dateField->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->$dateField->isFuture())--}}
+{{--                        @php--}}
+{{--                            $showName = false; // Found a matching date, do not show the name--}}
+{{--                            break; // No need to check further, exit the loop--}}
+{{--                        @endphp--}}
 {{--                    @endif--}}
-{{--                    <td>--}}
-{{--                        @if($user->repayment_expiry_date)--}}
-{{--                            @if($user->repayment_expiry_date->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->repayment_expiry_date->isFuture())--}}
-{{--                                <div style="color: red">--}}
-{{--                                    {{$user->repayment_expiry_date->format('d-m-Y')}}--}}
+{{--                @endforeach--}}
 
-{{--                                </div>--}}
-{{--                            @else--}}
-{{--                                @if($user->repayment_expiry_date->isToday() || $user->repayment_expiry_date->isPast())--}}
-{{--                                    <div style="color: red">--}}
-{{--                                        {{$user->repayment_expiry_date->format('d-m-Y')}}--}}
-{{--                                    </div>--}}
-{{--                                @else--}}
-{{--                                    {{$user->repayment_expiry_date->format('d-m-Y')}}--}}
-{{--                                @endif--}}
-{{--                            @endif--}}
-{{--                        @endif--}}
-{{--                    </td>--}}
-{{--                    <td>--}}
-{{--                        @if($user->release_test_deadline)--}}
-{{--                            @if($user->release_test_deadline->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->release_test_deadline->isFuture())--}}
-{{--                                <div style="color: red">--}}
-{{--                                    {{$user->release_test_deadline->format('d-m-Y')}}--}}
+{{--                --}}{{-- Display row if we are not showing the name --}}
+{{--                @if (!$showName)--}}
+{{--                    <tr>--}}
+{{--                        <td >{{$user->last_name}}</td>--}}
+{{--                        <td >{{$user->first_name }}</td>--}}
 
-{{--                                </div>--}}
-{{--                            @else--}}
-{{--                                @if($user->release_test_deadline->isToday() || $user->release_test_deadline->isPast())--}}
-{{--                                    <div style="color: red">--}}
-{{--                                        {{$user->release_test_deadline->format('d-m-Y')}}--}}
-{{--                                    </div>--}}
+{{--                        @foreach (['insurance_expiration', 'minimum_activity_deadline', 'medical_examination_deadline', 'repayment_expiry_date', 'release_test_deadline', 'ip_expiryDate'] as $dateField)--}}
+{{--                            <td>--}}
+{{--                                @if($dateField == 'ip_expiryDate' && !$user->$dateField)--}}
+{{--                                    <div style="color: black">NO IP</div>--}}
+{{--                                @elseif($dateField == 'minimum_activity_deadline' && !$user->$dateField)--}}
+{{--                                    <div style="color: black">ALLIEVO</div>--}}
 {{--                                @else--}}
-{{--                                    {{$user->release_test_deadline->format('d-m-Y')}}--}}
+{{--                                    @if($user->$dateField)--}}
+{{--                                        <div style="color: {{ $user->$dateField->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->$dateField->isFuture() ? 'red' : 'black' }}">--}}
+{{--                                            {{$user->$dateField->format('d-m-Y')}}--}}
+{{--                                        </div>--}}
+{{--                                    @endif--}}
 {{--                                @endif--}}
-{{--                            @endif--}}
-{{--                        @endif--}}
-{{--                    </td>--}}
-{{--                    <td>--}}
-{{--                        @if($user->ip_expiryDate)--}}
-{{--                            @if($user->ip_expiryDate->diffInDays(\Carbon\Carbon::now()->subDay()) <= 8 && $user->ip_expiryDate->isFuture())--}}
-{{--                                <div style="color: red">--}}
-{{--                                    {{$user->ip_expiryDate->format('d-m-Y')}}--}}
-
-{{--                                </div>--}}
-{{--                            @else--}}
-{{--                                @if($user->ip_expiryDate->isToday() || $user->ip_expiryDate->isPast())--}}
-{{--                                    <div style="color: red">--}}
-{{--                                        {{$user->ip_expiryDate->format('d-m-Y')}}--}}
-{{--                                    </div>--}}
-{{--                                @else--}}
-{{--                                    {{$user->ip_expiryDate->format('d-m-Y')}}--}}
-{{--                                @endif--}}
-{{--                            @endif--}}
-{{--                        @endif--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
+{{--                            </td>--}}
+{{--                        @endforeach--}}
+{{--                    </tr>--}}
+{{--                @endif--}}
 {{--            @endforeach--}}
-
-
 
         </table>
     </div>
