@@ -42,13 +42,13 @@
 </head>
 <body style="font-family: Verdana;font-size: 12px;">
 <div class="container" style="">
-    <div class="container" style=" background-color: #e67238;">
-        <div style=" background-color: #e67238; padding-right: 40px; display: inline-block;">
+    <div class="container" style="">
+        <div style=" padding-right: 40px; display: inline-block;">
             <img width="150px" style="padding-left: 10px;margin-bottom: 10px;" height="50px"
                  src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('images/loding.png')))}}">
         </div>
         <div style="display: inline-block;  text-align: center; padding-left: 80px;margin-left: 110px; margin-top: 16px;">
-            <h1 style="color: white;margin-top: 40px;">Scoci con scadenze attive</h1>
+            <h1 style="color: black;margin-top: 40px;">Scoci con scadenze attive</h1>
         </div>
     </div>
     <br>
